@@ -13,6 +13,10 @@ public class Instruction {
 		return code;
 	}
 
+	public double getParameter() {
+		return parameter;
+	}
+
 	public bool isCorrect() {
 		//Codigo de la función isCorrect() devuelve un booleano dependiendo si es correcta la linea de codigo o no
 	}
