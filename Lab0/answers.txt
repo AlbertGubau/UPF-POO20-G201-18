@@ -111,4 +111,6 @@ $ git branch
 
 ****El contenido en las dos branches es diferente al modificar un archivo que las dos tienen.****
 
+(Q11)
 
+****He eliminado la branch previamente creada para tener el repositorio con una sola branch, de modo que estoy en la branch main y solo tengo esta****
