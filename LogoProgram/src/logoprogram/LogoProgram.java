@@ -28,8 +28,8 @@ public class LogoProgram {
                 Instruction instr = p.getNextInstruction();
                 System.out.println(instr.info());
             }
+        }else{
+           p.printErrors(); 
         }
-        
     }
-    
 }
