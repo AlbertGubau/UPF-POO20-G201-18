@@ -26,6 +26,9 @@ public class LogoProgram {
             p.restart();
             while(!p.hasFinished()){
                 Instruction instr = p.getNextInstruction();
+                if(!instr.isRepInstruction()){
+                    System.out.println(instr.info());
+                }
             }
         }else{
            p.printErrors(); 

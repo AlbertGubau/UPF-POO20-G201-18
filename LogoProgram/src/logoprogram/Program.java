@@ -77,10 +77,6 @@ public class Program {
             instruction = instructions.get(currentLine);
         }
         
-        if(!instruction.isRepInstruction()){
-            System.out.println(instruction.info());
-        }
-        
         return instruction;
     }
    
