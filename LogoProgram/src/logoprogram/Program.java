@@ -30,57 +30,86 @@ public class Program {
         return programName;
     }
     
-    public Boolean addInstruction(String c, double p){
+    public Boolean addInstruction(String c, double p){   //COMPROVAR
         
         Instruction instruction = new Instruction(c, p);
+        instructions.add(instruction);
         
-        if(instruction.isCorrect()){
-            
-            instructions.add(instruction);
-            return true;
-        
-        }else{
-            
-            printErrors();            
-            return false;
-        }     
+        return instruction.isCorrect();     
     }
     
-    public void restart(){
+    
+    
+    
+    public void restart(){   //COMPROVAR
         
+        currentLine = 0;
     }
     
-    public Boolean hasFinished(){
+    
+    
+    
+    public Boolean hasFinished(){  //COMPROVAR
         
-        return false;
+        return (loopIteration == 0);
     }
     
-    public Instruction getNextInstruction(){
+    
+    
+    
+    
+    public Instruction getNextInstruction(){ //ARREGLAR
         
-        Instruction instruction = instructions.get(currentLine +1);
+        Instruction instruction = instructions.get(currentLine);
+        
         if(instruction.isRepInstruction()){
             
             if(instruction.getCode() == "REP"){
                 
-                loopIteration = (int)instruction.getParam(); 
+                currentLine++;
             
             }else{
                 
-                loopIteration--;
+                loopIteration--; //Hemos llegado a end por tanto hemos hecho una iteracion
+                goToStartLoop();    
+            }  
+            
+            return getNextInstruction();
+        }
+        
+        currentLine++;
+        return instruction;
+    }
+    
+    
+    
+    
+    
+    
+    public boolean isCorrect(){ //COMPROVAR
+        
+        int correctins = 0; //Contador de instrucciones correctas
+        
+        for(Instruction instruction: instructions){ 
+            
+            if(instruction.isCorrect()){
+                
+                if(instruction.getCode()=="REP"){
+                        
+                    loopIteration = (int)instruction.getParam();
+                }
+              
+                correctins++;
             }
         }
         
-        
-        
-        
-        
-        currentLine++;
-        return instruction; 
+        return (correctins == instructions.size()); //Comprovamos que todas las instrucciones son correctas
     }
     
-    public boolean isCorrect(){
-        return false; //for de todas las instrucciones de linkedList y verificar si rep o end estan para tener su valor      for (Instruction instruction: instructions)
-    }
+    
+    
+    
+    
     
     public void printErrors(){
        
@@ -91,40 +120,43 @@ public class Program {
         for(Instruction instruction: instructions){
             
             if(!instruction.isCorrect()){
+                
                 int errorcode = instruction.errorCode();
                 
                 if(errorcode == 1){
                     System.out.println("Error in FWD parameter");
             
         
-                }else if(errorCode() == 2){
-                    s = "Error in PEN parameter";
+                }else if(errorcode == 2){
+                    System.out.println("Error in PEN parameter");
            
         
-                }else if(errorCode() == 3){
-                    s = "Error in ROT parameter";
+                }else if(errorcode == 3){
+                    System.out.println("Error in ROT parameter");
             
         
-                }else if(errorCode() == 4){
-                    s = "Error in REP parameter";
+                }else if(errorcode == 4){
+                    System.out.println("Error in REP parameter");
             
         
-                }else if(errorCode() == 5){
-                    s = "Error in END parameter";
+                }else if(errorcode == 5){
+                    System.out.println("Error in END parameter");
             
         
-                }else if(errorCode() == 6){
-                    s = "Error, the instruction is not valid.";
+                }else if(errorcode == 6){
+                    System.out.println("Error: there is a not valid instruction added.");
             
         
-                }else if(errorCode() == 0){
-                    s = "All correct!";
+                }else if(errorcode == 0){
+                    System.out.println("All correct!");
                 }
             }
         }
     }
     
-    private void goToStartLoop(){
+    
+    
+    private void goToStartLoop(){ //La hicimos contigo, comprovar que sea correcta
         
         int counter = 0;
         
@@ -132,7 +164,7 @@ public class Program {
             
             if(instruction.getCode() == "REP"){
                 
-                currentLine = counter++;
+                currentLine = counter + 1;
                 break;
             }
             
