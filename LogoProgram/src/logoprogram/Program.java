@@ -37,26 +37,16 @@ public class Program {
         
         return instruction.isCorrect();     
     }
-    
-    
-    
-    
+
     public void restart(){   //COMPROVAR
         
         currentLine = 0;
     }
     
-    
-    
-    
     public Boolean hasFinished(){  //COMPROVAR
         
-        return (loopIteration == 0);
+        return (currentLine >= instructions.size());
     }
-    
-    
-    
-    
     
     public Instruction getNextInstruction(){ //ARREGLAR
         
@@ -66,51 +56,59 @@ public class Program {
             
             if(instruction.getCode() == "REP"){
                 
-                currentLine++;
+                loopIteration = (int)instruction.getParam();
             
             }else{
                 
                 loopIteration--; //Hemos llegado a end por tanto hemos hecho una iteracion
-                goToStartLoop();    
+                
+                if(loopIteration>0){
+                    
+                    goToStartLoop();
+                    currentLine--;
+                }
             }  
             
-            return getNextInstruction();
         }
         
         currentLine++;
+        
+        if(!hasFinished()){
+            instruction = instructions.get(currentLine);
+        }
+        
+        if(!instruction.isRepInstruction()){
+            System.out.println(instruction.info());
+        }
+        
         return instruction;
     }
-    
-    
-    
-    
-    
-    
+   
     public boolean isCorrect(){ //COMPROVAR
         
-        int correctins = 0; //Contador de instrucciones correctas
+        int repcounter = 0; //Contador de instrucciones correctas
         
         for(Instruction instruction: instructions){ 
             
-            if(instruction.isCorrect()){
+            if(!instruction.isCorrect()){
                 
-                if(instruction.getCode()=="REP"){
+                return false;
+            }    
+                
+            if(instruction.getCode() =="REP"){
                         
-                    loopIteration = (int)instruction.getParam();
-                }
-              
-                correctins++;
+                repcounter++;
+            }
+                
+            if(instruction.getCode() == "END"){
+                
+                repcounter--;
             }
         }
         
-        return (correctins == instructions.size()); //Comprovamos que todas las instrucciones son correctas
+        return (repcounter == 0); //Comprovamos que todas las instrucciones son correctas
     }
-    
-    
-    
-    
-    
-    
+   
     public void printErrors(){
        
         if(!isCorrect()){
@@ -153,8 +151,6 @@ public class Program {
             }
         }
     }
-    
-    
     
     private void goToStartLoop(){ //La hicimos contigo, comprovar que sea correcta
         
