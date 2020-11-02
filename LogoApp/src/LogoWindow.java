@@ -34,9 +34,8 @@ public class LogoWindow extends javax.swing.JFrame {
         
         //Call to the parent class paint method
         super.paint(g);
-        //logo.execute(prog, g);
+        logo.execute(prog, g);
     }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
