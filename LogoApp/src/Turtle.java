@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 import java.awt.Graphics;
-import java.lang.Math;
 /**
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
@@ -17,11 +16,12 @@ public class Turtle {
     private double dirY;
     private Boolean pen;
     
-    Turtle(int x, int y, double dx, double dy){
-        this.x = x;
-        this.y = y;
-        dirX = dx;
-        dirY = dy;
+    Turtle(){
+        x = 500;
+        y = 500;
+        dirX = 1;
+        dirY = 0.0;
+        pen = false;
     }
  
     public int getX(){
@@ -95,6 +95,7 @@ public class Turtle {
     public void draw(Graphics g){
         
         int nPoints = 3;
+   
         
         int[] xc = new int[3];
         int[] yc = new int[3];

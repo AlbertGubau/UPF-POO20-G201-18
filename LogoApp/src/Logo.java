@@ -17,6 +17,7 @@ public class Logo {
     Logo(int w, int h){
         width = w;
         height = h;
+        t = new Turtle();
     }
     
     public int getWidth(){
@@ -34,5 +35,6 @@ public class Logo {
     public void execute(Program p, Graphics g){
         
         t.draw(g);
+        
     }
 }
