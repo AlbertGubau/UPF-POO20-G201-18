@@ -24,7 +24,7 @@ public class LogoWindow extends javax.swing.JFrame {
         prog.addInstruction("FWD", 100);
         prog.addInstruction("ROT", 90);
         prog.addInstruction("END", 1);
-        
+       
         setSize(logo.getWidth(), logo.getHeight());
         
     }
@@ -81,6 +81,14 @@ public class LogoWindow extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        
+        
+        
+        
+        
+        
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -16,11 +16,11 @@ public class Turtle {
     private double dirY;
     private Boolean pen;
     
-    Turtle(){
-        x = 500;
-        y = 500;
-        dirX = 1;
-        dirY = 0.0;
+    Turtle(int x, int y, double dirX, double dirY){
+        this.x = x;
+        this.y = y;
+        this.dirX = dirX;
+        this.dirY = dirY;
         pen = false;
     }
  
@@ -95,7 +95,6 @@ public class Turtle {
     public void draw(Graphics g){
         
         int nPoints = 3;
-   
         
         int[] xc = new int[3];
         int[] yc = new int[3];

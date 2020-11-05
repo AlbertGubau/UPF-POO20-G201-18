@@ -17,7 +17,7 @@ public class Logo {
     Logo(int w, int h){
         width = w;
         height = h;
-        t = new Turtle();
+        t = new Turtle(300, 350, 1,0);
     }
     
     public int getWidth(){
@@ -36,5 +36,37 @@ public class Logo {
         
         t.draw(g);
         
+        if(p.isCorrect()){ //Si el programa es correcto               
+            
+            p.restart();   //Aplicamos un restart para empezar en la primera linea del programa     
+            
+            while(!p.hasFinished()){ //Mientras el programa no haya finalizado
+                
+                Instruction instr = p.getNextInstruction(); //Obtenemos la siguiente instruccion
+                
+                if(!instr.isRepInstruction()){ //Si la instrucción obtenida no es REP o END
+                    
+                    if("FWD".equals(instr.getCode())){
+                        
+                        int x = t.getX();
+                        int y = t.getY();
+                        
+                        t.forward(instr.getParam());
+                        
+                        g.drawLine(x, y,t.getX(),t.getY());
+                        
+                        t.draw(g);
+                        
+                        } else if("ROT".equals(instr.getCode())){
+                            t.turn(instr.getParam());
+                            t.draw(g);
+                    }
+                    
+                    System.out.println(instr.info()); //La imprimimos por pantalla
+                }
+            }
+        }else{ //En caso de que el programa no sea correcto imprimiremos los errores con el método printErrors de la clase Program.
+           p.printErrors(); 
+        }
     }
 }
