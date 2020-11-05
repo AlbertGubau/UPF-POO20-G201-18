@@ -148,9 +148,11 @@ public class Program {
     
     private void goToStartLoop(){ 
         
-        int counter = 0; //Inicializamos un contador de lineas a 0
+        int counter = currentLine; //Inicializamos un contador de lineas en la línea en la que nos encontramos (la línea del END)..
         
-        for(Instruction instruction: instructions){ //Iteramos en la lista de instrucciones
+        for(int i = currentLine; i < instructions.size(); i--){ //Iteramos en la lista de instrucciones des de END hacia atrás
+            
+            Instruction instruction = instructions.get(i);
             
             if(instruction.getCode() == "REP"){ //Si encontramos una instrucción con código REP
                 
@@ -158,7 +160,7 @@ public class Program {
                 break; //Aplicamos un break porque no tendremos que seguir iterando
             }
             
-            counter++; //Si no la encontramos aumentamos el contador de lineas en una unidad.
+            counter--; //Si no la encontramos decrementamos el contador de lineas en una unidad.
         }
     }
 }

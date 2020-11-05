@@ -53,13 +53,29 @@ public class Logo {
                         
                         t.forward(instr.getParam());
                         
-                        g.drawLine(x, y,t.getX(),t.getY());
+                        if(t.isPenOn()){
+                            g.drawLine(x, y,t.getX(),t.getY());
+                        }
                         
                         t.draw(g);
                         
-                        } else if("ROT".equals(instr.getCode())){
+                    } else if("ROT".equals(instr.getCode())){
+                            
                             t.turn(instr.getParam());
                             t.draw(g);
+                    
+                    }else if("PEN".equals(instr.getCode())){
+                        
+                        double on = instr.getParam();
+                        
+                        if(on == 0){
+                            t.setPen(false);
+                        
+                        } else if(on == 1){
+                            t.setPen(true);
+                        }
+                        
+                        t.draw(g);    
                     }
                     
                     System.out.println(instr.info()); //La imprimimos por pantalla

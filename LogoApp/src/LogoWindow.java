@@ -20,11 +20,21 @@ public class LogoWindow extends javax.swing.JFrame {
         prog = new Program("Square");
         // Add to the Program instance the square program
         
+        prog.addInstruction("PEN", 1);
+        
         prog.addInstruction("REP", 4);        //Añadimos las instrucciones del programa
         prog.addInstruction("FWD", 100);
         prog.addInstruction("ROT", 90);
         prog.addInstruction("END", 1);
-       
+        prog.addInstruction("PEN", 0);
+        prog.addInstruction("FWD", 200);
+        prog.addInstruction("PEN", 1);
+        prog.addInstruction("REP", 4);        //Añadimos las instrucciones del programa
+        prog.addInstruction("FWD", 100);
+        prog.addInstruction("ROT", 90);
+        prog.addInstruction("END", 1);
+        
+        
         setSize(logo.getWidth(), logo.getHeight());
         
     }
