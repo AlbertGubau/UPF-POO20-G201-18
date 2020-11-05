@@ -18,12 +18,11 @@ public class LogoProgram {
         
         Program p = new Program("Square"); //Creamos una nueva instancia de la clase Program, el nombre del programa será Square
         
-        p.addInstruction("REP", 2);
         p.addInstruction("REP", 4);        //Añadimos las instrucciones del programa
         p.addInstruction("FWD", 100);
         p.addInstruction("ROT", 90);
         p.addInstruction("END", 1);
-        p.addInstruction("END", 1);
+        
         
         if(p.isCorrect()){ //Si el programa es correcto               
             p.restart();   //Aplicamos un restart para empezar en la primera linea del programa     

@@ -57,7 +57,6 @@ public class Program {
             if(instruction.getCode() == "REP"){ //Si el code es REP entonces tomaremos su parameter puesto que este será nuestro atributo loopIteration, es decir, las iteraciones que nos quedan
                     
                 loopIteration = (int)instruction.getParam();
-                currentLine++;
                 
             }else { //Si el code de la instruccion no es REP será END puesto que hemos aplicaco isRepInstruction, por lo tanto, deberemos restar una iteración porque hemos llegado al final
                 
