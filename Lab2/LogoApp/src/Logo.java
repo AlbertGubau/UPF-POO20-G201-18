@@ -29,7 +29,8 @@ public class Logo {
     }
     
     public void resetTurtle(){
-        
+        t.setCoord(300,350);
+        t.setPen(false);
     }
     
     public void execute(Program p, Graphics g){
