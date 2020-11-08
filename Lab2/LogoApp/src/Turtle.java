@@ -10,21 +10,21 @@ import java.awt.Graphics;
  */
 public class Turtle {
     
-    private int x;
+    private int x; //Atributos de la clase Turtle
     private int y;
     private double dirX;
     private double dirY;
     private Boolean pen;
     
-    Turtle(int x, int y, double dirX, double dirY){
+    Turtle(int x, int y, double dirX, double dirY){ //Constructor de la clase Turtle
         this.x = x;
         this.y = y;
         this.dirX = dirX;
         this.dirY = dirY;
-        pen = false;
+        pen = false;   //En un inicio el pen no dibuja
     }
  
-    public int getX(){
+    public int getX(){ //Getters de la clase turtle que devuelven la posición o la dirección
         return x;
     }
     
@@ -40,7 +40,7 @@ public class Turtle {
         return dirY;
     }
     
-    public void setX(int x){
+    public void setX(int x){ //Setters de la posición individual, de la coordenada y de la dirección
         this.x = x;
     }
     
@@ -66,40 +66,40 @@ public class Turtle {
         this.dirY = dy;
     }
     
-    public void forward(double distance){
+    public void forward(double distance){ //Método para avanzar la tortuga
         
         x += distance * dirX;
         y += distance * dirY;     
     }
     
-    public void turn(double a){ //COMPROVAR
+    public void turn(double a){ //Método para girar la tortuga
         
-        double ar = a * Math.PI/180;
+        double ar = a * Math.PI/180; //Pasamos el angulo de grados a radianes
         
-        double dirXanterior = dirX;
+        double dirXanterior = dirX; //Tomamos la dirección anterior
         double dirYanterior = dirY;
         
-        dirX = Math.cos(ar)*dirXanterior - Math.sin(ar)*dirYanterior;
+        dirX = Math.cos(ar)*dirXanterior - Math.sin(ar)*dirYanterior; //Aplicamos las formulas correspondientes para adoptar la nueva dirección 
         dirY = Math.sin(ar)*dirXanterior + Math.cos(ar)*dirYanterior;
         
     }
     
-    public void setPen(Boolean on){
+    public void setPen(Boolean on){ //Setter del pen
         pen = on;
     }
     
-    public Boolean isPenOn(){
+    public Boolean isPenOn(){ //Getter del pen
         return pen;
     }
     
-    public void draw(Graphics g){
+    public void draw(Graphics g){ //Método que dibujará la tortuga por pantalla
         
-        int nPoints = 3;
+        int nPoints = 3; //Puntos del triangulo
         
-        int[] xc = new int[3];
-        int[] yc = new int[3];
+        int[] xc = new int[3]; //Array de coordenadas x de los puntos del triangulo
+        int[] yc = new int[3]; //Array de coordenadas y de los puntos del triangulo
         
-        xc[0] = (int)(x+8*dirY);
+        xc[0] = (int)(x+8*dirY); //Coordenadas de los puntos del triangulo
         yc[0] = (int)(y-8*dirX);
         
         xc[1] = (int)(x-8*dirY); 
@@ -108,7 +108,7 @@ public class Turtle {
         xc[2] = (int)(x+16*dirX); 
         yc[2] = (int)(y+16*dirY);
         
-        g.drawPolygon(xc, yc, nPoints);
+        g.drawPolygon(xc, yc, nPoints); //Llamada al método drawPolygon de la clase Graphics para dibujar el triangulo
     }
     
 }

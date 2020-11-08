@@ -10,42 +10,36 @@ import java.awt.Graphics;
  */
 public class LogoWindow extends javax.swing.JFrame {
 
-    Logo logo;
+    Logo logo;       //Declaramos los atributos de la clase LogoWindow logo y program
     Program prog;
     
-    public LogoWindow() {
+    public LogoWindow() { //Constructor de la clase LogoWindow
         
-        initComponents();
-        logo = new Logo(800, 600);
-        prog = new Program("Square");
-        // Add to the Program instance the square program
+        initComponents();  //inicializamos los componentes gráficos
+        logo = new Logo(800, 600); //Creamos la instancia de logo inicializandola con el tamaño de 800x600
+        prog = new Program("Square"); //Creamos la instancia del programa inicializandola con el nombre de Square y las instrucciones para dibujar dos cuadrados
         
         prog.addInstruction("PEN", 1);
-        
-        prog.addInstruction("REP", 4);        //Añadimos las instrucciones del programa
+        prog.addInstruction("REP", 4);        
         prog.addInstruction("FWD", 100);
         prog.addInstruction("ROT", 90);
         prog.addInstruction("END", 1);
         prog.addInstruction("PEN", 0);
         prog.addInstruction("FWD", 200);
         prog.addInstruction("PEN", 1);
-        prog.addInstruction("REP", 4);        //Añadimos las instrucciones del programa
+        prog.addInstruction("REP", 4);        
         prog.addInstruction("FWD", 100);
         prog.addInstruction("ROT", 90);
         prog.addInstruction("END", 1);
         
-        
-        setSize(logo.getWidth(), logo.getHeight());
-        
+        setSize(logo.getWidth(), logo.getHeight());    //Asignamos el tamaño de la ventana de LogoWindow
     }
    
-    
     @Override
-    public void paint(Graphics g){
-        
-        //Call to the parent class paint method
-        super.paint(g);
-        logo.execute(prog, g);
+    public void paint(Graphics g){  //Redefinimos el método paint de la clase padre Graphics
+     
+        super.paint(g);         //Llamamos al constructor de la clase padre
+        logo.execute(prog, g);  //Aplicamos la función execute de la clase Logo.
     }
     
     
