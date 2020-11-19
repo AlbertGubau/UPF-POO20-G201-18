@@ -16,20 +16,24 @@ public class Seller extends User { //Creamos la classe Seller con sus atributos.
     private LinkedList<Item> availableItems ;
     
     public Seller(String n,String id, String p, String a){ //Constructor de Seller
+        
         super(n, id, p);
         accountNumber = a;
+        soldItems = new LinkedList<Item>();
+        availableItems = new LinkedList<Item>();
     }
     
     
-    public void sell(Item i){  //Añadimos a Seller el dinero correspondiente al objeto vendido y quitamos el elemento de la LinkedList.
+    public void sell(Item i){
         
+        soldItems.add(i);
+        availableItems.remove(i);
     }
     
-    
-    
+   
     public void addAvailableItem(Item i){ //Añadimos el elemento a la LinkedList
-        availableItems.add(i);
         
+        availableItems.add(i);
     }
     
     

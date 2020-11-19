@@ -15,10 +15,14 @@ public class AuctionItem extends Item{
     private Buyer bidder;
     private String deadline;
     static final int fee = 5;
-    static final double percent = 0.5;
+    static final double percent = 0.05;
     
     AuctionItem(String n, String t, double[] s, double c, double startingPrice, String d){  
+        
         super(n,t,s,c);
+        
+        currentPrice = startingPrice;
+        deadline = d;
     }
     
     @Override
@@ -31,11 +35,16 @@ public class AuctionItem extends Item{
         return 0;
     }
     
-    public void makeBid(Buyer b, double p){
+    public void makeBid(Buyer b, double p){ //SOLO SI LA PUJA ES MAYOR O EN CUALQUIER CASO?
         
+        bidder = b;
+        
+        if(p > currentPrice){
+            currentPrice = p;
+        }
     }
     
-    public Boolean frozen(String d){
+    public Boolean frozen(String d){ //DEADLINE ES EL DINERO MAXIMO?
         return false;
     }
     

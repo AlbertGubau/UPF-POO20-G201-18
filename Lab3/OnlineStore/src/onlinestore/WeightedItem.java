@@ -21,6 +21,7 @@ public class WeightedItem extends Item{
         
         pricePerWeight = wprice;
         weight = w;
+        weightRemaining = w;
     }
     
     
@@ -37,6 +38,6 @@ public class WeightedItem extends Item{
     
     
     public double sell(double w){
-        return 0;
+        return weightRemaining -= w;
     }
 }

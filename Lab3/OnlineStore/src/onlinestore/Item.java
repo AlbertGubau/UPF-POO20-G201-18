@@ -42,7 +42,6 @@ public abstract class Item{ //Abstract?
     
     public String getType(){ //DONE
         return type;
-        
     }
     
     
@@ -61,7 +60,7 @@ public abstract class Item{ //Abstract?
     }
     
     
-    public void SetName(String n){//DONE
+    public void setName(String n){//DONE
         name = n;
     }
     
@@ -81,8 +80,47 @@ public abstract class Item{ //Abstract?
     }
     
     
-    public void assignBestPackage(LinkedList<Package> Lp){
+    public void assignBestPackage(LinkedList<Package> Lp){ //EN PROCES
         
+        double depth = size[2];
+        
+        if(depth < 3){
+            
+            for(Package p: Lp){
+                
+                if(p instanceof Envelope){
+                    
+                    if(((Envelope) p).isSuitable(size)){
+                        
+                        pack = p;
+                        
+                        if(size[0]<=21 && size[1]<=11){
+                            
+                            ((Envelope)pack).setName("A5");
+                            ((Envelope)pack).setWidth(21);
+                            ((Envelope)pack).setHeight(11);
+                            
+                        } else if(size[0]<= 21 && size[1]<= 29){
+                            
+                            ((Envelope)pack).setName("A4");
+                            ((Envelope)pack).setWidth(21);
+                            ((Envelope)pack).setHeight(29);
+                        
+                        } else if(size[0]<= 29 && size[1]<= 42){
+                            
+                            ((Envelope)pack).setName("A3");
+                            ((Envelope)pack).setWidth(29);
+                            ((Envelope)pack).setHeight(42);
+                        }    
+                    }  
+                }
+            }
+        }else{
+            
+            for(Package p: Lp){
+                //COMPROVAR SI HI HA UN ALTRE ON EL PUGUI COLOCAR
+            }
+        }
     }
     
     public abstract double getPrice();

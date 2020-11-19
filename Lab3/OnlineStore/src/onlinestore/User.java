@@ -10,6 +10,7 @@ package onlinestore;
  * @author oriol
  */
 public class User {
+    
     private String name;
     private String identifier;
     private String password;
@@ -42,12 +43,9 @@ public class User {
     }
     
     
-    public Boolean login(String p){
-        return false;
+    public Boolean login(String p){ //COMPROVAR
+        return password.equals(p);
     }
-    
-    
-    
 }
 
 

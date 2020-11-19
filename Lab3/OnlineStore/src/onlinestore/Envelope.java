@@ -10,6 +10,7 @@ package onlinestore;
  * @author oriol
  */
 public class Envelope extends Package {
+    
     private String name;
     
     
@@ -29,8 +30,9 @@ public class Envelope extends Package {
     }
     
     
-    public Boolean isSuitable(int[] size){
-        return false;
+    public Boolean isSuitable(double[] size){
+        
+        return size[0]<29 && size[1]<42;
     }
     
 }

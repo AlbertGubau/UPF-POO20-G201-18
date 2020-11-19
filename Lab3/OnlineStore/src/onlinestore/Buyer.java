@@ -19,6 +19,7 @@ public class Buyer extends User{                                //creamos la cla
         
         super(n, id, p);
         accountNumber = a;
+        boughtItems = new LinkedList<Item>();
     }
     
     

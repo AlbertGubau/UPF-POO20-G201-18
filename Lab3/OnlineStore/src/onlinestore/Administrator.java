@@ -32,6 +32,8 @@ public class Administrator extends User{
     
     public void printStock(LinkedList<AuctionItem> item){
         
+        System.out.println("Stock de items: ");
+        
         for (Item i: item){
             System.out.println(i);
         }

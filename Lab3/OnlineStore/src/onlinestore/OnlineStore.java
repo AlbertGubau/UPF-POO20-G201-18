@@ -37,59 +37,73 @@ public class OnlineStore {
         // TODO code application logic here
         init();
         
-        itemsAvailable.add( new UnitItem("Gaming Chair", "Furniture", new double[]{280.0, 120.0, 100.0}, 300, 500, 2));
-        itemsAvailable.add( new WeightedItem("Rice", "Food", new double[]{12.0, 22.0, 2.0}, 1.5, 2.5, 50));
-        itemsAvailable.add( new UnitItem("TV", "Appliance", new double[]{100.0, 60.0, 10.0}, 600, 1000, 4));
+        //AÑADIMOS ITEMS
+        itemsAvailable.add(new UnitItem("Gaming Chair", "Furniture", new double[]{53.0, 110.0, 60.0}, 150, 300, 2));
+        itemsAvailable.add(new WeightedItem("Rice", "Food", new double[]{10.0, 15.0, 2.0}, 1.5, 2.5, 50));
+        itemsAvailable.add(new UnitItem("TV", "Appliance", new double[]{100.0, 60.0, 10.0}, 600, 1000, 4));
         
-        users.add( new Buyer("Marcos Navajas", "Markito", "aylutequiero", "12345678"));
-        users.add( new Buyer("Oscar Bujía", "Oscaaaaaaaar", "pollo", "123456789"));
-        users.add( new Buyer("Didac Sitjas", "DidacTempo", "6969", "12345678910"));
+        //AÑADIMOS COMPRADORES VENDEDORES Y UN ADMINISTRADOR
+        users.add(new Buyer("Marcos Navajas", "Markito", "aylutequiero", "12345678"));
+        users.add(new Buyer("Oscar Bujía", "Oscaaaaaaaar", "pollo", "123456789"));
+        users.add(new Buyer("Didac Sitjas", "DidacTempo", "6969", "12345678910"));
+        users.add(new Seller("Daniel Leorri", "Wade", "elbaileesmivida67", "1234567891011"));
+        users.add(new Administrator("Albert Gubau", "Albert", "contraseña"));
         
-        users.add( new Seller("Daniel Leorri", "Wade", "elbaileesmivida67", "1234567891011"));
+        //AÑADIMOS LOS PAQUETES DISPONIBLES
+        packages.add(new Envelope(29, 42, "A3"));
+        packages.add(new Envelope(21, 29, "A4"));
+        packages.add(new Envelope(21, 11, "A5"));
+        packages.add(new Box(10, 10, 10));
+        packages.add(new Box(10, 10, 100));
+        packages.add(new Box(10, 100, 100));
+        packages.add(new Box(100, 100, 100));
+        packages.add(new Box(100, 150, 300));
+        packages.add(new Box(200, 300, 500));
         
-        users.add( new Administrator("Albert Gubau", "Albert", "contraseña"));
-        
-        packages.add( new Envelope(11, 21, "A5"));
-        packages.add( new Envelope(21, 29, "A4"));
-        packages.add( new Envelope(29, 42, "A3"));
-        packages.add( new Box(10, 10, 10));
-        packages.add( new Box(10, 10, 100));
-        packages.add( new Box(10, 100, 100));
-        packages.add( new Box(100, 100, 100));
-        packages.add( new Box(100, 150, 300));
-        packages.add( new Box(200, 300, 500));
-        
+        //ASIGNAMOS EL MEJOR PAQUETE PARA CADA ITEM
         for(int i = 0; i<itemsAvailable.size(); i++){
             itemsAvailable.get(i).assignBestPackage(packages);        
         }
         
+        //TOMAMOS EL TERCER USUARIO COMO UN SELLER
         Seller seller = (Seller)users.get(3);
-        
+       
+        //LLENAMOS LA LISTA DEL SELLER CON LOS ITEMS QUE HEMOS AÑADIDO
         for(int i = 0; i<itemsAvailable.size(); i++){
             seller.addAvailableItem(itemsAvailable.get(i));         
         }
         
-        for(int i = 0; i<itemsAvailable.size(); i++){
-            Item item = itemsAvailable.get(i);
-            Buyer b = (Buyer)users.get(i);
-            b.buy(item);
-            totalPrice += item.getPrice();
+        //
+        /*for(int i = 0; i<itemsAvailable.size(); i++){
             
-            if(item instanceof UnitItem){
+            Item item = itemsAvailable.get(i); //TOMAMOS UN ITEM Y UN COMPRADOR
+            Buyer b = (Buyer)users.get(i);
+            
+            b.buy(item); //HACEMOS QUE COMPRE EL ITEM
+            
+            totalPrice += item.getPrice(); //INCREMENTAMOS EL PRECIO TOTAL
+            
+            if(item instanceof UnitItem){ 
                 ((UnitItem)item).sell(0);
             
-            } else if(item instanceof WeightedItem){
+            }else if(item instanceof WeightedItem){
                 ((WeightedItem)item).sell(0.0);
             }
+            
             seller.sell(item);
+            
             totalProfit += item.calculateProfit();
+            
             itemsSold.add(item);
+            
             itemsAvailable.remove(item);
         }
         
-        LinkedList< AuctionItem > lai = new LinkedList< AuctionItem >();
+        
+        //COMIENZO DE LA PUJA
+        LinkedList<AuctionItem> lai = new LinkedList<AuctionItem>();
         Administrator admin = (Administrator)users.get(4);
-        AuctionItem auctionitem = new AuctionItem("pene", "Furniture", new double[]{250, 160, 450}, 25000.0, 25000.0, "12345678");
+        AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 25000.0, 25000.0, "12345678");
         lai.add(auctionitem);
         auctionitem.assignBestPackage(packages);//nose
         seller.addAvailableItem(auctionitem);
@@ -98,6 +112,7 @@ public class OnlineStore {
         if(!auctionitem.frozen("12345678")){
             auctionitem.makeBid((Buyer)users.get(1), 11000.0);
         }
+        
         admin.printStock(lai);
         
         if(!auctionitem.frozen("12345678")){
@@ -111,8 +126,10 @@ public class OnlineStore {
         if(!auctionitem.frozen("12345678")){
             auctionitem.makeBid((Buyer)users.get(1), 13500.0);
         }
+        
         admin.expel(users.get(1));
         users.remove(users.get(1));
+        
         Buyer buyer = auctionitem.getBuyer();
         buyer.buy(auctionitem);
         seller.sell(auctionitem);
@@ -121,6 +138,6 @@ public class OnlineStore {
         totalProfit += auctionitem.calculateProfit();
         
         System.out.println("Total price: " + totalPrice);
-        System.out.println("Total profit: " + totalProfit);
+        System.out.println("Total profit: " + totalProfit);*/
     } 
 }
