@@ -32,10 +32,11 @@ public class Administrator extends User{
     
     public void printStock(LinkedList<AuctionItem> item){
         
-        System.out.println("Stock de items: ");
+        System.out.println("Stock de items en subasta: ");
         
         for (Item i: item){
-            System.out.println(i);
+            
+            System.out.println(i.getName());
         }
     }
     

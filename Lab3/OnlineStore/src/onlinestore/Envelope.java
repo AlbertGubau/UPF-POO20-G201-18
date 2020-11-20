@@ -32,7 +32,7 @@ public class Envelope extends Package {
     
     public Boolean isSuitable(double[] size){
         
-        return size[0]<29 && size[1]<42;
+        return size[0]<=29 && size[1]<=42 || size[1]<=29 && size[0]<=42;
     }
     
 }

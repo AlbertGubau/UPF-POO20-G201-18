@@ -38,8 +38,8 @@ public class OnlineStore {
         init();
         
         //AÑADIMOS ITEMS
-        itemsAvailable.add(new UnitItem("Gaming Chair", "Furniture", new double[]{53.0, 110.0, 60.0}, 150, 300, 2));
-        itemsAvailable.add(new WeightedItem("Rice", "Food", new double[]{10.0, 15.0, 2.0}, 1.5, 2.5, 50));
+        itemsAvailable.add(new UnitItem("Gaming Chair", "Furniture", new double[]{53.0, 110.0, 160.0}, 150, 300, 2));//53 110 160
+        itemsAvailable.add(new WeightedItem("Rice", "Food", new double[]{28.0, 22.0, 2.0}, 1.5, 2.5, 50)); //28 22 2
         itemsAvailable.add(new UnitItem("TV", "Appliance", new double[]{100.0, 60.0, 10.0}, 600, 1000, 4));
         
         //AÑADIMOS COMPRADORES VENDEDORES Y UN ADMINISTRADOR
@@ -74,7 +74,7 @@ public class OnlineStore {
         }
         
         //
-        /*for(int i = 0; i<itemsAvailable.size(); i++){
+        for(int i = 0; i<itemsAvailable.size(); i++){
             
             Item item = itemsAvailable.get(i); //TOMAMOS UN ITEM Y UN COMPRADOR
             Buyer b = (Buyer)users.get(i);
@@ -103,28 +103,30 @@ public class OnlineStore {
         //COMIENZO DE LA PUJA
         LinkedList<AuctionItem> lai = new LinkedList<AuctionItem>();
         Administrator admin = (Administrator)users.get(4);
-        AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 25000.0, 25000.0, "12345678");
+        AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 25000.0, 25000.0, "11112020");
         lai.add(auctionitem);
-        auctionitem.assignBestPackage(packages);//nose
+        auctionitem.assignBestPackage(packages);
         seller.addAvailableItem(auctionitem);
         itemsAvailable.add(auctionitem);
         
-        if(!auctionitem.frozen("12345678")){
+        if(!auctionitem.frozen("06112020")){
             auctionitem.makeBid((Buyer)users.get(1), 11000.0);
         }
         
         admin.printStock(lai);
         
-        if(!auctionitem.frozen("12345678")){
+        if(!auctionitem.frozen("07112020")){
             auctionitem.makeBid((Buyer)users.get(0), 10500.0);
         }
-        if(!auctionitem.frozen("12345678")){
+        
+        if(!auctionitem.frozen("10112020")){
             auctionitem.makeBid((Buyer)users.get(2), 13000.0);
         }
-        admin.manageAuction(auctionitem, "12345678");
         
-        if(!auctionitem.frozen("12345678")){
-            auctionitem.makeBid((Buyer)users.get(1), 13500.0);
+        admin.manageAuction(auctionitem, "11112020");
+        
+        if(!auctionitem.frozen("11112020")){
+            auctionitem.makeBid((Buyer)users.get(1), 27000.0);
         }
         
         admin.expel(users.get(1));
@@ -138,6 +140,6 @@ public class OnlineStore {
         totalProfit += auctionitem.calculateProfit();
         
         System.out.println("Total price: " + totalPrice);
-        System.out.println("Total profit: " + totalProfit);*/
+        System.out.println("Total profit: " + totalProfit);
     } 
 }

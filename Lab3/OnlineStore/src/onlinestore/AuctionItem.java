@@ -35,17 +35,25 @@ public class AuctionItem extends Item{
         return 0;
     }
     
-    public void makeBid(Buyer b, double p){ //SOLO SI LA PUJA ES MAYOR O EN CUALQUIER CASO?
-        
-        bidder = b;
+    public void makeBid(Buyer b, double p){ 
         
         if(p > currentPrice){
+            bidder = b;
             currentPrice = p;
         }
     }
     
-    public Boolean frozen(String d){ //DEADLINE ES EL DINERO MAXIMO?
-        return false;
+    public Boolean frozen(String d){ 
+        
+        int actualday = Integer.parseInt(d.substring(0, 2));
+        int actualmonth = Integer.parseInt(d.substring(2, 4));
+        int actualyear = Integer.parseInt(d.substring(4, 8));
+        
+        int lastday = Integer.parseInt(deadline.substring(0, 2));
+        int lastmonth = Integer.parseInt(deadline.substring(2, 4));
+        int lastyear = Integer.parseInt(deadline.substring(4, 8));
+        
+        return !(actualyear <= lastyear && actualmonth<=lastmonth && actualday<=lastday);
     }
     
     public Buyer getBuyer(){

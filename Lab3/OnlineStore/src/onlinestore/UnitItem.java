@@ -26,14 +26,15 @@ public class UnitItem extends Item{
     }
     
     @Override
-    public double getPrice(){ //DONE
+    public double getPrice(){ //COMPROVAR
         
-        return unitPrice*quantity; //HACE FALTA LA CANTIDAD?
+        return unitPrice*quantityRemaining; 
     }
     
     @Override
-    public double calculateProfit(){ //COMO LO HAGO
-        return 0;
+    public double calculateProfit(){ //COMPROVAR
+        
+        return (quantity-quantityRemaining)*(unitPrice-getCost());
     }
     
     public double sell(int q){ //COMPROVAR

@@ -11,7 +11,7 @@ package onlinestore;
  */
 public class Box extends Package{
     
-    private int depth;
+    private double depth;
     
     public Box(int w, int h, int d){
         super(w,h);
@@ -19,18 +19,42 @@ public class Box extends Package{
     }
     
     
-    public int getDepth(){ //DONE
+    public double getDepth(){ //DONE
         return depth;
     }
     
     
-    public void setDepth(int d){ //DONE
+    public void setDepth(double d){ //DONE
         depth = d;
     }
     
     
-    public Boolean isSuitable(int[] size){
-       return false;
+    public Boolean isSuitable(double[] size){ //SUPONIENDO QUE HAY UN SET PREDEFINIDO DE CAJAS Y QUE EL TAMAÑO MAXIMO ES 200x300x500
+       
+        if(size[0] <= 200 && size[1] <= 300 && size[2]<=500){
+            
+            return true;
+        
+        }else if(size[0] <= 200 && size[1] <= 500 && size[2] <= 300){
+            
+            return true;
+        
+        }else if(size[0] <= 300 && size[1] <= 200 && size[2] <= 500){
+             
+            return true;
+        
+        }else if(size[0] <= 300 && size[1] <= 500 && size[2] <= 200){
+            
+            return true;
+        
+        } else if(size[0] <= 500 && size[1] <= 300 && size[2] <= 200){
+            
+            return true;
+        
+        }else if(size[1] <= 500 || size[1] <= 200 || size[1] <= 300){
+            
+            return true;
+        }
+        return false;
     }
-    
 }

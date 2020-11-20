@@ -22,9 +22,7 @@ public class Buyer extends User{                                //creamos la cla
         boughtItems = new LinkedList<Item>();
     }
     
-    
-    
-    public void buy(Item i){                                   // Añadimos el item a la LinkedeList boughtItems de Buyer. Restamos el dinero de Buyer y (usamos sell() de seller?
+    public void buy(Item i){                                   // Añadimos el item a la LinkedeList boughtItems de Buyer. Restamos el dinero de Buyer y usamos sell() de seller?
         boughtItems.add(i);
     }
     

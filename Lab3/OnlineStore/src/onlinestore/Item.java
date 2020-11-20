@@ -84,41 +84,98 @@ public abstract class Item{ //Abstract?
         
         double depth = size[2];
         
-        if(depth < 3){
+        boolean solved = false;
+        
+        if(depth < 3){ //SOLUCION ALTERNATIVA SERIA COMPROVAR QUE NI WIDTH NI HEIGHT NI DEPTH SON MENORES QUE 3
             
             for(Package p: Lp){
                 
                 if(p instanceof Envelope){
                     
-                    if(((Envelope) p).isSuitable(size)){
+                    if(((Envelope) p).isSuitable(size)){    
                         
-                        pack = p;
-                        
-                        if(size[0]<=21 && size[1]<=11){
+                        if(size[0]<=((Envelope) p).getWidth() && size[1]<=((Envelope) p).getHeight()||size[1]<=((Envelope) p).getWidth() && size[0]<=((Envelope) p).getHeight()){
                             
-                            ((Envelope)pack).setName("A5");
-                            ((Envelope)pack).setWidth(21);
-                            ((Envelope)pack).setHeight(11);
+                            pack = p;
                             
-                        } else if(size[0]<= 21 && size[1]<= 29){
+                            ((Envelope)pack).setName(((Envelope) p).getName());
+                            ((Envelope)pack).setWidth(((Envelope) p).getWidth());
+                            ((Envelope)pack).setHeight(((Envelope) p).getHeight());
                             
-                            ((Envelope)pack).setName("A4");
-                            ((Envelope)pack).setWidth(21);
-                            ((Envelope)pack).setHeight(29);
-                        
-                        } else if(size[0]<= 29 && size[1]<= 42){
+                            solved = true;
                             
-                            ((Envelope)pack).setName("A3");
-                            ((Envelope)pack).setWidth(29);
-                            ((Envelope)pack).setHeight(42);
-                        }    
+                            break;
+                        }
                     }  
                 }
             }
-        }else{
+        
+        }if(!solved){
             
             for(Package p: Lp){
-                //COMPROVAR SI HI HA UN ALTRE ON EL PUGUI COLOCAR
+                
+                if(p instanceof Box){
+                    
+                    if(((Box) p).isSuitable(size)){    
+                        
+                        Box box = (Box)p;
+                        double boxwidth = box.getWidth();
+                        double boxheight = box.getHeight();
+                        double boxdepth = box.getDepth();
+                        
+                        if(size[0] <= boxwidth && size[1] <= boxheight && size[2] <= boxdepth){
+                            
+                            pack = p;
+                            
+                            ((Box)pack).setWidth(boxwidth);
+                            ((Box)pack).setHeight(boxheight);
+                            ((Box)pack).setDepth(boxdepth);
+                            break;
+                        
+                        }else if(size[0] <= boxwidth && size[2] <= boxheight && size[1] <= boxdepth){
+                            pack = p;
+                            
+                            ((Box)pack).setWidth(boxwidth);
+                            ((Box)pack).setHeight(boxheight);
+                            ((Box)pack).setDepth(boxdepth);
+                            break;
+                        
+                        }else if(size[1] <= boxwidth && size[0] <= boxheight && size[2] <= boxdepth){
+                            pack = p;
+                            
+                            ((Box)pack).setWidth(boxwidth);
+                            ((Box)pack).setHeight(boxheight);
+                            ((Box)pack).setDepth(boxdepth);
+                            break;
+                        
+                        }else if(size[1] <= boxwidth && size[2] <= boxheight && size[0] <= boxdepth){
+                            
+                            pack = p;
+                            
+                            ((Box)pack).setWidth(boxwidth);
+                            ((Box)pack).setHeight(boxheight);
+                            ((Box)pack).setDepth(boxdepth);
+                            break;
+                        
+                        }else if(size[2] <= boxwidth && size[1] <= boxheight && size[0] <= boxdepth){
+                            pack = p;
+                            
+                            ((Box)pack).setWidth(boxwidth);
+                            ((Box)pack).setHeight(boxheight);
+                            ((Box)pack).setDepth(boxdepth);
+                            break;
+                        
+                        }else if(size[2] <= boxwidth && size[0] <= boxheight && size[1] <= boxdepth){
+                            
+                            pack = p;
+                            
+                            ((Box)pack).setWidth(boxwidth);
+                            ((Box)pack).setHeight(boxheight);
+                            ((Box)pack).setDepth(boxdepth);
+                            break;
+                        }
+                    }  
+                }
             }
         }
     }

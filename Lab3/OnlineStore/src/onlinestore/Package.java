@@ -11,31 +11,31 @@ package onlinestore;
  */
 public class Package {
     
-    private int width;
-    private int height;
+    private double width;
+    private double height;
     
-    public Package(int w, int h){ //DONE
+    public Package(double w, double h){ //DONE
         width = w;
         height = h;
     }
     
 
-    public int getWidth(){ //DONE
+    public double getWidth(){ //DONE
         return width;
     }
    
     
-    public int getHeight(){ //DONE
+    public double getHeight(){ //DONE
         return height;
     }
     
     
-    public void setWidth(int w){ //DONE
+    public void setWidth(double w){ //DONE
         width = w;
     }
     
     
-    public void setHeight(int h){ //DONE
+    public void setHeight(double h){ //DONE
         height = h;
     }
 }

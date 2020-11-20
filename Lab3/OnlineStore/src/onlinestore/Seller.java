@@ -38,10 +38,8 @@ public class Seller extends User { //Creamos la classe Seller con sus atributos.
     
     
     
-    private Boolean deposit(double price){
+    private Boolean deposit(double price){ //COMO ACCEDEMOS A SU CUENTA BANCARIA?
         return false;
     }
-    
-    
-    
+     
 }
