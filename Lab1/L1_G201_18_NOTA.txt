@@ -1,0 +1,21 @@
+
+0,2	0,2	     0,1	    0,3	        0,1	              0,1	1
+Clases	Atributos constructor     Métodos       Scope 	            Report	FINAL
+                  y parámetros   y parámetros  (private o públic)
+
+10	10	10	9,5	10	10	9,85
+
+El documento es correcto, falta solo describir la participación de cada integrante del
+grupo durante el desarrollo de la actividad.
+Codigo comentado correctamente.
+El programa se ejecuta correctamente, solo falta controlar los mensajes mostrados en los
+diferentes errores, ya que solo muestra que hay un error pero no especifica donde.
+
+
+
+
+
+
+
+
+
