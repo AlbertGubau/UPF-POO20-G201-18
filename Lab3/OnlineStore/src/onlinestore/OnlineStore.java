@@ -88,10 +88,10 @@ public class OnlineStore {
             totalPrice += item.getPrice(); //INCREMENTAMOS EL PRECIO TOTAL
             
             if(item instanceof UnitItem){ 
-                ((UnitItem)item).sell(0);
+                ((UnitItem)item).sell(1);
             
             }else if(item instanceof WeightedItem){
-                ((WeightedItem)item).sell(0.0);
+                ((WeightedItem)item).sell(20.0);
             }
             
             seller.sell(item);      

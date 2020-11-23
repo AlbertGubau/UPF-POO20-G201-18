@@ -5,10 +5,11 @@
         <group>
             <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/OnlineStore.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/Item.java</file>
-            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/Administrator.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/WeightedItem.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/User.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/Buyer.java</file>
             <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/Seller.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab3/OnlineStore/src/onlinestore/UnitItem.java</file>
         </group>
     </open-files>
 </project-private>

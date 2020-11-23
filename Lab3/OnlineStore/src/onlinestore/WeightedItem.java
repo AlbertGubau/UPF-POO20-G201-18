@@ -40,6 +40,10 @@ public class WeightedItem extends Item{
     
     public double sell(double w){ //COMPROVAR
         
-        return weightRemaining -= w;
+        if(weightRemaining >= w){
+            
+            return weightRemaining -= w;
+        }
+        return weightRemaining;
     }
 }
