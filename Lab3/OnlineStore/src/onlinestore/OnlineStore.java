@@ -94,7 +94,7 @@ public class OnlineStore {
                 ((WeightedItem)item).sell(0.0);
             }
             
-            seller.sell(item);
+            seller.sell(item);      
             
             totalProfit += item.calculateProfit();
             

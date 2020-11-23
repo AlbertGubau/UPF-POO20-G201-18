@@ -12,8 +12,8 @@ package onlinestore;
 public class User {
     
     private String name;
-    private String identifier;
-    private String password;
+    private final String identifier;
+    private final String password;
     
     public User(String n, String id, String pass){
         
@@ -23,27 +23,27 @@ public class User {
     }
     
     
-    public String getName(){ //DONE
+    public String getName(){                                                   //DONE
         return name;
     }
     
     
-    public String getId(){ //DONE
+    public String getId(){                                                     //DONE
         return identifier;
     }
     
     
-    public String getPassword(){ //DONE
+    public String getPassword(){                                               //DONE
         return password;
     } 
     
     
-    public void setName(String n){ //DONE
+    public void setName(String n){                                              //DONE
         name = n;
     }
     
     
-    public Boolean login(String p){ //COMPROVAR
+    public Boolean login(String p){                                             //COMPROVAR
         return password.equals(p);
     }
 }

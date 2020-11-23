@@ -19,17 +19,17 @@ public class Box extends Package{
     }
     
     
-    public double getDepth(){ //DONE
+    public double getDepth(){                                                  //DONE
         return depth;
     }
     
     
-    public void setDepth(double d){ //DONE
+    public void setDepth(double d){                                            //DONE
         depth = d;
     }
     
     
-    public Boolean isSuitable(double[] size){ //SUPONIENDO QUE HAY UN SET PREDEFINIDO DE CAJAS Y QUE EL TAMAÑO MAXIMO ES 200x300x500
+    public Boolean isSuitable(double[] size){                                  //SUPONIENDO QUE HAY UN SET PREDEFINIDO DE CAJAS Y QUE EL TAMAÑO MAXIMO ES 200x300x500
        
         if(size[0] <= 200 && size[1] <= 300 && size[2]<=500){
             
