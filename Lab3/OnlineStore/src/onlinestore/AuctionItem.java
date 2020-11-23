@@ -26,24 +26,25 @@ public class AuctionItem extends Item{
     }
     
     @Override
-    public double getPrice(){
+    public double getPrice(){ //DONE
         return currentPrice;     
     }
    
     @Override
-    public double calculateProfit(){
+    public double calculateProfit(){ //TODO
         return 0;
     }
     
-    public void makeBid(Buyer b, double p){ 
+    public void makeBid(Buyer b, double p){ //COMPROVAR
         
         if(p > currentPrice){
             bidder = b;
             currentPrice = p;
+            System.out.println(bidder.getName() + " has bid " + currentPrice +" for the " + getName() + ". Who gives more? I heard "+ (currentPrice+1000) + " euros?");
         }
     }
     
-    public Boolean frozen(String d){ 
+    public Boolean frozen(String d){ //DONE
         
         int actualday = Integer.parseInt(d.substring(0, 2));
         int actualmonth = Integer.parseInt(d.substring(2, 4));
@@ -53,10 +54,10 @@ public class AuctionItem extends Item{
         int lastmonth = Integer.parseInt(deadline.substring(2, 4));
         int lastyear = Integer.parseInt(deadline.substring(4, 8));
         
-        return !(actualyear <= lastyear && actualmonth<=lastmonth && actualday<=lastday);
+        return !(actualyear <= lastyear && actualmonth <= lastmonth && actualday <= lastday);
     }
     
-    public Buyer getBuyer(){
+    public Buyer getBuyer(){ //DONE
         return bidder;
     }
     

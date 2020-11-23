@@ -38,8 +38,8 @@ public class OnlineStore {
         init();
         
         //AÑADIMOS ITEMS
-        itemsAvailable.add(new UnitItem("Gaming Chair", "Furniture", new double[]{53.0, 110.0, 160.0}, 150, 300, 2));//53 110 160
-        itemsAvailable.add(new WeightedItem("Rice", "Food", new double[]{28.0, 22.0, 2.0}, 1.5, 2.5, 50)); //28 22 2
+        itemsAvailable.add(new UnitItem("Gaming Chair", "Furniture", new double[]{53.0, 110.0, 160.0}, 300, 500, 2));//53 110 160
+        itemsAvailable.add(new WeightedItem("Rice", "Food", new double[]{12.0, 22.0, 2.0}, 1.5, 2.5, 50)); //28 22 2
         itemsAvailable.add(new UnitItem("TV", "Appliance", new double[]{100.0, 60.0, 10.0}, 600, 1000, 4));
         
         //AÑADIMOS COMPRADORES VENDEDORES Y UN ADMINISTRADOR
@@ -60,6 +60,9 @@ public class OnlineStore {
         packages.add(new Box(100, 150, 300));
         packages.add(new Box(200, 300, 500));
         
+        
+        System.out.println("PACKAGE ASSIGNMENT FOR THE ITEMS AVAILABLE:\n");
+        
         //ASIGNAMOS EL MEJOR PAQUETE PARA CADA ITEM
         for(int i = 0; i<itemsAvailable.size(); i++){
             itemsAvailable.get(i).assignBestPackage(packages);        
@@ -67,13 +70,14 @@ public class OnlineStore {
         
         //TOMAMOS EL TERCER USUARIO COMO UN SELLER
         Seller seller = (Seller)users.get(3);
-       
+        
         //LLENAMOS LA LISTA DEL SELLER CON LOS ITEMS QUE HEMOS AÑADIDO
         for(int i = 0; i<itemsAvailable.size(); i++){
             seller.addAvailableItem(itemsAvailable.get(i));         
         }
         
-        //
+        System.out.println("\nUSERS SHOPPING:\n");
+        
         for(int i = 0; i<itemsAvailable.size(); i++){
             
             Item item = itemsAvailable.get(i); //TOMAMOS UN ITEM Y UN COMPRADOR
@@ -98,29 +102,35 @@ public class OnlineStore {
             
             itemsAvailable.remove(item);
         }
-        
+        System.out.println("\nCOMIENZO DE LA PUJA:\n");
         
         //COMIENZO DE LA PUJA
         LinkedList<AuctionItem> lai = new LinkedList<AuctionItem>();
         Administrator admin = (Administrator)users.get(4);
         AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 25000.0, 25000.0, "11112020");
         lai.add(auctionitem);
+        
+        System.out.println("PACKAGE ASSIGNMENT FOR THE AUCTION ITEM:\n");
+        
         auctionitem.assignBestPackage(packages);
         seller.addAvailableItem(auctionitem);
         itemsAvailable.add(auctionitem);
         
+        System.out.println("\nPRESENTATION AND START OF THE AUCTION:\n");
+        admin.printStock(lai);
+        
+        System.out.println("\nSTART OF THE AUCTION:\n");
+        
         if(!auctionitem.frozen("06112020")){
             auctionitem.makeBid((Buyer)users.get(1), 11000.0);
         }
-        
-        admin.printStock(lai);
         
         if(!auctionitem.frozen("07112020")){
             auctionitem.makeBid((Buyer)users.get(0), 10500.0);
         }
         
         if(!auctionitem.frozen("10112020")){
-            auctionitem.makeBid((Buyer)users.get(2), 13000.0);
+            auctionitem.makeBid((Buyer)users.get(2), 26000.0);
         }
         
         admin.manageAuction(auctionitem, "11112020");
@@ -129,8 +139,8 @@ public class OnlineStore {
             auctionitem.makeBid((Buyer)users.get(1), 27000.0);
         }
         
-        admin.expel(users.get(1));
-        users.remove(users.get(1));
+        admin.expel(users.get(0));
+        users.remove(users.get(0));
         
         Buyer buyer = auctionitem.getBuyer();
         buyer.buy(auctionitem);

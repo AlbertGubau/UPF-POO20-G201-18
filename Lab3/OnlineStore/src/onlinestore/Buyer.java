@@ -22,13 +22,16 @@ public class Buyer extends User{                                //creamos la cla
         boughtItems = new LinkedList<Item>();
     }
     
-    public void buy(Item i){                                   // Añadimos el item a la LinkedeList boughtItems de Buyer. Restamos el dinero de Buyer y usamos sell() de seller?
+    public void buy(Item i){//COMPROVAR
+        
         boughtItems.add(i);
+        System.out.println( getName() +" is buying item "+ i.getName() + " for "+ i.getPrice() + " euros.");
+        System.out.println("Price "+ i.getPrice() +" is getting charged into account " + accountNumber + " from user "+ getName() + ".");
     }
     
     
-    private Boolean pay(double price){
-        return false;
+    private Boolean pay(double price){ //DONE
+        
+        return price>0;
     }
-    
 }

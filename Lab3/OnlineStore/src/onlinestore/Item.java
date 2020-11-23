@@ -101,15 +101,15 @@ public abstract class Item{ //Abstract?
                             ((Envelope)pack).setName(((Envelope) p).getName());
                             ((Envelope)pack).setWidth(((Envelope) p).getWidth());
                             ((Envelope)pack).setHeight(((Envelope) p).getHeight());
-                            
                             solved = true;
-                            
-                            break;
                         }
                     }  
                 }
             }
-        
+            if(solved){
+                System.out.println("Envelope " + ((Envelope)pack).getName() + " assigned to item " + name + ".");
+            }
+            
         }if(!solved){
             
             for(Package p: Lp){
@@ -130,6 +130,7 @@ public abstract class Item{ //Abstract?
                             ((Box)pack).setWidth(boxwidth);
                             ((Box)pack).setHeight(boxheight);
                             ((Box)pack).setDepth(boxdepth);
+                            solved = true;
                             break;
                         
                         }else if(size[0] <= boxwidth && size[2] <= boxheight && size[1] <= boxdepth){
@@ -138,6 +139,7 @@ public abstract class Item{ //Abstract?
                             ((Box)pack).setWidth(boxwidth);
                             ((Box)pack).setHeight(boxheight);
                             ((Box)pack).setDepth(boxdepth);
+                            solved = true;
                             break;
                         
                         }else if(size[1] <= boxwidth && size[0] <= boxheight && size[2] <= boxdepth){
@@ -146,6 +148,7 @@ public abstract class Item{ //Abstract?
                             ((Box)pack).setWidth(boxwidth);
                             ((Box)pack).setHeight(boxheight);
                             ((Box)pack).setDepth(boxdepth);
+                            solved = true;
                             break;
                         
                         }else if(size[1] <= boxwidth && size[2] <= boxheight && size[0] <= boxdepth){
@@ -155,6 +158,7 @@ public abstract class Item{ //Abstract?
                             ((Box)pack).setWidth(boxwidth);
                             ((Box)pack).setHeight(boxheight);
                             ((Box)pack).setDepth(boxdepth);
+                            solved = true;
                             break;
                         
                         }else if(size[2] <= boxwidth && size[1] <= boxheight && size[0] <= boxdepth){
@@ -163,6 +167,7 @@ public abstract class Item{ //Abstract?
                             ((Box)pack).setWidth(boxwidth);
                             ((Box)pack).setHeight(boxheight);
                             ((Box)pack).setDepth(boxdepth);
+                            solved = true;
                             break;
                         
                         }else if(size[2] <= boxwidth && size[0] <= boxheight && size[1] <= boxdepth){
@@ -172,10 +177,17 @@ public abstract class Item{ //Abstract?
                             ((Box)pack).setWidth(boxwidth);
                             ((Box)pack).setHeight(boxheight);
                             ((Box)pack).setDepth(boxdepth);
+                            solved = true;
                             break;
                         }
                     }  
                 }
+            }
+            if(solved){
+                System.out.println("Box " + "with size {"+ ((Box)pack).getWidth() + ", " + ((Box)pack).getHeight() + ", " + ((Box)pack).getDepth() + "} assigned to item " + name + ".");
+            
+            }else{
+                System.out.println("No package available for item "+ name + ".");
             }
         }
     }
@@ -183,5 +195,4 @@ public abstract class Item{ //Abstract?
     public abstract double getPrice();
     
     public abstract double calculateProfit();
-    
 }

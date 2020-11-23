@@ -43,6 +43,6 @@ public class UnitItem extends Item{
             
             return quantityRemaining -= q;
         }
-        return 0;
+        return quantityRemaining;
     }
 }

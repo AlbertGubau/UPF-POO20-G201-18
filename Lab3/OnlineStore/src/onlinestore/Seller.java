@@ -26,8 +26,10 @@ public class Seller extends User { //Creamos la classe Seller con sus atributos.
     
     public void sell(Item i){
         
-        soldItems.add(i);
         availableItems.remove(i);
+        soldItems.add(i);
+        
+        System.out.println( getName() +" has sold item "+ i.getName() + " for "+ i.getPrice() + " euros that are getting deposited into his/her account with number " + accountNumber + ".");
     }
     
    
@@ -38,8 +40,8 @@ public class Seller extends User { //Creamos la classe Seller con sus atributos.
     
     
     
-    private Boolean deposit(double price){ //COMO ACCEDEMOS A SU CUENTA BANCARIA?
-        return false;
+    private Boolean deposit(double price){ //DONE
+        return price > 0;
     }
      
 }

@@ -30,7 +30,7 @@ public class Envelope extends Package {
     }
     
     
-    public Boolean isSuitable(double[] size){
+    public Boolean isSuitable(double[] size){ //SUPOSANT QUE EL TAMANY MAXIM D'EMBALAT ES 29x42
         
         return size[0]<=29 && size[1]<=42 || size[1]<=29 && size[0]<=42;
     }
