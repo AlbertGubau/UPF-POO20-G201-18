@@ -18,19 +18,19 @@ public class Administrator extends User{
     }
     
     
-    public Boolean expel(User u){ //TIENE QUE HACER ALGO???
+    public Boolean expel(User u){                                                                                                               //TIENE QUE HACER ALGO???
         System.out.println(getName() + " has expelled the user " + u.getName() + ".");
         return true;
     }
     
     
-    public Boolean manageAuction(AuctionItem a, String date){ //TODO
+    public Boolean manageAuction(AuctionItem a, String date){                                                                                   //TODO
         System.out.println(getName() + " is managing the item " + a.getName() + ".");
         return true;
     }
     
     
-    public void printStock(LinkedList<AuctionItem> item){ //DONE
+    public void printStock(LinkedList<AuctionItem> item){                                                                                       //DONE
         
         System.out.println("The administrator "+ getName() + " is going to show the auction items: ");
         

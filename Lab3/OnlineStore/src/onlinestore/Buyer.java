@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  * @author oriol
  */
-public class Buyer extends User{                                //creamos la classe Buyer con los atributos accountNumber y bpughtItems
+public class Buyer extends User{                                                                                                                //creamos la classe Buyer con los atributos accountNumber y bpughtItems
     
     private String accountNumber;
     private LinkedList<Item> boughtItems; 
@@ -22,7 +22,7 @@ public class Buyer extends User{                                //creamos la cla
         boughtItems = new LinkedList<Item>();
     }
     
-    public void buy(Item i){//COMPROVAR
+    public void buy(Item i){                                                                                                                     //COMPROVAR
         
         boughtItems.add(i);
         System.out.println( getName() +" is buying item "+ i.getName() + " for "+ i.getPrice() + " euros.");
@@ -30,7 +30,7 @@ public class Buyer extends User{                                //creamos la cla
     }
     
     
-    private Boolean pay(double price){ //DONE
+    private Boolean pay(double price){                                                                                                           //DONE
         
         return price>0;
     }
