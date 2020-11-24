@@ -31,27 +31,27 @@ public class Box extends Package{
     
     public Boolean isSuitable(double[] size){                                  //SUPONIENDO QUE HAY UN SET PREDEFINIDO DE CAJAS Y QUE EL TAMAÑO MAXIMO ES 200x300x500
        
-        if(size[0] <= 200 && size[1] <= 300 && size[2]<=500){
+        if(size[0] <= getHeight() && size[1] <= getWidth() && size[2]<=getDepth()){ //getHeight = 200, getWidth = 300, getDepth = 500
             
             return true;
         
-        }else if(size[0] <= 200 && size[1] <= 500 && size[2] <= 300){
+        }else if(size[0] <= getHeight() && size[1] <= getDepth() && size[2] <= getWidth()){
             
             return true;
         
-        }else if(size[0] <= 300 && size[1] <= 200 && size[2] <= 500){
+        }else if(size[0] <= getWidth() && size[1] <= getHeight() && size[2] <= getDepth()){
              
             return true;
         
-        }else if(size[0] <= 300 && size[1] <= 500 && size[2] <= 200){
+        }else if(size[0] <= getWidth() && size[1] <= getDepth() && size[2] <= getHeight()){
             
             return true;
         
-        } else if(size[0] <= 500 && size[1] <= 300 && size[2] <= 200){
+        } else if(size[0] <= getDepth() && size[1] <= getWidth() && size[2] <= getHeight()){
             
             return true;
         
-        }else if(size[1] <= 500 || size[1] <= 200 || size[1] <= 300){
+        }else if(size[1] <= getDepth() || size[1] <= getHeight() || size[1] <= getWidth()){
             
             return true;
         }

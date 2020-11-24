@@ -27,8 +27,13 @@ public class Administrator extends User{
     
     public Boolean manageAuction(AuctionItem a, String date){  //QUE TIENE QUE HACER EXACTAMENTE, ES CORRECTO?                                                                                 
         
-        System.out.println(getName() + " is managing the item " + a.getName() + ".");
-        return true;
+        if(!a.frozen(date)){
+            
+            System.out.println(getName() + " is managing the item " + a.getName() + " at " + date + ".");
+            return true;
+        }
+        
+        return false;
     }
     
     

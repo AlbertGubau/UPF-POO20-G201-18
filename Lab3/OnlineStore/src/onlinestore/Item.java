@@ -23,6 +23,11 @@ public abstract class Item{ //Abstract?
         name = "Undefined";
         type = "Undefined";
         size = new double[3];
+        
+        for(int i = 0; i<=2; i++){
+            
+            size[i] = 0;
+        }
         cost = 0;        
     }
     
@@ -30,7 +35,12 @@ public abstract class Item{ //Abstract?
         
         name = n;
         type = t;
-        size = s;
+        size = new double[3]; 
+        
+        for(int i = 0; i<=2; i++){
+            
+            size[i] = s[i];
+        }
         cost = c;
     }
     
@@ -71,7 +81,10 @@ public abstract class Item{ //Abstract?
    
     
     public void setSize(double[] s){ //DONE
-        size = s;
+        
+        for(int i = 0; i<=2; i++){
+            size[i] = s[i];
+        }   
     }
     
     

@@ -26,9 +26,22 @@ public class Seller extends User {                                              
     
     public void sell(Item i){ //ES CORRECTO?
         
-        soldItems.add(i);
+        boolean isthere = false;
         
-        System.out.println( getName() +" has sold item "+ i.getName() + " for "+ i.getPrice() + " euros that are getting deposited into his/her account with number " + accountNumber + ".");
+        for(Item x: availableItems){
+            
+            if(x == i){
+                
+                isthere = true;
+            }
+        }
+        
+        if(isthere){
+            
+            soldItems.add(i);
+            
+            System.out.println( getName() +  " has sold item "+ i.getName() + " and "+ (i.calculateProfit()) + " euros are the benefits obtained for the item.");
+        } 
     }
     
    
@@ -39,6 +52,7 @@ public class Seller extends User {                                              
     
    
     private Boolean deposit(double price){ //DONE
+        
         return price > 0;
     }     
 }

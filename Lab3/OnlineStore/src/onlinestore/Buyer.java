@@ -24,10 +24,13 @@ public class Buyer extends User{ //creamos la classe Buyer con los atributos acc
     
     public void buy(Item i){ //ES CORRECTO O FALTARÍA ALGO?                                                                                                             
         
-        boughtItems.add(i);
+        if(pay(i.getPrice())){
+            
+            boughtItems.add(i);
         
-        System.out.println( getName() +" is buying item "+ i.getName() + " for "+ i.getPrice() + " euros.");
-        System.out.println("Price "+ i.getPrice() +" is getting charged into account " + accountNumber + " from user "+ getName() + ".");
+            System.out.println( getName() +" is buying item "+ i.getName() + " for "+ i.getPrice() + " euros.");
+            System.out.println("Price "+ i.getPrice() +" is getting charged into account " + accountNumber + " from user "+ getName() + ".");
+        }   
     }
     
     

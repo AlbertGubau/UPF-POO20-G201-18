@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -76,6 +76,10 @@ public class OnlineStore {
             seller.addAvailableItem(itemsAvailable.get(i));         
         }
         
+        
+        
+        
+        
         System.out.println("\nUSERS SHOPPING:\n");
         
         for(int i = 0; i<itemsAvailable.size(); i++){
@@ -83,43 +87,28 @@ public class OnlineStore {
             Item item = itemsAvailable.get(i); //TOMAMOS UN ITEM Y UN COMPRADOR
             Buyer b = (Buyer)users.get(i);
             
-            totalPrice += item.getPrice(); //INCREMENTAMOS EL PRECIO TOTAL
-            
             b.buy(item); //HACEMOS QUE COMPRE EL ITEM
             
+            totalPrice += item.getPrice(); //INCREMENTAMOS EL PRECIO TOTAL
+            
             if(item instanceof UnitItem){ 
-                ((UnitItem)item).sell(2);
+                ((UnitItem)item).sell(0);
             
             }else if(item instanceof WeightedItem){
-                ((WeightedItem)item).sell(20.0);
+                ((WeightedItem)item).sell(0.0);
             }
             
-            seller.sell(item);      
+            seller.sell(item);
             
             totalProfit += item.calculateProfit();
             
-            itemsSold.add(item);   
+            itemsSold.add(item);
         }
+        
         
         for(int i=0; i<itemsAvailable.size();i++){
             
-            Item item = itemsAvailable.get(i);
-            
-            if(item instanceof UnitItem){
-                
-                if(((UnitItem)item).getQuantityRemaining() == 0){
-                    itemsAvailable.remove(item);
-                }
-            }
-            
-            if(item instanceof WeightedItem){
-                
-                if(((WeightedItem)item).getWeightRemaining() == 0){
-                    
-                    itemsAvailable.remove(item);
-                }
-            }
-            
+            itemsAvailable.remove(i);   
         }
         
         
@@ -128,7 +117,7 @@ public class OnlineStore {
         //COMIENZO DE LA PUJA
         LinkedList<AuctionItem> lai = new LinkedList<AuctionItem>();
         Administrator admin = (Administrator)users.get(4);
-        AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 25000.0, 25000.0, "11112020");
+        AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 10000.0, 10000.0, "11112020");
         lai.add(auctionitem);
         
         System.out.println("PACKAGE ASSIGNMENT FOR THE AUCTION ITEM:\n");
@@ -138,26 +127,27 @@ public class OnlineStore {
         itemsAvailable.add(auctionitem);
         
         System.out.println("\nPRESENTATION AND START OF THE AUCTION:\n");
+        
         admin.printStock(lai);
         
         System.out.println("\nSTART OF THE AUCTION:\n");
         
         if(!auctionitem.frozen("06112020")){
-            auctionitem.makeBid((Buyer)users.get(1), 11000.0);
+            auctionitem.makeBid((Buyer)users.get(1), 10500.0);
         }
         
         if(!auctionitem.frozen("07112020")){
-            auctionitem.makeBid((Buyer)users.get(0), 10500.0);
+            auctionitem.makeBid((Buyer)users.get(0), 11000.0);
         }
         
         if(!auctionitem.frozen("10112020")){
-            auctionitem.makeBid((Buyer)users.get(2), 26000.0);
+            auctionitem.makeBid((Buyer)users.get(2), 12000.0);
         }
         
         admin.manageAuction(auctionitem, "11112020");
         
         if(!auctionitem.frozen("11112020")){
-            auctionitem.makeBid((Buyer)users.get(1), 27000.0);
+            auctionitem.makeBid((Buyer)users.get(1), 13000.0);
         }
         
         admin.expel(users.get(0));

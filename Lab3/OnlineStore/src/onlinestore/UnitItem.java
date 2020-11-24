@@ -26,6 +26,7 @@ public class UnitItem extends Item{
     }
     
     public double getQuantityRemaining(){ //ERA NECESARIO AÑADIRLO
+        
         return quantityRemaining;
     }
     
@@ -42,12 +43,9 @@ public class UnitItem extends Item{
     }
     
     public double sell(int q){ //QUE DEBO HACER EN SELL
+       
+        quantityRemaining = 0;
         
-        if(quantityRemaining >= q){
-            
-            return quantityRemaining -= q;
-        }
-        
-        return quantityRemaining;
+        return unitPrice*quantity;
     }
 }
