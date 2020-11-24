@@ -31,13 +31,15 @@ public class AuctionItem extends Item{
     }
    
     @Override
-    public double calculateProfit(){ //TODO
+    public double calculateProfit(){ //COMO LO HACEMOS, LO HEMOS INTENTADO PLANTEAR PERO NO LO VEMOS CLARO, NECESITAMOS EL FEE Y EL PERCENT?
+        
         return 0;
     }
     
-    public void makeBid(Buyer b, double p){ //COMPROVAR
+    public void makeBid(Buyer b, double p){ //ES CORRECTO O FALTARIA ALGO MÁS?
         
         if(p > currentPrice){
+            
             bidder = b;
             currentPrice = p;
             System.out.println(bidder.getName() + " has bid " + currentPrice +" for the " + getName() + ". Who gives more? I heard "+ (currentPrice+1000) + " euros?");

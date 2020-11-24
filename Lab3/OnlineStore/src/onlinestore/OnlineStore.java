@@ -83,12 +83,12 @@ public class OnlineStore {
             Item item = itemsAvailable.get(i); //TOMAMOS UN ITEM Y UN COMPRADOR
             Buyer b = (Buyer)users.get(i);
             
-            b.buy(item); //HACEMOS QUE COMPRE EL ITEM
-            
             totalPrice += item.getPrice(); //INCREMENTAMOS EL PRECIO TOTAL
             
+            b.buy(item); //HACEMOS QUE COMPRE EL ITEM
+            
             if(item instanceof UnitItem){ 
-                ((UnitItem)item).sell(1);
+                ((UnitItem)item).sell(2);
             
             }else if(item instanceof WeightedItem){
                 ((WeightedItem)item).sell(20.0);
@@ -98,10 +98,31 @@ public class OnlineStore {
             
             totalProfit += item.calculateProfit();
             
-            itemsSold.add(item);
-            
-            itemsAvailable.remove(item);
+            itemsSold.add(item);   
         }
+        
+        for(int i=0; i<itemsAvailable.size();i++){
+            
+            Item item = itemsAvailable.get(i);
+            
+            if(item instanceof UnitItem){
+                
+                if(((UnitItem)item).getQuantityRemaining() == 0){
+                    itemsAvailable.remove(item);
+                }
+            }
+            
+            if(item instanceof WeightedItem){
+                
+                if(((WeightedItem)item).getWeightRemaining() == 0){
+                    
+                    itemsAvailable.remove(item);
+                }
+            }
+            
+        }
+        
+        
         System.out.println("\nCOMIENZO DE LA PUJA:\n");
         
         //COMIENZO DE LA PUJA

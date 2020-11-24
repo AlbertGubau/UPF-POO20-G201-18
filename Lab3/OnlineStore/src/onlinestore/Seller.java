@@ -24,24 +24,21 @@ public class Seller extends User {                                              
     }
     
     
-    public void sell(Item i){
+    public void sell(Item i){ //ES CORRECTO?
         
-        availableItems.remove(i);
         soldItems.add(i);
         
         System.out.println( getName() +" has sold item "+ i.getName() + " for "+ i.getPrice() + " euros that are getting deposited into his/her account with number " + accountNumber + ".");
     }
     
    
-    public void addAvailableItem(Item i){                                                        //Añadimos el elemento a la LinkedList
+    public void addAvailableItem(Item i){ //DONE                                                 //Añadimos el elemento a la LinkedList
         
         availableItems.add(i);
     }
     
-    
-    
-    private Boolean deposit(double price){                                               //DONE
+   
+    private Boolean deposit(double price){ //DONE
         return price > 0;
-    }
-     
+    }     
 }

@@ -25,24 +25,29 @@ public class UnitItem extends Item{
         quantityRemaining = q;
     }
     
+    public double getQuantityRemaining(){ //ERA NECESARIO AÑADIRLO
+        return quantityRemaining;
+    }
+    
     @Override
-    public double getPrice(){ //COMPROVAR
+    public double getPrice(){ //DONE
         
         return unitPrice*quantityRemaining; 
     }
     
     @Override
-    public double calculateProfit(){ //COMPROVAR
+    public double calculateProfit(){ //DONE
         
         return (quantity-quantityRemaining)*(unitPrice-getCost());
     }
     
-    public double sell(int q){ //COMPROVAR
+    public double sell(int q){ //QUE DEBO HACER EN SELL
         
         if(quantityRemaining >= q){
             
             return quantityRemaining -= q;
         }
+        
         return quantityRemaining;
     }
 }

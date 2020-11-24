@@ -18,7 +18,7 @@ public abstract class Item{ //Abstract?
     private double cost;
     private Package pack;
     
-    Item(){ //Comprovar o revisar
+    Item(){ //ES CORRECTO COMO LO HEMOS PLANTEADO?
         
         name = "Undefined";
         type = "Undefined";
@@ -80,7 +80,7 @@ public abstract class Item{ //Abstract?
     }
     
     
-    public void assignBestPackage(LinkedList<Package> Lp){ //EN PROCES
+    public void assignBestPackage(LinkedList<Package> Lp){ //DONE
         
         double depth = size[2];
         

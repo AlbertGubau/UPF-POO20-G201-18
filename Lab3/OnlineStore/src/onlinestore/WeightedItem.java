@@ -24,6 +24,10 @@ public class WeightedItem extends Item{
         weightRemaining = w;
     }
     
+    public double getWeightRemaining(){
+        
+        return weightRemaining;
+    }
     
     @Override
     public double getPrice(){ //COMPROVAR
@@ -34,6 +38,7 @@ public class WeightedItem extends Item{
     
     @Override
     public double calculateProfit(){ //COMPROVAR
+        
         return (weight-weightRemaining)*(pricePerWeight-getCost());
     }
     
