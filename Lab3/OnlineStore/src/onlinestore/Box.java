@@ -51,7 +51,7 @@ public class Box extends Package{
             
             return true;
         
-        }else if(size[1] <= getDepth() || size[1] <= getHeight() || size[1] <= getWidth()){
+        }else if(size[0] <= getDepth() && size[1] <= getHeight() && size[2] <= getWidth()){
             
             return true;
         }

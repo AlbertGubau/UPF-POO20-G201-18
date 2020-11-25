@@ -93,29 +93,26 @@ public abstract class Item{ //Abstract?
     }
     
     
-    public void assignBestPackage(LinkedList<Package> Lp){ //DONE
+    public void assignBestPackage(LinkedList<Package> Lp){ 
         
         double depth = size[2];
         
         boolean solved = false;
         
-        if(depth < 3){ //SOLUCION ALTERNATIVA SERIA COMPROVAR QUE NI WIDTH NI HEIGHT NI DEPTH SON MENORES QUE 3
+        if(depth < 3){                                                                                                   //SOLUCION ALTERNATIVA SERIA COMPROVAR QUE NI WIDTH NI HEIGHT NI DEPTH SON MENORES QUE 3
             
             for(Package p: Lp){
                 
                 if(p instanceof Envelope){
                     
                     if(((Envelope) p).isSuitable(size)){    
-                        
-                        if(size[0]<=((Envelope) p).getWidth() && size[1]<=((Envelope) p).getHeight()||size[1]<=((Envelope) p).getWidth() && size[0]<=((Envelope) p).getHeight()){
+                          
+                        pack = p;
                             
-                            pack = p;
-                            
-                            ((Envelope)pack).setName(((Envelope) p).getName());
-                            ((Envelope)pack).setWidth(((Envelope) p).getWidth());
-                            ((Envelope)pack).setHeight(((Envelope) p).getHeight());
-                            solved = true;
-                        }
+                        ((Envelope)pack).setName(((Envelope) p).getName());
+                        ((Envelope)pack).setWidth(((Envelope) p).getWidth());
+                        ((Envelope)pack).setHeight(((Envelope) p).getHeight());
+                        solved = true;  
                     }  
                 }
             }
@@ -136,63 +133,13 @@ public abstract class Item{ //Abstract?
                         double boxheight = box.getHeight();
                         double boxdepth = box.getDepth();
                         
-                        if(size[0] <= boxwidth && size[1] <= boxheight && size[2] <= boxdepth){
+                        pack = p;
                             
-                            pack = p;
-                            
-                            ((Box)pack).setWidth(boxwidth);
-                            ((Box)pack).setHeight(boxheight);
-                            ((Box)pack).setDepth(boxdepth);
-                            solved = true;
-                            break;
-                        
-                        }else if(size[0] <= boxwidth && size[2] <= boxheight && size[1] <= boxdepth){
-                            pack = p;
-                            
-                            ((Box)pack).setWidth(boxwidth);
-                            ((Box)pack).setHeight(boxheight);
-                            ((Box)pack).setDepth(boxdepth);
-                            solved = true;
-                            break;
-                        
-                        }else if(size[1] <= boxwidth && size[0] <= boxheight && size[2] <= boxdepth){
-                            pack = p;
-                            
-                            ((Box)pack).setWidth(boxwidth);
-                            ((Box)pack).setHeight(boxheight);
-                            ((Box)pack).setDepth(boxdepth);
-                            solved = true;
-                            break;
-                        
-                        }else if(size[1] <= boxwidth && size[2] <= boxheight && size[0] <= boxdepth){
-                            
-                            pack = p;
-                            
-                            ((Box)pack).setWidth(boxwidth);
-                            ((Box)pack).setHeight(boxheight);
-                            ((Box)pack).setDepth(boxdepth);
-                            solved = true;
-                            break;
-                        
-                        }else if(size[2] <= boxwidth && size[1] <= boxheight && size[0] <= boxdepth){
-                            pack = p;
-                            
-                            ((Box)pack).setWidth(boxwidth);
-                            ((Box)pack).setHeight(boxheight);
-                            ((Box)pack).setDepth(boxdepth);
-                            solved = true;
-                            break;
-                        
-                        }else if(size[2] <= boxwidth && size[0] <= boxheight && size[1] <= boxdepth){
-                            
-                            pack = p;
-                            
-                            ((Box)pack).setWidth(boxwidth);
-                            ((Box)pack).setHeight(boxheight);
-                            ((Box)pack).setDepth(boxdepth);
-                            solved = true;
-                            break;
-                        }
+                        ((Box)pack).setWidth(boxwidth);
+                        ((Box)pack).setHeight(boxheight);
+                        ((Box)pack).setDepth(boxdepth);
+                        solved = true;
+                        break;
                     }  
                 }
             }

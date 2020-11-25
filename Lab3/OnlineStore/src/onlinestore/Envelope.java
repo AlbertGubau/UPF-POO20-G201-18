@@ -20,18 +20,18 @@ public class Envelope extends Package {
     }
     
     
-    public String getName(){                                                   //DONE
+    public String getName(){                                                                                        //DONE
         return name;
     }
    
     
-    public void setName(String n){                                             //DONE
+    public void setName(String n){                                                                                  //DONE
         name = n;
     }
     
     
-    public Boolean isSuitable(double[] size){                                  //SUPOSANT QUE EL TAMANY MAXIM D'EMBALAT ES 29x42
+    public Boolean isSuitable(double[] size){                                                                       //SUPOSANT QUE EL TAMANY MAXIM D'EMBALAT ES 29x42
         
-        return size[0]<= getWidth() && size[1]<= getHeight() || size[1] <= getWidth() && size[0] <= getHeight();
+        return size[0] <= getWidth() && size[1] <= getHeight() || size[1] <= getWidth() && size[0] <= getHeight();
     }   
 }

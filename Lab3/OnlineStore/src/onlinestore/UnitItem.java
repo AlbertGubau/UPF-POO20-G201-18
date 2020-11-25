@@ -16,7 +16,7 @@ public class UnitItem extends Item{
     private int quantityRemaining;
     
    
-    UnitItem(String n, String t, double[] s, double c, double uprice, int q){ //Mètodo constructor de UnitItem
+    UnitItem(String n, String t, double[] s, double c, double uprice, int q){       //Mètodo constructor de UnitItem
        
         super(n,t,s,c);
         
@@ -25,24 +25,24 @@ public class UnitItem extends Item{
         quantityRemaining = q;
     }
     
-    public double getQuantityRemaining(){ //ERA NECESARIO AÑADIRLO
+    public double getQuantityRemaining(){ 
         
         return quantityRemaining;
     }
     
     @Override
-    public double getPrice(){ //DONE
+    public double getPrice(){ 
         
         return unitPrice*quantityRemaining; 
     }
     
     @Override
-    public double calculateProfit(){ //DONE
+        public double calculateProfit(){ 
         
         return (quantity-quantityRemaining)*(unitPrice-getCost());
     }
     
-    public double sell(int q){ //QUE DEBO HACER EN SELL
+    public double sell(int q){ 
        
         quantityRemaining = 0;
         

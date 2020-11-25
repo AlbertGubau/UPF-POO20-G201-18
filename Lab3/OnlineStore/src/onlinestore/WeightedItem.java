@@ -30,20 +30,20 @@ public class WeightedItem extends Item{
     }
     
     @Override
-    public double getPrice(){ //COMPROVAR
+    public double getPrice(){ 
         
         return pricePerWeight*weightRemaining;
     }
     
     
     @Override
-    public double calculateProfit(){ //COMPROVAR
+    public double calculateProfit(){ 
         
         return (weight-weightRemaining)*(pricePerWeight-getCost());
     }
     
     
-    public double sell(double w){ //COMPROVAR
+    public double sell(double w){ 
         
         weightRemaining = 0;
         
