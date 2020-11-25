@@ -29,9 +29,9 @@ public class Box extends Package{
     }
     
     
-    public Boolean isSuitable(double[] size){                                  //SUPONIENDO QUE HAY UN SET PREDEFINIDO DE CAJAS Y QUE EL TAMAÑO MAXIMO ES 200x300x500
+    public Boolean isSuitable(double[] size){                                                   //SUPONIENDO QUE HAY UN SET PREDEFINIDO DE CAJAS Y QUE EL TAMAÑO MAXIMO ES 200x300x500
        
-        if(size[0] <= getHeight() && size[1] <= getWidth() && size[2]<=getDepth()){ //getHeight = 200, getWidth = 300, getDepth = 500
+        if(size[0] <= getHeight() && size[1] <= getWidth() && size[2]<=getDepth()){             //getHeight = 200, getWidth = 300, getDepth = 500
             
             return true;
         

@@ -16,7 +16,7 @@ public class UnitItem extends Item{
     private int quantityRemaining;
     
    
-    UnitItem(String n, String t, double[] s, double c, double uprice, int q){       //Mètodo constructor de UnitItem
+    UnitItem(String n, String t, double[] s, double c, double uprice, int q){           //Mètodo constructor de UnitItem
        
         super(n,t,s,c);
         

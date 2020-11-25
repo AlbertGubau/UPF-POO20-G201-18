@@ -26,13 +26,13 @@ public class AuctionItem extends Item{
     }
     
     @Override
-    public double getPrice(){ //DONE
+    public double getPrice(){ 
         
         return currentPrice;     
     }
    
     @Override
-    public double calculateProfit(){ //COMO LO HACEMOS, LO HEMOS INTENTADO PLANTEAR PERO NO LO VEMOS CLARO, NECESITAMOS EL FEE Y EL PERCENT?
+    public double calculateProfit(){ 
         
         if(bidder == null ){
             
@@ -41,7 +41,7 @@ public class AuctionItem extends Item{
         return fee + getPrice()*percent;
     }
     
-    public void makeBid(Buyer b, double p){ //ES CORRECTO O FALTARIA ALGO MÁS?
+    public void makeBid(Buyer b, double p){ 
         
         if(p > currentPrice){
             
@@ -52,7 +52,7 @@ public class AuctionItem extends Item{
         }
     }
     
-    public Boolean frozen(String d){ //DONE
+    public Boolean frozen(String d){ 
         
         int actualday = Integer.parseInt(d.substring(0, 2));
         int actualmonth = Integer.parseInt(d.substring(2, 4));
@@ -63,33 +63,25 @@ public class AuctionItem extends Item{
         int lastyear = Integer.parseInt(deadline.substring(4, 8));
         
         if(actualyear == lastyear){
-            
             if(actualmonth == lastmonth){
-                
                 if(actualday <= lastday){
-                    
                     return false;
                 }
-            
             }else if(actualmonth<lastmonth){
-                
                 return false;
             }
-        
         }else if (actualyear<lastyear){
-            
             return false;
         }
-        
         return true;
     }
     
-    public Buyer getBuyer(){ //DONE
+    public Buyer getBuyer(){ 
         
         return bidder;
     }
     
-    public String getDeadline(){ //DONE
+    public String getDeadline(){ 
         return deadline;
     }
 }

@@ -23,36 +23,25 @@ public class Seller extends User {                                              
         availableItems = new LinkedList<Item>();
     }
     
-    
     public void sell(Item i){ 
         
         boolean isthere = false;
-        
         for(Item x: availableItems){
-            
             if(x == i){
-                
                 isthere = true;
             }
         }
-        
         if(isthere){
-            
             soldItems.add(i);
-            
             System.out.println( getName() +  " has sold item "+ i.getName() + " and "+ (i.calculateProfit()) + " euros are the benefits obtained for the item.");
         } 
     }
     
-   
     public void addAvailableItem(Item i){                                                                                                                                      //Añadimos el elemento a la LinkedList
-        
         availableItems.add(i);
     }
-    
    
     private Boolean deposit(double price){ 
-        
         return price > 0;
     }     
 }

@@ -76,6 +76,9 @@ public class OnlineStore {
             seller.addAvailableItem(itemsAvailable.get(i));         
         }
         
+        
+        
+        
         System.out.println("\nUSERS SHOPPING:\n");
         
         for(int i = 0; i<itemsAvailable.size(); i++){

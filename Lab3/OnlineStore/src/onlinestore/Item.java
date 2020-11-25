@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  * @author oriol
  */
-public abstract class Item{ //Abstract?
+public abstract class Item{ 
     
     private String name;
     private String type;
@@ -18,14 +18,12 @@ public abstract class Item{ //Abstract?
     private double cost;
     private Package pack;
     
-    Item(){ //ES CORRECTO COMO LO HEMOS PLANTEADO?
+    Item(){ 
         
         name = "Undefined";
         type = "Undefined";
         size = new double[3];
-        
         for(int i = 0; i<=2; i++){
-            
             size[i] = 0;
         }
         cost = 0;        
@@ -36,59 +34,47 @@ public abstract class Item{ //Abstract?
         name = n;
         type = t;
         size = new double[3]; 
-        
         for(int i = 0; i<=2; i++){
-            
             size[i] = s[i];
         }
         cost = c;
     }
     
-    
-    public String getName(){ //DONE
+    public String getName(){ 
         return name;
     }
-    
-    
-    public String getType(){ //DONE
+   
+    public String getType(){ 
         return type;
     }
     
-    
-    public double[] getSize(){ //DONE
+    public double[] getSize(){ 
         return size;
     }
     
-    
-    public double getCost(){ //DONE
+    public double getCost(){ 
         return cost;        
     }
     
-    
-    public Package getPackage(){ //DONE
+    public Package getPackage(){ 
         return pack;
     }
     
-    
-    public void setName(String n){//DONE
+    public void setName(String n){
         name = n;
     }
     
-    
-    public void setType(String t){ //DONE
+    public void setType(String t){ 
         type = t;
     }
    
-    
-    public void setSize(double[] s){ //DONE
-        
+    public void setSize(double[] s){ 
         for(int i = 0; i<=2; i++){
             size[i] = s[i];
         }   
     }
     
-    
-    public void setCost(double c){ //DONE
+    public void setCost(double c){ 
         cost = c;
     }
     
@@ -99,7 +85,7 @@ public abstract class Item{ //Abstract?
         
         boolean solved = false;
         
-        if(depth < 3){                                                                                                   //SOLUCION ALTERNATIVA SERIA COMPROVAR QUE NI WIDTH NI HEIGHT NI DEPTH SON MENORES QUE 3
+        if(depth < 3){                                                                                                          //SOLUCION ALTERNATIVA SERIA COMPROVAR QUE NI WIDTH NI HEIGHT NI DEPTH SON MENORES QUE 3
             
             for(Package p: Lp){
                 
