@@ -14,28 +14,28 @@ public class Package {
     private double width;
     private double height;
     
-    public Package(double w, double h){                //DONE
+    public Package(double w, double h){ //Método constructor de la clase Package
         width = w;
         height = h;
     }
     
 
-    public double getWidth(){                          //DONE
+    public double getWidth(){  //getters y setters de la clase Package                        
         return width;
     }
    
     
-    public double getHeight(){                         //DONE
+    public double getHeight(){                        
         return height;
     }
     
     
-    public void setWidth(double w){                    //DONE
+    public void setWidth(double w){                    
         width = w;
     }
     
     
-    public void setHeight(double h){                   //DONE
+    public void setHeight(double h){                   
         height = h;
     }
 }

@@ -9,7 +9,7 @@ package onlinestore;
  *
  * @author oriol
  */
-public class AuctionItem extends Item{
+public class AuctionItem extends Item{ //AcutionItem es una clase hija de Item, por lo tanto, usamos el keyword extends
     
     private double currentPrice;
     private Buyer bidder;
@@ -17,31 +17,31 @@ public class AuctionItem extends Item{
     public static final int fee = 5;
     public static final double percent = 0.05;
     
-    AuctionItem(String n, String t, double[] s, double c, double startingPrice, String d){  
+    AuctionItem(String n, String t, double[] s, double c, double startingPrice, String d){  //Método constructor de la clase AuctionItem
         
-        super(n,t,s,c);
+        super(n,t,s,c); //Usamos super para llamar al constructor de la clase padre
         
         currentPrice = startingPrice;
         deadline = d;
     }
     
     @Override
-    public double getPrice(){ 
+    public double getPrice(){ //getter del precio del item
         
         return currentPrice;     
     }
    
     @Override
-    public double calculateProfit(){ 
+    public double calculateProfit(){ //método que calcula el beneficio del item
         
         if(bidder == null ){
             
             return fee;
         }
-        return fee + getPrice()*percent;
+        return fee + getPrice()*percent; //en el caso de que no tenga comprador se devuelve el fee y en el caso de que tenga comprador se devuelve el fee más el precio por el porcentajec
     }
     
-    public void makeBid(Buyer b, double p){ 
+    public void makeBid(Buyer b, double p){ //Método que permite realizar una puja, si la puja es mayor que el precio actual asignamos un nuevo comprador, un nuevo precio y lo imprimimos por pantalla
         
         if(p > currentPrice){
             
@@ -52,9 +52,9 @@ public class AuctionItem extends Item{
         }
     }
     
-    public Boolean frozen(String d){ 
+    public Boolean frozen(String d){ //Método que comprueba si una la subasta se ha terminado en la fecha que entra por parámetro
         
-        int actualday = Integer.parseInt(d.substring(0, 2));
+        int actualday = Integer.parseInt(d.substring(0, 2)); //Separamos los strings de fecha en enteros
         int actualmonth = Integer.parseInt(d.substring(2, 4));
         int actualyear = Integer.parseInt(d.substring(4, 8));
         
@@ -62,7 +62,7 @@ public class AuctionItem extends Item{
         int lastmonth = Integer.parseInt(deadline.substring(2, 4));
         int lastyear = Integer.parseInt(deadline.substring(4, 8));
         
-        if(actualyear == lastyear){
+        if(actualyear == lastyear){        //Comprobamos si la fecha es anterior al deadline
             if(actualmonth == lastmonth){
                 if(actualday <= lastday){
                     return false;
@@ -73,15 +73,16 @@ public class AuctionItem extends Item{
         }else if (actualyear<lastyear){
             return false;
         }
-        return true;
+        return true; //En el caso de que la fecha es anterior al deadline devolvemos false, en el caso de que la fecha ha pasado el deadline devolvemos true
     }
     
-    public Buyer getBuyer(){ 
+    public Buyer getBuyer(){ //getter del comprador
         
         return bidder;
     }
     
-    public String getDeadline(){ 
+    public String getDeadline(){ //getter de la fecha de finalización de la subasta
+        
         return deadline;
     }
 }

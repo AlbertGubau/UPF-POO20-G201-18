@@ -15,7 +15,7 @@ public class User {
     private final String identifier;
     private final String password;
     
-    public User(String n, String id, String pass){
+    public User(String n, String id, String pass){ //Método constructor de la clase User
         
         name = n;
         identifier = id;
@@ -23,27 +23,27 @@ public class User {
     }
     
     
-    public String getName(){                                                   //DONE
+    public String getName(){ //getters y setters de la clase User                                               
         return name;
     }
     
     
-    public String getId(){                                                     //DONE
+    public String getId(){                                                   
         return identifier;
     }
     
     
-    public String getPassword(){                                               //DONE
+    public String getPassword(){                                             
         return password;
     } 
     
     
-    public void setName(String n){                                              //DONE
+    public void setName(String n){                                              
         name = n;
     }
     
     
-    public Boolean login(String p){                                             //COMPROVAR
+    public Boolean login(String p){ //Método login para logear a un usuario                                          
         return password.equals(p);
     }
 }

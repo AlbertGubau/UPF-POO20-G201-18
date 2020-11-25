@@ -9,29 +9,29 @@ package onlinestore;
  *
  * @author oriol
  */
-public class Box extends Package{
+public class Box extends Package{ //Box es una clase hija de Package por lo tanto usamos la keyword extends
     
     private double depth;
     
-    public Box(int w, int h, int d){
+    public Box(int w, int h, int d){ //Método constructor de la clase Box en el que usamos super para llamar al constructor de la clase padre
         super(w,h);
         depth = d;
     }
     
     
-    public double getDepth(){                                                  //DONE
+    public double getDepth(){ //getter de la profundidad de la caja                                              
         return depth;
     }
     
     
-    public void setDepth(double d){                                            //DONE
+    public void setDepth(double d){ //setter de la profundidad de la caja                                          
         depth = d;
     }
     
     
-    public Boolean isSuitable(double[] size){                                                   //SUPONIENDO QUE HAY UN SET PREDEFINIDO DE CAJAS Y QUE EL TAMAÑO MAXIMO ES 200x300x500
+    public Boolean isSuitable(double[] size){ //Método que comprueba si un tamaño cabe en unas medidas determinadas de caja, hará todas las combinaciones posibles, si cabe devuelve true, si no cabe devuelve false.                                                 
        
-        if(size[0] <= getHeight() && size[1] <= getWidth() && size[2]<=getDepth()){             //getHeight = 200, getWidth = 300, getDepth = 500
+        if(size[0] <= getHeight() && size[1] <= getWidth() && size[2]<=getDepth()){             
             
             return true;
         

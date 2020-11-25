@@ -13,14 +13,14 @@ import java.util.LinkedList;
 
 public class OnlineStore {
     
-    public static LinkedList< Item > itemsAvailable;
+    public static LinkedList< Item > itemsAvailable; //Declaramos las listas de items, usuarios y empaquetados junto a las variables totalPrice y totalProfit
     public static LinkedList< Item > itemsSold;
     public static LinkedList< User > users;
     public static LinkedList< Package > packages;
     public static double totalPrice;
     public static double totalProfit;
     
-    public static void init(){
+    public static void init(){ //Método que inicializa las listas y las variables
         
         itemsAvailable = new LinkedList< Item >();
         itemsSold = new LinkedList< Item >();
@@ -38,8 +38,8 @@ public class OnlineStore {
         init();
         
         //AÑADIMOS ITEMS
-        itemsAvailable.add(new UnitItem("Gaming Chair", "Furniture", new double[]{53.0, 110.0, 160.0}, 300, 500, 2));     //53 110 160
-        itemsAvailable.add(new WeightedItem("Rice", "Food", new double[]{12.0, 22.0, 2.0}, 1.5, 2.5, 50));                //12 22 2
+        itemsAvailable.add(new UnitItem("Gaming Chair", "Furniture", new double[]{53.0, 110.0, 160.0}, 300, 500, 2));     
+        itemsAvailable.add(new WeightedItem("Rice", "Food", new double[]{12.0, 22.0, 2.0}, 1.5, 2.5, 50));                
         itemsAvailable.add(new UnitItem("TV", "Appliance", new double[]{100.0, 60.0, 10.0}, 600, 1000, 4));
         
         //AÑADIMOS COMPRADORES VENDEDORES Y UN ADMINISTRADOR
@@ -76,19 +76,16 @@ public class OnlineStore {
             seller.addAvailableItem(itemsAvailable.get(i));         
         }
         
-        
-        
-        
         System.out.println("\nUSERS SHOPPING:\n");
         
         for(int i = 0; i<itemsAvailable.size(); i++){
             
-            Item item = itemsAvailable.get(i);                                                  //TOMAMOS UN ITEM Y UN COMPRADOR
+            Item item = itemsAvailable.get(i); //TOMAMOS UN ITEM Y UN COMPRADOR
             Buyer b = (Buyer)users.get(i);
             
-            b.buy(item);                                                                        //HACEMOS QUE COMPRE EL ITEM
+            b.buy(item);      //HACEMOS QUE COMPRE EL ITEM
             
-            totalPrice += item.getPrice();                                                      //INCREMENTAMOS EL PRECIO TOTAL
+            totalPrice += item.getPrice();     //INCREMENTAMOS EL PRECIO TOTAL Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM 
             
             if(item instanceof UnitItem){ 
                 ((UnitItem)item).sell(0);
@@ -97,15 +94,14 @@ public class OnlineStore {
                 ((WeightedItem)item).sell(0.0);
             }
             
-            seller.sell(item);
+            seller.sell(item); //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM
             
-            totalProfit += item.calculateProfit();
+            totalProfit += item.calculateProfit(); //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM
             
-            itemsSold.add(item);
+            itemsSold.add(item); //AÑADIMOS EL ITEM A LA LISTA DE ITEMS VENDIDOS
         }
         
-        
-        for(int i=0; i<itemsAvailable.size();i++){
+        for(int i=0; i<itemsAvailable.size();i++){ //BORRAMOS LOS ITEMS VENDIDOS DE LA LISTA DE ITEMS DISPONIBLES
             
             itemsAvailable.remove(i);   
         }
@@ -114,24 +110,24 @@ public class OnlineStore {
         System.out.println("\nCOMIENZO DE LA PUJA:\n");
         
         //COMIENZO DE LA PUJA
-        LinkedList<AuctionItem> lai = new LinkedList<AuctionItem>();
-        Administrator admin = (Administrator)users.get(4);
-        AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 10000.0, 10000.0, "11112020");
+        LinkedList<AuctionItem> lai = new LinkedList<AuctionItem>(); //Creamos una lista de items para subasta
+        Administrator admin = (Administrator)users.get(4); //Asignamos el rol de Administrador al quinto usuario
+        AuctionItem auctionitem = new AuctionItem("Armario", "Furniture", new double[]{250, 160, 450}, 10000.0, 10000.0, "11112020"); //Creamos un item de subasta y lo añadimos a la lista de items para subasta
         lai.add(auctionitem);
         
         System.out.println("PACKAGE ASSIGNMENT FOR THE AUCTION ITEM:\n");
         
-        auctionitem.assignBestPackage(packages);
+        auctionitem.assignBestPackage(packages); //Asignamos el empaquetado del item de subasta y añadimos el item a la lista de items disponibles de la tienda y del Seller
         seller.addAvailableItem(auctionitem);
         itemsAvailable.add(auctionitem);
         
         System.out.println("\nPRESENTATION AND START OF THE AUCTION:\n");
         
-        admin.printStock(lai);
+        admin.printStock(lai); //Hacemos que el administrador imprima el stock de items para subasta
         
-        System.out.println("\nSTART OF THE AUCTION:\n");
+        System.out.println("\nSTART OF THE AUCTION:\n"); 
         
-        if(!auctionitem.frozen("06112020")){
+        if(!auctionitem.frozen("06112020")){                     //Simulamos las pujas de los usuarios en diferentes fechas comprobando que estamos en una fecha en la que se puede pujar con el método frozen
             auctionitem.makeBid((Buyer)users.get(1), 10500.0);
         }
         
@@ -143,23 +139,22 @@ public class OnlineStore {
             auctionitem.makeBid((Buyer)users.get(2), 12000.0);
         }
         
-        admin.manageAuction(auctionitem, "11112020");
-        
+        admin.manageAuction(auctionitem, "11112020"); //Hacemos que el administrador maneje la puja el día en el que finaliza
         if(!auctionitem.frozen("11112020")){
             auctionitem.makeBid((Buyer)users.get(1), 13000.0);
         }
         
-        admin.expel(users.get(0));
-        users.remove(users.get(0));
+        admin.expel(users.get(0)); //Hacemos que el administrador expulse a un usuario
+        users.remove(users.get(0)); //Quitamos al usuario expulsado de la lista de usuarios de la tienda online
         
-        Buyer buyer = auctionitem.getBuyer();
-        buyer.buy(auctionitem);
+        Buyer buyer = auctionitem.getBuyer(); //Tomamos el comprador final del item de subasta
+        buyer.buy(auctionitem); //Aplicamos buy y sell por parte del Buyer y el Seller al item de subasta
         seller.sell(auctionitem);
         
-        totalPrice += auctionitem.getPrice();
-        totalProfit += auctionitem.calculateProfit();
+        totalPrice += auctionitem.getPrice(); //Aumentamos el precio total con el precio del item para subasta
+        totalProfit += auctionitem.calculateProfit(); //Aumentamos el beneficio total con el beneficio obtenido por el item
         
-        System.out.println("Total price: " + totalPrice);
+        System.out.println("Total price: " + totalPrice); //Imprimimos por pantalla el precio y el beneficio total.
         System.out.println("Total profit: " + totalProfit);
     } 
 }

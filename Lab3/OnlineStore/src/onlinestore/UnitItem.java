@@ -9,40 +9,40 @@ package onlinestore;
  *
  * @author oriol
  */
-public class UnitItem extends Item{
+public class UnitItem extends Item{ //Unititem es una clase hija de la clase Item, por lo tanto, usamos la keyword extends
     
     private double unitPrice;
     private int quantity;
     private int quantityRemaining;
     
    
-    UnitItem(String n, String t, double[] s, double c, double uprice, int q){           //Mètodo constructor de UnitItem
+    UnitItem(String n, String t, double[] s, double c, double uprice, int q){ //Mètodo constructor de UnitItem
        
-        super(n,t,s,c);
+        super(n,t,s,c); //usamos super para llamar al constructor de la clase padre
         
         unitPrice = uprice;
         quantity = q;
         quantityRemaining = q;
     }
     
-    public double getQuantityRemaining(){ 
+    public double getQuantityRemaining(){ //getter de la cantidad restante
         
         return quantityRemaining;
     }
     
     @Override
-    public double getPrice(){ 
+    public double getPrice(){ //método que nos devuelve el precio del item unitario
         
         return unitPrice*quantityRemaining; 
     }
     
     @Override
-        public double calculateProfit(){ 
+        public double calculateProfit(){ //método que nos devuelve el beneficio del item unitario
         
         return (quantity-quantityRemaining)*(unitPrice-getCost());
     }
     
-    public double sell(int q){ 
+    public double sell(int q){ //método para vender el item unitario
        
         quantityRemaining = 0;
         

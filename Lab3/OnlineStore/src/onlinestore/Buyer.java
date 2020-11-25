@@ -10,21 +10,21 @@ import java.util.LinkedList;
  *
  * @author oriol
  */
-public class Buyer extends User{                                                                                                                    //creamos la classe Buyer con los atributos accountNumber y bpughtItems
+public class Buyer extends User{ //Buyer es una clase hija de User por lo tanto usamos la keyword extends y declaramos los atributos del comprador (número de cuenta y lista de items comprados)                                                                                                             
     
     private String accountNumber;
     private LinkedList<Item> boughtItems; 
     
-    public Buyer(String n, String id, String p, String a){
+    public Buyer(String n, String id, String p, String a){ //Método constructor de la clase Buyer
         
-        super(n, id, p);
+        super(n, id, p); //Usamos super para llamar al constructor de la clase padre e inicializamos los demás atributos
         accountNumber = a;
         boughtItems = new LinkedList<Item>();
     }
     
-    public void buy(Item i){                                                                                                              
+    public void buy(Item i){   //Método que permite comprar al Buyer en el caso de que pay devuelva true (implementación en la que necesitariamos una cantidad de dinero como atributo de nuestro usuario)                                                                                                           
         
-        if(pay(i.getPrice())){
+        if(pay(i.getPrice())){ //Si tiene el dinero para pagarlo entonces se añade el item a la lista de items comprados y se imprime por pantalla la compra realizada
             
             boughtItems.add(i);
         
@@ -33,8 +33,7 @@ public class Buyer extends User{                                                
         }   
     }
     
-    
-    private Boolean pay(double price){                                                                                                     
+    private Boolean pay(double price){ //Método que comprueba que puede pagar el usuario (faltaría el atributo de la cantidad de dinero de la que dispone el usuario para implementarla de manera correcta).                                                                                                   
         
         return price>0;
     }

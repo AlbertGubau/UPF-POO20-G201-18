@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  * @author oriol
  */
-public abstract class Item{ 
+public abstract class Item{ //Declaramos Item como una clase abstracta porque contiene 2 métodos abstractos
     
     private String name;
     private String type;
@@ -18,7 +18,7 @@ public abstract class Item{
     private double cost;
     private Package pack;
     
-    Item(){ 
+    Item(){ //Constructor vacío de la clase Item
         
         name = "Undefined";
         type = "Undefined";
@@ -29,7 +29,7 @@ public abstract class Item{
         cost = 0;        
     }
     
-    Item(String n, String t, double[] s, double c){
+    Item(String n, String t, double[] s, double c){ //Constructor de la clase Item
         
         name = n;
         type = t;
@@ -40,7 +40,7 @@ public abstract class Item{
         cost = c;
     }
     
-    public String getName(){ 
+    public String getName(){ //getters y setters de la clase Item
         return name;
     }
    
@@ -79,19 +79,18 @@ public abstract class Item{
     }
     
     
-    public void assignBestPackage(LinkedList<Package> Lp){ 
+    public void assignBestPackage(LinkedList<Package> Lp){ //Método que comprueba asigna el mejor empaquetado para un item determinado
         
         double depth = size[2];
         
-        boolean solved = false;
+        boolean solved = false; //booleano que controla si hemos encontrado un empaquetado para nuestro item
         
-        if(depth < 3){                                                                                                          //SOLUCION ALTERNATIVA SERIA COMPROVAR QUE NI WIDTH NI HEIGHT NI DEPTH SON MENORES QUE 3
-            
+        if(depth < 3){  //Si la profundidad es menor que 3 cm entonces intentaremos asignarle un embalaje (Envelope)                                                                                                        
             for(Package p: Lp){
                 
                 if(p instanceof Envelope){
                     
-                    if(((Envelope) p).isSuitable(size)){    
+                    if(((Envelope) p).isSuitable(size)){    //En el caso de que quepa en el embalaje en el que nos encontramos se lo asignamos al item
                           
                         pack = p;
                             
@@ -103,16 +102,16 @@ public abstract class Item{
                 }
             }
             if(solved){
-                System.out.println("Envelope " + ((Envelope)pack).getName() + " assigned to item " + name + ".");
+                System.out.println("Envelope " + ((Envelope)pack).getName() + " assigned to item " + name + "."); //Si hemos encontrado el empaquetado para el item lo imprimimos por pantalla
             }
             
-        }if(!solved){
+        }if(!solved){ //Si no hemos encontrado un empaquetado aun intentamos asignarle una caja como empaquetado
             
             for(Package p: Lp){
                 
                 if(p instanceof Box){
                     
-                    if(((Box) p).isSuitable(size)){    
+                    if(((Box) p).isSuitable(size)){   //Si el item cabe en la caja se la asignamos 
                         
                         Box box = (Box)p;
                         double boxwidth = box.getWidth();
@@ -129,16 +128,16 @@ public abstract class Item{
                     }  
                 }
             }
-            if(solved){
+            if(solved){ //Si hemos encontrado una caja en la que el item cabe lo imprimimos por pantalla
                 System.out.println("Box " + "with size {"+ ((Box)pack).getWidth() + ", " + ((Box)pack).getHeight() + ", " + ((Box)pack).getDepth() + "} assigned to item " + name + ".");
             
-            }else{
+            }else{ //En el caso de que no hemos encontrado ningún empaquetado para nuestro item lo imprimimos por pantalla
                 System.out.println("No package available for item "+ name + ".");
             }
         }
     }
     
-    public abstract double getPrice();
+    public abstract double getPrice(); //Métodos abtractos que redefinen en UnitItem, WeightedItem y AuctionItem.
     
     public abstract double calculateProfit();
 }
