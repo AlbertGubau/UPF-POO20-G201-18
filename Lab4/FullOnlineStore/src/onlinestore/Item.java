@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  * @author oriol
  */
-public abstract class Item implements Taxable{ //Declaramos Item como una clase abstracta porque contiene 2 métodos abstractos
+public abstract class Item implements Taxable, Comparable{ //Declaramos Item como una clase abstracta porque contiene 2 métodos abstractos
     
     private String name;
     private String type;
@@ -167,6 +167,11 @@ public abstract class Item implements Taxable{ //Declaramos Item como una clase 
     
     @Override
     public double sumTotalTax( Taxable t ){
+        return 0;
+    }
+    
+    @Override
+    public int compareTo(Object o){
         return 0;
     }
 }

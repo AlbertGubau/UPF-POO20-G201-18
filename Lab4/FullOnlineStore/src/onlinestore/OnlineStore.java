@@ -17,7 +17,8 @@ public class OnlineStore {
     public static LinkedList< Item > itemsSold;
     public static LinkedList< User > users;
     public static LinkedList< Package > packages;
-    //public static LinkedList<Sale> sales;
+    public static LinkedList<Sale> sales;
+    public static Date currentDate;
     public static double totalPrice;
     public static double totalProfit;
     
@@ -27,7 +28,8 @@ public class OnlineStore {
         itemsSold = new LinkedList< Item >();
         users = new LinkedList< User >();
         packages = new LinkedList< Package >();
-        //sales = new LinkedList< Sale >();
+        sales = new LinkedList< Sale >();
+        currentDate = new Date(2,11,2020);
         totalPrice = 0.0;
         totalProfit = 0.0; 
     }
@@ -97,6 +99,10 @@ public class OnlineStore {
             }
             
             seller.sell(item); //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM
+            
+            
+            //Crear y añadir venta!!!!!!!!!
+            
             
             totalProfit += item.calculateProfit(); //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM
             

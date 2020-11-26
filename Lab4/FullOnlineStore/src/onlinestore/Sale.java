@@ -10,7 +10,7 @@ package onlinestore;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class Sale {
+public class Sale implements Comparable{
     
     private Item item;
     private Buyer buyer;
@@ -55,5 +55,10 @@ public class Sale {
    
     public void setShippingDate(Date d){
         shippingDate = d;
+    }
+    
+    @Override
+    public int compareTo(Object o){ //REDEFINIRLA
+        return 0;
     }
 }
