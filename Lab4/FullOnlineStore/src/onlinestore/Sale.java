@@ -58,7 +58,13 @@ public class Sale implements Comparable{
     }
     
     @Override
-    public int compareTo(Object o){ //REDEFINIRLA
-        return 0;
+    public int compareTo(Object o){ 
+        
+        if(o instanceof Sale){
+            
+            Sale s = (Sale)o;
+            return s.getDate().compareTo(getDate());
+        }
+        return 5;
     }
 }

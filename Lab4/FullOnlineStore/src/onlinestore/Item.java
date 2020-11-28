@@ -172,6 +172,37 @@ public abstract class Item implements Taxable, Comparable{ //Declaramos Item com
     
     @Override
     public int compareTo(Object o){
-        return 0;
+        
+        if(o instanceof UnitItem){
+            
+            UnitItem i = (UnitItem)o;
+            
+            if(i.getPrice() - getPrice() > 0){
+                return -1;
+            }
+            if(i.getPrice() - getPrice() == 0){
+                return 0;
+            }
+            if(i.getPrice() - getPrice() < 0){
+                return 1;
+            }
+        }
+        
+        if(o instanceof WeightedItem){
+            
+            WeightedItem i = (WeightedItem)o;
+            
+            if(i.getPrice() - getPrice() > 0){
+                return -1;
+            }
+            if(i.getPrice() - getPrice() == 0){
+                return 0;
+            }
+            if(i.getPrice() - getPrice() < 0){
+                return 1;
+            }
+        }
+        return 5;
     }
 }
+

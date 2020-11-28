@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package onlinestore;
-import java.util.LinkedList;
+import java.util.*;
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
@@ -29,9 +29,82 @@ public class OnlineStore {
         users = new LinkedList< User >();
         packages = new LinkedList< Package >();
         sales = new LinkedList< Sale >();
-        currentDate = new Date(2,11,2020);
+        currentDate = new Date(29,10,2020);
         totalPrice = 0.0;
         totalProfit = 0.0; 
+    }
+    
+    public static void sell(Item item, Buyer b, Seller s){
+            
+        b.buy(item);  //HACEMOS QUE COMPRE EL ITEM   
+        
+        totalPrice += item.getPrice();     //INCREMENTAMOS EL PRECIO TOTAL Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM  
+        
+        if(item instanceof UnitItem){ 
+            ((UnitItem)item).sell(0);
+            
+        }else if(item instanceof WeightedItem){
+            ((WeightedItem)item).sell(0.0);
+        }
+         
+        s.sell(item); //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM 
+        
+        int saleday = currentDate.getDay();
+        int salemonth = currentDate.getMonth();
+        int saleyear = currentDate.getYear();
+        
+        Date saledate = new Date(saleday, salemonth, saleyear);
+        Date shippingdate = saledate;
+        Sale sale = new Sale(item, b, saledate, shippingdate, item.getPackage());
+        
+        sales.add(sale);
+            
+        totalProfit += item.calculateProfit(); //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM 
+        
+        itemsSold.add(item); //AÑADIMOS EL ITEM A LA LISTA DE ITEMS VENDIDOS
+        
+        itemsAvailable.remove(item); //BORRAMOS EL ITEM DE LA LISTA DE ITEMS DISPONIBLES      
+    }
+    
+    public static void dayPass(){
+        
+        int currentDay = currentDate.getDay();
+        int currentMonth = currentDate.getMonth();
+        int currentYear = currentDate.getYear();
+       
+        currentDay++;
+        
+        if(currentDay==32){
+            
+            currentDay = 1;
+            currentMonth++;
+            
+            if(currentMonth == 13){
+                
+                currentMonth = 1;
+                currentYear++;
+            }
+        }
+        
+        currentDate.setDay(currentDay);
+        currentDate.setMonth(currentMonth);
+        currentDate.setYear(currentYear);
+        
+        for(Item i: itemsAvailable){
+            
+            if(i instanceof AuctionItem){
+                
+                if(((AuctionItem)i).getDeadline().compareTo(currentDate) == 0){ //Si LA FECHA EN LA QUE ESTAMOS ES UNA DEADLINE VENDEMOS EL ARTICULO
+                    
+                    for(User u:users){
+                        
+                        if(u instanceof Seller){
+                            sell(i, ((AuctionItem)i).getBuyer(), (Seller)u);
+                        }
+                    }  
+                }
+            }
+        }
     }
     
     /**
@@ -80,39 +153,32 @@ public class OnlineStore {
             seller.addAvailableItem(itemsAvailable.get(i));         
         }
         
+        System.out.println("\nSORTED LIST OF ITEMS IN INCREASING PRICE ORDER:\n");
+        
+        Collections.sort(itemsAvailable);
+        
+        for(Item i: itemsAvailable){
+            System.out.println("We have the item " + i.getName() + " with price: " + i.getPrice());
+        }
+        
+        dayPass(); //30/10/2020
+        dayPass(); //31/10/2020
+        dayPass(); //1/11/2020
+        
         System.out.println("\nUSERS SHOPPING:\n");
         
         for(int i = 0; i<itemsAvailable.size(); i++){
             
             Item item = itemsAvailable.get(i); //TOMAMOS UN ITEM Y UN COMPRADOR
-            Buyer b = (Buyer)users.get(i);
+            Buyer buyer = (Buyer)users.get(i);
             
-            b.buy(item);      //HACEMOS QUE COMPRE EL ITEM
-            
-            totalPrice += item.getPrice();     //INCREMENTAMOS EL PRECIO TOTAL Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM 
-            
-            if(item instanceof UnitItem){ 
-                ((UnitItem)item).sell(0);
-            
-            }else if(item instanceof WeightedItem){
-                ((WeightedItem)item).sell(0.0);
-            }
-            
-            seller.sell(item); //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM
-            
-            
-            //Crear y añadir venta!!!!!!!!!
-            
-            
-            totalProfit += item.calculateProfit(); //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM
-            
-            itemsSold.add(item); //AÑADIMOS EL ITEM A LA LISTA DE ITEMS VENDIDOS
+            sell(item, buyer, seller); //APLICAMOS EL MÉTODO SELL DE LA ONLINE STORE
+            dayPass(); //2/11/2020
+            i--; //AHORA EL ITEM BORRADO HA PUESTO EL SIGUIENTE ITEM EL PRIMERO POR TANTO VAMOS PARA ATRÁS
         }
         
-        for(int i=0; i<itemsAvailable.size();i++){ //BORRAMOS LOS ITEMS VENDIDOS DE LA LISTA DE ITEMS DISPONIBLES
-            
-            itemsAvailable.remove(i);   
-        }
+        dayPass(); //5/11/2020
+        dayPass(); //6/11/2020
         
         System.out.println("\nCOMIENZO DE LA PUJA:\n");
         
@@ -135,34 +201,53 @@ public class OnlineStore {
         
         System.out.println("\nSTART OF THE AUCTION:\n"); 
         
-        if(!auctionitem.frozen(new Date(6,11,2020))){                     //Simulamos las pujas de los usuarios en diferentes fechas comprobando que estamos en una fecha en la que se puede pujar con el método frozen
+        if(!auctionitem.frozen(currentDate)){                     //Simulamos las pujas de los usuarios en diferentes fechas comprobando que estamos en una fecha en la que se puede pujar con el método frozen
             auctionitem.makeBid((Buyer)users.get(1), 10500.0);
         }
         
-        if(!auctionitem.frozen(new Date(7,11,2020))){
+        dayPass(); //7/11/2020
+        
+        if(!auctionitem.frozen(currentDate)){
             auctionitem.makeBid((Buyer)users.get(0), 11000.0);
         }
         
-        if(!auctionitem.frozen(new Date(10,11,2020))){
+        dayPass(); //8/11/2020
+        dayPass(); //9/11/2020
+        dayPass(); //10/11/2020
+        
+        if(!auctionitem.frozen(currentDate)){
             auctionitem.makeBid((Buyer)users.get(2), 12000.0);
         }
         
-        admin.manageAuction(auctionitem, new Date(10,11,2020)); //Hacemos que el administrador maneje la puja el día en el que finaliza
-        if(!auctionitem.frozen(new Date(10,11,2020))){
+        admin.manageAuction(auctionitem, currentDate); //Hacemos que el administrador maneje la puja el día en el que finaliza
+        
+        if(!auctionitem.frozen(currentDate)){
             auctionitem.makeBid((Buyer)users.get(1), 13000.0);
         }
         
         admin.expel(users.get(0)); //Hacemos que el administrador expulse a un usuario
         users.remove(users.get(0)); //Quitamos al usuario expulsado de la lista de usuarios de la tienda online
         
-        Buyer buyer = auctionitem.getBuyer(); //Tomamos el comprador final del item de subasta
+        dayPass();//11/11/2020
+        
+        /*Buyer buyer = auctionitem.getBuyer(); //Tomamos el comprador final del item de subasta
         buyer.buy(auctionitem); //Aplicamos buy y sell por parte del Buyer y el Seller al item de subasta
         seller.sell(auctionitem);
         
         totalPrice += auctionitem.getPrice(); //Aumentamos el precio total con el precio del item para subasta
-        totalProfit += auctionitem.calculateProfit(); //Aumentamos el beneficio total con el beneficio obtenido por el item
+        totalProfit += auctionitem.calculateProfit(); //Aumentamos el beneficio total con el beneficio obtenido por el item*/
         
         System.out.println("Total price: " + totalPrice); //Imprimimos por pantalla el precio y el beneficio total.
         System.out.println("Total profit: " + totalProfit);
+        
+        System.out.println("\nSALES SORTED BY DATE STARTING BY THE LAST ITEM SOLD:\n");
+        
+        Collections.sort(sales);
+        
+        for(Sale s: sales){
+            Date date = s.getDate();
+            System.out.println("We sold the item " + s.getItem().getName() + " the day " + date.getDay() +"/"+ date.getMonth() +"/"+ date.getYear() + ".");
+        }
+        System.out.println("\n");
     } 
 }

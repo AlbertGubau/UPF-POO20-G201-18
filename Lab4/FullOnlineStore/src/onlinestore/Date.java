@@ -34,6 +34,17 @@ public class Date implements Comparable{
         return year;
     }
     
+    public void setDay(int d){
+       day = d; 
+    }
+    
+    public void setMonth(int m){
+        month = m;
+    }
+    public void setYear(int y){
+        year = y;
+    }
+    
     @Override
     public int compareTo(Object o){
         

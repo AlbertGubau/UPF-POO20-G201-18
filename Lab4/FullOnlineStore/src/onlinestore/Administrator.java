@@ -36,7 +36,8 @@ public class Administrator extends User{ //Administrator es una clase hija de Us
         System.out.println("The administrator "+ getName() + " is going to show the auction items: "); //Se imprime el nombre del administrador que está a cargo de la subasta
         
         for (Item i: item){
-            System.out.println(i.getName() + " has current price of " + i.getPrice()+ " and deadline " + ((AuctionItem)i).getDeadline() + "."); //Se imprimen los items disponibles para subasta y su Deadline.
+            Date date = ((AuctionItem)i).getDeadline();
+            System.out.println(i.getName() + " has current price of " + i.getPrice()+ " and deadline " + date.getDay()+"/"+ date.getMonth()+"/"+ date.getYear() + "."); //Se imprimen los items disponibles para subasta y su Deadline.
         }
     }
 }
