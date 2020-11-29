@@ -143,32 +143,22 @@ public abstract class Item implements Taxable, Comparable{ //Declaramos Item com
     
     
     @Override
-    public double getPrice(){
-        return 0;
-    }
+    public abstract double getPrice();
     
     
     @Override
-    public double calculateProfit(){
-        return 0;
-    }
+    public abstract double calculateProfit();
     
     
     @Override
-    public double getPriceOnlyTax(){
-        return 0;
-    }
+    public abstract double getPriceOnlyTax();
     
     
     @Override
-    public double getPricePlusTax(){
-        return 0;
-    }
+    public abstract double getPricePlusTax();
     
     @Override
-    public double sumTotalTax( Taxable t ){
-        return 0;
-    }
+    public abstract double sumTotalTax( Taxable t );
     
     @Override
     public int compareTo(Object o){

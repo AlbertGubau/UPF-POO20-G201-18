@@ -12,10 +12,12 @@ package onlinestore;
 public class Box extends Package{ //Box es una clase hija de Package por lo tanto usamos la keyword extends
     
     private double depth;
+    private double price;
     
-    public Box(int w, int h, int d){ //Método constructor de la clase Box en el que usamos super para llamar al constructor de la clase padre
+    public Box(int w, int h, int d, double p){ //Método constructor de la clase Box en el que usamos super para llamar al constructor de la clase padre
         super(w,h);
         depth = d;
+        price = p;
     }
     
     
@@ -23,6 +25,10 @@ public class Box extends Package{ //Box es una clase hija de Package por lo tant
         return depth;
     }
     
+    @Override
+    public double getPrice(){ //LO HE AÑADIDO YO
+        return price;
+    }
     
     public void setDepth(double d){ //setter de la profundidad de la caja                                          
         depth = d;
@@ -56,5 +62,26 @@ public class Box extends Package{ //Box es una clase hija de Package por lo tant
             return true;
         }
         return false;
+    }
+    
+    @Override
+    public double getPriceOnlyTax(){
+        return getPrice()*iva;
+    }
+    
+    
+    @Override
+    public double getPricePlusTax(){
+        return getPrice() + getPriceOnlyTax();
+    }
+    
+    
+    @Override
+    public double sumTotalTax( Taxable t ){
+        return 0;
+    }
+    
+    public double calculateProfit(){
+        return 0;
     }
 }

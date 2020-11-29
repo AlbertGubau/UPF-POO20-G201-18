@@ -127,15 +127,15 @@ public class OnlineStore {
         users.add(new Administrator("Albert Gubau", "Albert", "contraseña"));
         
         //AÑADIMOS LOS PAQUETES DISPONIBLES
-        packages.add(new Envelope(29, 42, "A3"));
-        packages.add(new Envelope(21, 29, "A4"));
-        packages.add(new Envelope(21, 11, "A5"));
-        packages.add(new Box(10, 10, 10));
-        packages.add(new Box(10, 10, 100));
-        packages.add(new Box(10, 100, 100));
-        packages.add(new Box(100, 100, 100));
-        packages.add(new Box(100, 150, 300));
-        packages.add(new Box(200, 300, 500));
+        packages.add(new Envelope(29, 42, "A3", 0.03));
+        packages.add(new Envelope(21, 29, "A4", 0.02));
+        packages.add(new Envelope(21, 11, "A5", 0.01));
+        packages.add(new Box(10, 10, 10, 0.05));
+        packages.add(new Box(10, 10, 100, 0.07));
+        packages.add(new Box(10, 100, 100, 0.08));
+        packages.add(new Box(100, 100, 100, 0.09));
+        packages.add(new Box(100, 150, 300, 0.10));
+        packages.add(new Box(200, 300, 500, 0.15));
         
         
         System.out.println("PACKAGE ASSIGNMENT FOR THE ITEMS AVAILABLE:\n");

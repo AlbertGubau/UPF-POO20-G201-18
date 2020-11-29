@@ -48,4 +48,21 @@ public class UnitItem extends Item{ //Unititem es una clase hija de la clase Ite
         
         return unitPrice*quantity;
     }
+    
+    @Override
+    public double getPriceOnlyTax(){
+        return getPrice()*iva;
+    }
+    
+    
+    @Override
+    public double getPricePlusTax(){
+        return getPrice() + getPriceOnlyTax();
+    }
+    
+    
+    @Override
+    public double sumTotalTax( Taxable t ){
+        return 0;
+    }
 }

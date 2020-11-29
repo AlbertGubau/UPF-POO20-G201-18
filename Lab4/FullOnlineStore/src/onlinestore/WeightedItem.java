@@ -49,4 +49,21 @@ public class WeightedItem extends Item{ //WeightedItem es una clase hija de la c
         
         return pricePerWeight*weight;
     }
+    
+    @Override
+    public double getPriceOnlyTax(){
+        return getPrice()*iva;
+    }
+    
+    
+    @Override
+    public double getPricePlusTax(){
+        return getPrice() + getPriceOnlyTax();
+    }
+    
+    
+    @Override
+    public double sumTotalTax(Taxable t){
+        return 0;
+    }
 }

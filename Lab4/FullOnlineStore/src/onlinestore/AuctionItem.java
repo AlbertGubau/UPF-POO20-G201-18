@@ -69,4 +69,21 @@ public class AuctionItem extends Item{ //AcutionItem es una clase hija de Item, 
         
         return deadline;
     }
+    
+    @Override
+    public double getPriceOnlyTax(){
+        return getPrice()*iva;
+    }
+    
+    
+    @Override
+    public double getPricePlusTax(){
+        return getPrice() + getPriceOnlyTax();
+    }
+    
+    
+    @Override
+    public double sumTotalTax( Taxable t ){
+        return 0;
+    }
 }
