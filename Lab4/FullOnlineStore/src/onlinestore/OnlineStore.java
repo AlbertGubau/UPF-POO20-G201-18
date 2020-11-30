@@ -13,7 +13,7 @@ import java.util.*;
 
 public class OnlineStore {
     
-    public static LinkedList< Item > itemsAvailable; //Declaramos las listas de items, usuarios y empaquetados junto a las variables totalPrice y totalProfit
+    public static LinkedList< Item > itemsAvailable;                    //Declaramos las listas de items, usuarios y empaquetados junto a las variables totalPrice y totalProfit
     public static LinkedList< Item > itemsSold;
     public static LinkedList< User > users;
     public static LinkedList< Package > packages;
@@ -22,7 +22,7 @@ public class OnlineStore {
     public static double totalPrice;
     public static double totalProfit;
     
-    public static void init(){ //Método que inicializa las listas y las variables
+    public static void init(){                                          //Método que inicializa las listas y las variables
         
         itemsAvailable = new LinkedList< Item >();
         itemsSold = new LinkedList< Item >();
@@ -36,9 +36,9 @@ public class OnlineStore {
     
     public static void sell(Item item, Buyer b, Seller s){
             
-        b.buy(item);  //HACEMOS QUE COMPRE EL ITEM   
+        b.buy(item);                                                                //HACEMOS QUE COMPRE EL ITEM   
         
-        totalPrice += item.getPrice();     //INCREMENTAMOS EL PRECIO TOTAL Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM  
+        totalPrice += item.getPrice();                                              //INCREMENTAMOS EL PRECIO TOTAL Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM  
         
         if(item instanceof UnitItem){ 
             ((UnitItem)item).sell(0);
@@ -47,7 +47,7 @@ public class OnlineStore {
             ((WeightedItem)item).sell(0.0);
         }
          
-        s.sell(item); //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM 
+        s.sell(item);                                                               //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM 
         
         int saleday = currentDate.getDay();
         int salemonth = currentDate.getMonth();
@@ -59,11 +59,11 @@ public class OnlineStore {
         
         sales.add(sale);
             
-        totalProfit += item.calculateProfit(); //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM 
+        totalProfit += item.calculateProfit();                                      //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM 
         
-        itemsSold.add(item); //AÑADIMOS EL ITEM A LA LISTA DE ITEMS VENDIDOS
+        itemsSold.add(item);                                                        //AÑADIMOS EL ITEM A LA LISTA DE ITEMS VENDIDOS
         
-        itemsAvailable.remove(item); //BORRAMOS EL ITEM DE LA LISTA DE ITEMS DISPONIBLES      
+        itemsAvailable.remove(item);                                                //BORRAMOS EL ITEM DE LA LISTA DE ITEMS DISPONIBLES      
     }
     
     public static void dayPass(){
@@ -94,7 +94,7 @@ public class OnlineStore {
             
             if(i instanceof AuctionItem){
                 
-                if(((AuctionItem)i).getDeadline().compareTo(currentDate) == 0){ //Si LA FECHA EN LA QUE ESTAMOS ES UNA DEADLINE VENDEMOS EL ARTICULO
+                if(((AuctionItem)i).getDeadline().compareTo(currentDate) == 0){     //Si LA FECHA EN LA QUE ESTAMOS ES UNA DEADLINE VENDEMOS EL ARTICULO
                     
                     for(User u:users){
                         

@@ -25,19 +25,15 @@ public class Date implements Comparable{
     public int getDay(){
         return day;
     }
-    
     public int getMonth(){
         return month;
     }
-    
     public int getYear(){
         return year;
     }
-    
     public void setDay(int d){
        day = d; 
     }
-    
     public void setMonth(int m){
         month = m;
     }

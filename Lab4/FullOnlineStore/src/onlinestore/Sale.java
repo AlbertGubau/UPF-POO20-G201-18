@@ -27,31 +27,25 @@ public class Sale implements Comparable{
         pack = p;
     }
    
-   
     public Item getItem(){
         return item;
     }
-   
-   
+  
     public Buyer getBuyer(){
         return buyer;
     }
-   
    
     public Date getDate(){
         return saleDate;
     }
    
-   
     public Date getShippingDate(){
         return shippingDate;
     }
    
-   
     public void setSaleDate(Date d){
         saleDate = d;
     }
-   
    
     public void setShippingDate(Date d){
         shippingDate = d;
