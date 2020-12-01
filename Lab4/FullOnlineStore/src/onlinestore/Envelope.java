@@ -13,19 +13,32 @@ public class Envelope extends Package { //Envelope es una clase hija de Package 
     
     private String name;
     private double price;
+    private double cost;
     
-    public Envelope(int w, int h, String n, double p){ //Constructor de la clase Envelope que llama a super para utilizar el constructor de la clase padre
+    public Envelope(int w, int h, String n, double c, double p){ //Constructor de la clase Envelope que llama a super para utilizar el constructor de la clase padre
         super(w, h);
         name = n;
+        price = p;
+        cost = c;
     }
     
     
     public String getName(){ //getter del atributo name                                                                                               
         return name;
     }
-   
+    
+    @Override
     public double getPrice(){
         return price;
+    }
+    
+    public double getCost(){
+        return cost;
+    }
+    
+    @Override
+    public double calculateProfit(){
+        return getPrice()-getCost();
     }
     
     public void setName(String n){ //setter del atributo name                                                                                         
@@ -52,10 +65,7 @@ public class Envelope extends Package { //Envelope es una clase hija de Package 
     
     @Override
     public double sumTotalTax( Taxable t ){
-        return 0;
+        return t.getPriceOnlyTax();
     }
     
-    public double calculateProfit(){
-        return 0;
-    }
 }

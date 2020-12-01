@@ -9,7 +9,7 @@ package onlinestore;
  *
  * @author oriol
  */
-public class Package implements Taxable{
+public abstract class Package implements Taxable{
     
     private double width;
     private double height;
@@ -40,31 +40,22 @@ public class Package implements Taxable{
     }
     
     @Override
-    public double getPrice(){
-        return 0;
-    }
+    public abstract double getPrice();
     
     
     @Override
-    public double calculateProfit(){
-        return 0;
-    }
+    public abstract double calculateProfit();
     
     
     @Override
-    public double getPriceOnlyTax(){
-        return 0;
-    }
+    public abstract double getPriceOnlyTax();
+        
     
     
     @Override
-    public double getPricePlusTax(){
-        return 0;
-    }
+    public abstract double getPricePlusTax();
     
     @Override
-    public double sumTotalTax( Taxable t ){
-        return 0;
-    }
+    public abstract double sumTotalTax( Taxable t );
     
 }
