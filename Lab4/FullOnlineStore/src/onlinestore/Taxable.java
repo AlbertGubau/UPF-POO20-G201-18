@@ -20,6 +20,4 @@ public interface Taxable {
     public double getPriceOnlyTax();
     
     public double getPricePlusTax();
-    
-    public double sumTotalTax( Taxable t );
 }

@@ -32,10 +32,19 @@ public class Box extends Package{ //Box es una clase hija de Package por lo tant
         return price;
     }
     
+    public void setPrice(double p){
+        price = p;
+    }
+    
     public double getCost(){ //LO HE AÑADIDO YO
         return cost;
     }
     
+    public void setCost(double c){
+        cost = c;
+    }
+    
+    @Override
     public double calculateProfit(){
         return getPrice()-getCost();
     }
@@ -83,11 +92,5 @@ public class Box extends Package{ //Box es una clase hija de Package por lo tant
     @Override
     public double getPricePlusTax(){
         return getPrice() + getPriceOnlyTax();
-    }
-    
-    
-    @Override
-    public double sumTotalTax( Taxable t ){
-        return 0;
     }
 }

@@ -39,7 +39,7 @@ public class UnitItem extends Item{ //Unititem es una clase hija de la clase Ite
     @Override
         public double calculateProfit(){ //método que nos devuelve el beneficio del item unitario
         
-        return (quantity-quantityRemaining)*(unitPrice-getCost());
+        return (quantity-quantityRemaining)*(unitPrice-getCost())- getPackage().getPricePlusTax();
     }
     
     public double sell(int q){ //método para vender el item unitario
@@ -58,11 +58,5 @@ public class UnitItem extends Item{ //Unititem es una clase hija de la clase Ite
     @Override
     public double getPricePlusTax(){
         return getPrice() + getPriceOnlyTax();
-    }
-    
-    
-    @Override
-    public double sumTotalTax( Taxable t ){
-        return 0;
     }
 }

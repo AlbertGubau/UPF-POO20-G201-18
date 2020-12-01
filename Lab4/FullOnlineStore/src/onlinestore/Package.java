@@ -51,11 +51,6 @@ public abstract class Package implements Taxable{
     public abstract double getPriceOnlyTax();
         
     
-    
     @Override
-    public abstract double getPricePlusTax();
-    
-    @Override
-    public abstract double sumTotalTax( Taxable t );
-    
+    public abstract double getPricePlusTax(); 
 }

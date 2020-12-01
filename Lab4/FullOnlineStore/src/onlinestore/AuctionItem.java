@@ -38,7 +38,7 @@ public class AuctionItem extends Item{ //AcutionItem es una clase hija de Item, 
             
             return fee;
         }
-        return fee + getPrice()*percent; //en el caso de que no tenga comprador se devuelve el fee y en el caso de que tenga comprador se devuelve el fee más el precio por el porcentajec
+        return fee + getPrice()*percent - getPackage().getPricePlusTax(); //en el caso de que no tenga comprador se devuelve el fee y en el caso de que tenga comprador se devuelve el fee más el precio por el porcentajec
     }
     
     public void makeBid(Buyer b, double p){ //Método que permite realizar una puja, si la puja es mayor que el precio actual asignamos un nuevo comprador, un nuevo precio y lo imprimimos por pantalla
@@ -79,11 +79,5 @@ public class AuctionItem extends Item{ //AcutionItem es una clase hija de Item, 
     @Override
     public double getPricePlusTax(){
         return getPrice() + getPriceOnlyTax();
-    }
-    
-    
-    @Override
-    public double sumTotalTax( Taxable t ){
-        return 0;
     }
 }

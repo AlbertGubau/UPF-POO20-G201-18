@@ -97,12 +97,14 @@ public abstract class Item implements Taxable, Comparable{ //Declaramos Item com
                         ((Envelope)pack).setName(((Envelope) p).getName());
                         ((Envelope)pack).setWidth(((Envelope) p).getWidth());
                         ((Envelope)pack).setHeight(((Envelope) p).getHeight());
+                        ((Envelope)pack).setPrice(((Envelope) p).getPrice());
+                        ((Envelope)pack).setCost(((Envelope) p).getCost());
                         solved = true;  
                     }  
                 }
             }
             if(solved){
-                System.out.println("Envelope " + ((Envelope)pack).getName() + " assigned to item " + name + "."); //Si hemos encontrado el empaquetado para el item lo imprimimos por pantalla
+                System.out.println("Envelope " + ((Envelope)pack).getName() + " with price " + ((Envelope)pack).getPricePlusTax() + " assigned to item " + name + "."); //Si hemos encontrado el empaquetado para el item lo imprimimos por pantalla
             }
             
         }if(!solved){ //Si no hemos encontrado un empaquetado aun intentamos asignarle una caja como empaquetado
@@ -117,19 +119,23 @@ public abstract class Item implements Taxable, Comparable{ //Declaramos Item com
                         double boxwidth = box.getWidth();
                         double boxheight = box.getHeight();
                         double boxdepth = box.getDepth();
+                        double boxprice = box.getPrice();
+                        double boxcost = box.getCost();
                         
                         pack = p;
                             
                         ((Box)pack).setWidth(boxwidth);
                         ((Box)pack).setHeight(boxheight);
                         ((Box)pack).setDepth(boxdepth);
+                        ((Box)pack).setPrice(boxprice);
+                        ((Box)pack).setCost(boxcost);
                         solved = true;
                         break;
                     }  
                 }
             }
             if(solved){ //Si hemos encontrado una caja en la que el item cabe lo imprimimos por pantalla
-                System.out.println("Box " + "with size {"+ ((Box)pack).getWidth() + ", " + ((Box)pack).getHeight() + ", " + ((Box)pack).getDepth() + "} assigned to item " + name + ".");
+                System.out.println("Box " + "with size {"+ ((Box)pack).getWidth() + ", " + ((Box)pack).getHeight() + ", " + ((Box)pack).getDepth() + "} and price " + ((Box)pack).getPricePlusTax() + " assigned to item " + name + ".");
             
             }else{ //En el caso de que no hemos encontrado ningún empaquetado para nuestro item lo imprimimos por pantalla
                 System.out.println("No package available for item "+ name + ".");
@@ -156,9 +162,7 @@ public abstract class Item implements Taxable, Comparable{ //Declaramos Item com
     
     @Override
     public abstract double getPricePlusTax();
-    
-    @Override
-    public abstract double sumTotalTax( Taxable t );
+   
     
     @Override
     public int compareTo(Object o){

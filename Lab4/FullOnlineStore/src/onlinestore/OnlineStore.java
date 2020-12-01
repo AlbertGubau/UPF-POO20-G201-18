@@ -20,6 +20,7 @@ public class OnlineStore {
     public static LinkedList<Sale> sales;
     public static Date currentDate;
     public static double totalPrice;
+    public static double totalTaxes;
     public static double totalProfit;
     
     public static void init(){                                          //Método que inicializa las listas y las variables
@@ -39,6 +40,8 @@ public class OnlineStore {
         b.buy(item);                                                                //HACEMOS QUE COMPRE EL ITEM   
         
         totalPrice += item.getPrice();                                              //INCREMENTAMOS EL PRECIO TOTAL Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM  
+        totalTaxes += item.getPriceOnlyTax();
+        
         
         if(item instanceof UnitItem){ 
             ((UnitItem)item).sell(0);
@@ -153,12 +156,18 @@ public class OnlineStore {
             seller.addAvailableItem(itemsAvailable.get(i));         
         }
         
-        System.out.println("\nSORTED LIST OF ITEMS IN INCREASING PRICE ORDER:\n");
+        System.out.println("\nSORTED LIST OF ITEMS IN INCREASING PRICE ORDER WITHOUT IVA:\n");
         
         Collections.sort(itemsAvailable);
         
         for(Item i: itemsAvailable){
             System.out.println("We have the item " + i.getName() + " with price: " + i.getPrice());
+        }
+        
+        System.out.println("\nSORTED LIST OF ITEMS IN INCREASING PRICE ORDER WITH IVA:\n");
+        
+        for(Item i: itemsAvailable){
+            System.out.println("We have the item " + i.getName() + " with price: " + i.getPricePlusTax());
         }
         
         dayPass(); //30/10/2020
@@ -237,7 +246,8 @@ public class OnlineStore {
         totalPrice += auctionitem.getPrice(); //Aumentamos el precio total con el precio del item para subasta
         totalProfit += auctionitem.calculateProfit(); //Aumentamos el beneficio total con el beneficio obtenido por el item*/
         
-        System.out.println("Total price: " + totalPrice); //Imprimimos por pantalla el precio y el beneficio total.
+        System.out.println("Total price without IVA: " + totalPrice); //Imprimimos por pantalla el precio y el beneficio total.
+        System.out.println("Total taxes: " + totalTaxes);
         System.out.println("Total profit: " + totalProfit);
         
         System.out.println("\nSALES SORTED BY DATE STARTING BY THE LAST ITEM SOLD:\n");

@@ -37,7 +37,7 @@ public class Administrator extends User{ //Administrator es una clase hija de Us
         
         for (Item i: item){
             Date date = ((AuctionItem)i).getDeadline();
-            System.out.println(i.getName() + " has current price of " + i.getPrice()+ " and deadline " + date.getDay()+"/"+ date.getMonth()+"/"+ date.getYear() + "."); //Se imprimen los items disponibles para subasta y su Deadline.
+            System.out.println(i.getName() + " has current price without IVA of " + i.getPrice()+ " and deadline " + date.getDay()+"/"+ date.getMonth()+"/"+ date.getYear() + "."); //Se imprimen los items disponibles para subasta y su Deadline.
         }
     }
 }

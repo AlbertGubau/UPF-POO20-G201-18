@@ -39,7 +39,7 @@ public class WeightedItem extends Item{ //WeightedItem es una clase hija de la c
     @Override
     public double calculateProfit(){ //Método que devuelve el beneficio del item de tipo pesado
         
-        return (weight-weightRemaining)*(pricePerWeight-getCost());
+        return (weight-weightRemaining)*(pricePerWeight-getCost()) -getPackage().getPricePlusTax();
     }
     
     
@@ -59,11 +59,5 @@ public class WeightedItem extends Item{ //WeightedItem es una clase hija de la c
     @Override
     public double getPricePlusTax(){
         return getPrice() + getPriceOnlyTax();
-    }
-    
-    
-    @Override
-    public double sumTotalTax(Taxable t){
-        return 0;
     }
 }

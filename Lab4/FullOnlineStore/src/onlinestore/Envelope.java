@@ -32,8 +32,16 @@ public class Envelope extends Package { //Envelope es una clase hija de Package 
         return price;
     }
     
+    public void setPrice(double p){
+        price = p;
+    }
+    
     public double getCost(){
         return cost;
+    }
+    
+    public void setCost(double c){
+        cost = c;
     }
     
     @Override
@@ -60,12 +68,5 @@ public class Envelope extends Package { //Envelope es una clase hija de Package 
     @Override
     public double getPricePlusTax(){
         return getPrice() + getPriceOnlyTax();
-    }
-    
-    
-    @Override
-    public double sumTotalTax( Taxable t ){
-        return t.getPriceOnlyTax();
-    }
-    
+    }  
 }

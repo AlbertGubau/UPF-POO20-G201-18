@@ -28,8 +28,8 @@ public class Buyer extends User{ //Buyer es una clase hija de User por lo tanto 
             
             boughtItems.add(i);
         
-            System.out.println( getName() +" is buying item "+ i.getName() + " for "+ i.getPrice() + " euros.");
-            System.out.println("Price "+ i.getPrice() +" is getting charged into account " + accountNumber + " from user "+ getName() + ".");
+            System.out.println( getName() +" is buying item "+ i.getName() + " for "+ i.getPrice() + " (price without IVA) and the price with IVA is  "+ i.getPricePlusTax() + " euros.");
+            System.out.println("Price "+ i.getPricePlusTax() +" is getting charged into account " + accountNumber + " from user "+ getName() + ".");
         }   
     }
     
