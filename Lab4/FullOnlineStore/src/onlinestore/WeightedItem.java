@@ -9,7 +9,7 @@ package onlinestore;
  *
  * @author oriol
  */
-public class WeightedItem extends Item{ //WeightedItem es una clase hija de la clase Item, por lo tanto, usamos la keyword extends
+public class WeightedItem extends Item{                                                                             //WeightedItem es una clase hija de la clase Item, por lo tanto, usamos la keyword extends
     
     private double pricePerWeight;
     private double weight;
@@ -30,14 +30,14 @@ public class WeightedItem extends Item{ //WeightedItem es una clase hija de la c
     }
     
     @Override
-    public double getPrice(){ //getter del precio del item de tipo pesado
+    public double getPrice(){                                                                                                //getter del precio del item de tipo pesado
         
         return pricePerWeight*weightRemaining;
     }
     
     
     @Override
-    public double calculateProfit(){ //Método que devuelve el beneficio del item de tipo pesado
+    public double calculateProfit(){                                                                                            //Método que devuelve el beneficio del item de tipo pesado
         
         return (weight-weightRemaining)*(pricePerWeight-getCost()) -getPackage().getPricePlusTax();
     }

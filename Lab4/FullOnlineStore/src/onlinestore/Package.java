@@ -14,7 +14,7 @@ public abstract class Package implements Taxable{
     private double width;
     private double height;
     
-    public Package(double w, double h){ //Método constructor de la clase Package
+    public Package(double w, double h){                                         //Método constructor de la clase Package
         width = w;
         height = h;
     }
@@ -24,16 +24,13 @@ public abstract class Package implements Taxable{
         return width;
     }
    
-    
     public double getHeight(){                        
         return height;
     }
     
-    
     public void setWidth(double w){                    
         width = w;
     }
-    
     
     public void setHeight(double h){                   
         height = h;

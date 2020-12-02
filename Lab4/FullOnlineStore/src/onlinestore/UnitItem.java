@@ -9,7 +9,7 @@ package onlinestore;
  *
  * @author oriol
  */
-public class UnitItem extends Item{ //Unititem es una clase hija de la clase Item, por lo tanto, usamos la keyword extends
+public class UnitItem extends Item{                                                                         //Unititem es una clase hija de la clase Item, por lo tanto, usamos la keyword extends
     
     private double unitPrice;
     private int quantity;
@@ -31,13 +31,13 @@ public class UnitItem extends Item{ //Unititem es una clase hija de la clase Ite
     }
     
     @Override
-    public double getPrice(){ //método que nos devuelve el precio del item unitario
+    public double getPrice(){                                                                               //método que nos devuelve el precio del item unitario
         
         return unitPrice*quantityRemaining; 
     }
     
     @Override
-        public double calculateProfit(){ //método que nos devuelve el beneficio del item unitario
+    public double calculateProfit(){                                                                                //método que nos devuelve el beneficio del item unitario
         
         return (quantity-quantityRemaining)*(unitPrice-getCost())- getPackage().getPricePlusTax();
     }

@@ -9,19 +9,18 @@ package onlinestore;
  *
  * @author oriol
  */
-public class Envelope extends Package { //Envelope es una clase hija de Package por lo tanto usamos el keyword extends
+public class Envelope extends Package {                                        //Envelope es una clase hija de Package por lo tanto usamos el keyword extends
     
     private String name;
     private double price;
     private double cost;
     
-    public Envelope(int w, int h, String n, double c, double p){ //Constructor de la clase Envelope que llama a super para utilizar el constructor de la clase padre
+    public Envelope(int w, int h, String n, double c, double p){                //Constructor de la clase Envelope que llama a super para utilizar el constructor de la clase padre
         super(w, h);
         name = n;
         price = p;
         cost = c;
     }
-    
     
     public String getName(){ //getter del atributo name                                                                                               
         return name;
@@ -52,8 +51,6 @@ public class Envelope extends Package { //Envelope es una clase hija de Package 
     public void setName(String n){ //setter del atributo name                                                                                         
         name = n;
     }
-    
-    
     public Boolean isSuitable(double[] size){  //Método que comprueba si un tamaño cabe en unas medidas determinadas de embalaje                                                                             
         
         return size[0] <= getWidth() && size[1] <= getHeight() || size[1] <= getWidth() && size[0] <= getHeight();

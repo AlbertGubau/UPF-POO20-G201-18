@@ -26,22 +26,21 @@ public class AuctionItem extends Item{ //AcutionItem es una clase hija de Item, 
     }
     
     @Override
-    public double getPrice(){ //getter del precio del item
-        
+    public double getPrice(){                                                                                   //getter del precio del item
         return currentPrice;     
     }
    
     @Override
-    public double calculateProfit(){ //método que calcula el beneficio del item
+    public double calculateProfit(){                                                                                                //método que calcula el beneficio del item
         
         if(bidder == null ){
             
             return fee;
         }
-        return fee + getPrice()*percent - getPackage().getPricePlusTax(); //en el caso de que no tenga comprador se devuelve el fee y en el caso de que tenga comprador se devuelve el fee más el precio por el porcentajec
+        return fee + getPrice()*percent - getPackage().getPricePlusTax();                                                                               //en el caso de que no tenga comprador se devuelve el fee y en el caso de que tenga comprador se devuelve el fee más el precio por el porcentajec
     }
     
-    public void makeBid(Buyer b, double p){ //Método que permite realizar una puja, si la puja es mayor que el precio actual asignamos un nuevo comprador, un nuevo precio y lo imprimimos por pantalla
+    public void makeBid(Buyer b, double p){                                                                                                                                             //Método que permite realizar una puja, si la puja es mayor que el precio actual asignamos un nuevo comprador, un nuevo precio y lo imprimimos por pantalla
         
         if(p > currentPrice){
             
@@ -52,7 +51,7 @@ public class AuctionItem extends Item{ //AcutionItem es una clase hija de Item, 
         }
     }
     
-    public Boolean frozen(Date d){ //Método que comprueba si una la subasta se ha terminado en la fecha que entra por parámetro
+    public Boolean frozen(Date d){                                                                                              //Método que comprueba si una la subasta se ha terminado en la fecha que entra por parámetro
         
         if(d.compareTo(deadline)<0){
             return false;
@@ -60,12 +59,12 @@ public class AuctionItem extends Item{ //AcutionItem es una clase hija de Item, 
         return true;
     }
     
-    public Buyer getBuyer(){ //getter del comprador
+    public Buyer getBuyer(){                                                            //getter del comprador
         
         return bidder;
     }
     
-    public Date getDeadline(){ //getter de la fecha de finalización de la subasta
+    public Date getDeadline(){                                                                          //getter de la fecha de finalización de la subasta
         
         return deadline;
     }

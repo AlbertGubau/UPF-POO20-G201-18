@@ -32,6 +32,7 @@ public class OnlineStore {
         sales = new LinkedList< Sale >();
         currentDate = new Date(29,10,2020);
         totalPrice = 0.0;
+        totalTaxes = 0.0;
         totalProfit = 0.0; 
     }
     
