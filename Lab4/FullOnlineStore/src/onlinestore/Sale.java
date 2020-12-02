@@ -10,7 +10,7 @@ package onlinestore;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class Sale implements Comparable{
+public class Sale implements Comparable{ //La clase Sale implementa la interfaz Comparable
     
     private Item item;
     private Buyer buyer;
@@ -18,7 +18,7 @@ public class Sale implements Comparable{
     private Date shippingDate;
     private Package pack;
    
-    public Sale(Item i, Buyer b, Date sd, Date shd, Package p){
+    public Sale(Item i, Buyer b, Date sd, Date shd, Package p){ //Método constructor de la clase Sale
         
         item = i;
         buyer = b;
@@ -27,7 +27,7 @@ public class Sale implements Comparable{
         pack = p;
     }
    
-    public Item getItem(){
+    public Item getItem(){ //getters y setters de la clase Sale
         return item;
     }
   
@@ -52,7 +52,7 @@ public class Sale implements Comparable{
     }
     
     @Override
-    public int compareTo(Object o){ 
+    public int compareTo(Object o){ //Redefinición del método compareTo de la interfaz Comparable que llamara al método compareTo de la clase Date.
         
         if(o instanceof Sale){
             

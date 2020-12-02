@@ -9,12 +9,12 @@ package onlinestore;
  *
  * @author oriol
  */
-public abstract class Package implements Taxable{
+public abstract class Package implements Taxable{ //Declaramos la clase Package como abstracta dado que tiene los métodos de Taxable como abstractos
     
     private double width;
     private double height;
     
-    public Package(double w, double h){                                         //Método constructor de la clase Package
+    public Package(double w, double h){ //Método constructor de la clase Package
         width = w;
         height = h;
     }
@@ -37,7 +37,7 @@ public abstract class Package implements Taxable{
     }
     
     @Override
-    public abstract double getPrice();
+    public abstract double getPrice(); //Declaración de los métodos de la interfaz Taxable para poderlos redefinir en las subclases de Package
     
     
     @Override

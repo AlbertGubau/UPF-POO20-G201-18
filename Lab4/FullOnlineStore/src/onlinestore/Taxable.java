@@ -9,11 +9,11 @@ package onlinestore;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public interface Taxable {
+public interface Taxable { //Interfaz Taxable
     
-    public static final double iva = 0.21;
+    public static final double iva = 0.21; //Constante del IVA
     
-    public double getPrice();
+    public double getPrice(); //Métodos de la interfaz
     
     public double calculateProfit();
     

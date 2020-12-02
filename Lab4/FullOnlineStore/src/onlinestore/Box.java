@@ -9,13 +9,13 @@ package onlinestore;
  *
  * @author oriol
  */
-public class Box extends Package{                                               //Box es una clase hija de Package por lo tanto usamos la keyword extends
+public class Box extends Package{ //Box es una clase hija de Package por lo tanto usamos la keyword extends
     
     private double depth;
-    private double price;
-    private double cost;
+    private double price; //Añadimos los atributos price y cost
+    private double cost; 
     
-    public Box(int w, int h, int d, double c, double p){                        //Método constructor de la clase Box en el que usamos super para llamar al constructor de la clase padre
+    public Box(int w, int h, int d, double c, double p){ //Método constructor de la clase Box en el que usamos super para llamar al constructor de la clase padre
         super(w,h);
         depth = d;
         cost = c;
@@ -28,24 +28,24 @@ public class Box extends Package{                                               
     }
     
     @Override
-    public double getPrice(){                                                   //LO HE AÑADIDO YO
+    public double getPrice(){ //Redefinición del método getPrice de la interfaz Taxable                                                  
         return price;
     }
     
-    public void setPrice(double p){
+    public void setPrice(double p){ //stter del atributo price
         price = p;
     }
     
-    public double getCost(){                                                    //LO HE AÑADIDO YO
+    public double getCost(){ //getter del atributo cost                                                
         return cost;
     }
     
-    public void setCost(double c){
+    public void setCost(double c){ //setter del atributo cost
         cost = c;
     }
     
     @Override
-    public double calculateProfit(){
+    public double calculateProfit(){ //Redefinición del método calculateProfit de la interfaz Taxable
         return getPrice()-getCost();
     }
     
@@ -82,13 +82,13 @@ public class Box extends Package{                                               
     }
     
     @Override
-    public double getPriceOnlyTax(){
+    public double getPriceOnlyTax(){ //Redefinición del método getPriceOnlyTax de la interfaz Taxable
         return getPrice()*iva;
     }
     
     
     @Override
-    public double getPricePlusTax(){
-        return getPrice() + getPriceOnlyTax();
+    public double getPricePlusTax(){ //Redefinición del método getPricePlusTax de la interfaz Taxable
+        return getPrice() + getPriceOnlyTax(); 
     }
 }

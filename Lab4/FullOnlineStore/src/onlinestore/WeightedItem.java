@@ -9,7 +9,7 @@ package onlinestore;
  *
  * @author oriol
  */
-public class WeightedItem extends Item{                                                                             //WeightedItem es una clase hija de la clase Item, por lo tanto, usamos la keyword extends
+public class WeightedItem extends Item{ //WeightedItem es una clase hija de la clase Item, por lo tanto, usamos la keyword extends
     
     private double pricePerWeight;
     private double weight;
@@ -30,14 +30,14 @@ public class WeightedItem extends Item{                                         
     }
     
     @Override
-    public double getPrice(){                                                                                                //getter del precio del item de tipo pesado
+    public double getPrice(){ //Redefinición del método getPrice de la interfaz Taxable
         
         return pricePerWeight*weightRemaining;
     }
     
     
     @Override
-    public double calculateProfit(){                                                                                            //Método que devuelve el beneficio del item de tipo pesado
+    public double calculateProfit(){ //Redefinición del método calculateProfit de la interfaz Taxable
         
         return (weight-weightRemaining)*(pricePerWeight-getCost()) -getPackage().getPricePlusTax();
     }
@@ -51,13 +51,13 @@ public class WeightedItem extends Item{                                         
     }
     
     @Override
-    public double getPriceOnlyTax(){
+    public double getPriceOnlyTax(){ //Redefinición del método getPriceOnlyTax de la interfaz Taxable
         return getPrice()*iva;
     }
     
     
     @Override
-    public double getPricePlusTax(){
+    public double getPricePlusTax(){ //Redefinición del método getPricePlusTax de la interfaz Taxable
         return getPrice() + getPriceOnlyTax();
     }
 }

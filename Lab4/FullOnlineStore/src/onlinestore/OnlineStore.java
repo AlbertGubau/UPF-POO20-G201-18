@@ -13,7 +13,7 @@ import java.util.*;
 
 public class OnlineStore {
     
-    public static LinkedList< Item > itemsAvailable;                    //Declaramos las listas de items, usuarios y empaquetados junto a las variables totalPrice y totalProfit
+    public static LinkedList< Item > itemsAvailable;//Declaramos las listas de items, usuarios, empaquetados y ventas, las variables totalPrice, totalProfit y totalTaxes, y la fecha actual currentDate
     public static LinkedList< Item > itemsSold;
     public static LinkedList< User > users;
     public static LinkedList< Package > packages;
@@ -23,7 +23,7 @@ public class OnlineStore {
     public static double totalTaxes;
     public static double totalProfit;
     
-    public static void init(){                                          //Método que inicializa las listas y las variables
+    public static void init(){ //Método que inicializa las listas y las variables
         
         itemsAvailable = new LinkedList< Item >();
         itemsSold = new LinkedList< Item >();
@@ -38,9 +38,9 @@ public class OnlineStore {
     
     public static void sell(Item item, Buyer b, Seller s){
             
-        b.buy(item);                                                                //HACEMOS QUE COMPRE EL ITEM   
+        b.buy(item); //HACEMOS QUE COMPRE EL ITEM   
         
-        totalPrice += item.getPrice();                                              //INCREMENTAMOS EL PRECIO TOTAL Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM  
+        totalPrice += item.getPrice(); //INCREMENTAMOS EL PRECIO TOTAL Y LOS IMPUESTOS TOTALES, Y APLICAMOS EL SELL SEGUN LA INSTANCIA DEL ITEM  
         totalTaxes += item.getPriceOnlyTax();
         
         
@@ -51,32 +51,32 @@ public class OnlineStore {
             ((WeightedItem)item).sell(0.0);
         }
          
-        s.sell(item);                                                               //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM 
+        s.sell(item); //APLICAMOS SELL DEL SELLER PARA VENDER EL ITEM 
         
         int saleday = currentDate.getDay();
         int salemonth = currentDate.getMonth();
         int saleyear = currentDate.getYear();
         
-        Date saledate = new Date(saleday, salemonth, saleyear);
+        Date saledate = new Date(saleday, salemonth, saleyear);                  //CREAMOS UNA NUEVA VENTA CON LA FECHA EN LA QUE NOS ENCONTRAMOS, EL ITEM Y SU COMPRADOR
         Date shippingdate = saledate;
         Sale sale = new Sale(item, b, saledate, shippingdate, item.getPackage());
         
-        sales.add(sale);
+        sales.add(sale); //AÑADIMOS LA VENTA A LA LISTA DE VENTAS
             
-        totalProfit += item.calculateProfit();                                      //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM 
+        totalProfit += item.calculateProfit(); //AUMENTAMOS EL BENFICIO TOTAL CON EL BENEFICIO QUE OBTENEMOS DE LA VENTA DEL ITEM 
         
-        itemsSold.add(item);                                                        //AÑADIMOS EL ITEM A LA LISTA DE ITEMS VENDIDOS
+        itemsSold.add(item); //AÑADIMOS EL ITEM A LA LISTA DE ITEMS VENDIDOS
         
-        itemsAvailable.remove(item);                                                //BORRAMOS EL ITEM DE LA LISTA DE ITEMS DISPONIBLES      
+        itemsAvailable.remove(item); //BORRAMOS EL ITEM DE LA LISTA DE ITEMS DISPONIBLES      
     }
     
     public static void dayPass(){
         
-        int currentDay = currentDate.getDay();
+        int currentDay = currentDate.getDay();     //TOMAMOS EL DIA ACTUAL
         int currentMonth = currentDate.getMonth();
         int currentYear = currentDate.getYear();
        
-        currentDay++;
+        currentDay++;         //LO INCREMENTAMOS SEGUN LOS MESES Y LOS AÑOS PARA MANTENER LA LOGICA DE LAS FECHAS
         
         if(currentDay==32){
             
@@ -90,11 +90,11 @@ public class OnlineStore {
             }
         }
         
-        currentDate.setDay(currentDay);
+        currentDate.setDay(currentDay);    //ACTUALIZAMOS EL DIA EN EL QUE ESTAMOS CON LA NUEVA FECHA
         currentDate.setMonth(currentMonth);
         currentDate.setYear(currentYear);
         
-        for(Item i: itemsAvailable){
+        for(Item i: itemsAvailable){ //SI HAY UN ITEM DE SUBASTA QUE TIENE DEADLINE EN EL NUEVO DIA PROCESAMOS LA VENTA DEL ARTÍCULO
             
             if(i instanceof AuctionItem){
                 
@@ -159,10 +159,10 @@ public class OnlineStore {
         
         System.out.println("\nSORTED LIST OF ITEMS IN INCREASING PRICE ORDER WITHOUT IVA:\n");
         
-        Collections.sort(itemsAvailable);
+        Collections.sort(itemsAvailable); //ORDENAMOS LOS ITEMS POR PRECIO
         
         for(Item i: itemsAvailable){
-            System.out.println("We have the item " + i.getName() + " with price: " + i.getPrice());
+            System.out.println("We have the item " + i.getName() + " with price: " + i.getPrice()); //IMPRIMIMOS POR PANTALLA LOS ITEMS ORDENADOS POR PRECIO SIN IVA Y CON IVA
         }
         
         System.out.println("\nSORTED LIST OF ITEMS IN INCREASING PRICE ORDER WITH IVA:\n");
@@ -171,7 +171,7 @@ public class OnlineStore {
             System.out.println("We have the item " + i.getName() + " with price: " + i.getPricePlusTax());
         }
         
-        dayPass(); //30/10/2020
+        dayPass(); //30/10/2020    //AVANZAMOS LOS DÍAS
         dayPass(); //31/10/2020
         dayPass(); //1/11/2020
         
@@ -240,24 +240,17 @@ public class OnlineStore {
         
         dayPass();//11/11/2020
         
-        /*Buyer buyer = auctionitem.getBuyer(); //Tomamos el comprador final del item de subasta
-        buyer.buy(auctionitem); //Aplicamos buy y sell por parte del Buyer y el Seller al item de subasta
-        seller.sell(auctionitem);
-        
-        totalPrice += auctionitem.getPrice(); //Aumentamos el precio total con el precio del item para subasta
-        totalProfit += auctionitem.calculateProfit(); //Aumentamos el beneficio total con el beneficio obtenido por el item*/
-        
-        System.out.println("Total price without IVA: " + totalPrice); //Imprimimos por pantalla el precio y el beneficio total.
+        System.out.println("Total price without IVA: " + totalPrice); //Imprimimos por pantalla el precio, los impuestos y el beneficio total.
         System.out.println("Total taxes: " + totalTaxes);
         System.out.println("Total profit: " + totalProfit);
         
         System.out.println("\nSALES SORTED BY DATE STARTING BY THE LAST ITEM SOLD:\n");
         
-        Collections.sort(sales);
+        Collections.sort(sales); //ORDENAMOS LAS VENTAS POR FECHA
         
-        for(Sale s: sales){
+        for(Sale s: sales){ //IMPRIMIMOS LAS FECHAS ORDENADAS POR FECHA
             Date date = s.getDate();
-            System.out.println("We sold the item " + s.getItem().getName() + " the day " + date.getDay() +"/"+ date.getMonth() +"/"+ date.getYear() + ".");
+            System.out.println("We sold the item " + s.getItem().getName() + " the day " + date.getDay() +"/"+ date.getMonth() +"/"+ date.getYear() + "."); 
         }
         System.out.println("\n");
     } 

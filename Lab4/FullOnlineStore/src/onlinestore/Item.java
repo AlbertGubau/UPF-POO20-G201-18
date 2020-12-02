@@ -10,7 +10,7 @@ import java.util.LinkedList;
  *
  * @author oriol
  */
-public abstract class Item implements Taxable, Comparable{                              //Declaramos Item como una clase abstracta porque contiene 2 métodos abstractos
+public abstract class Item implements Taxable, Comparable{ //Declaramos la clase Item como abstracta dado que tiene los métodos de Taxable como abstractos
     
     private String name;
     private String type;
@@ -18,7 +18,7 @@ public abstract class Item implements Taxable, Comparable{                      
     private double cost;
     private Package pack;
     
-    Item(){                                                                     //Constructor vacío de la clase Item
+    Item(){ //Constructor vacío de la clase Item
         
         name = "Undefined";
         type = "Undefined";
@@ -29,7 +29,7 @@ public abstract class Item implements Taxable, Comparable{                      
         cost = 0;        
     }
     
-    Item(String n, String t, double[] s, double c){                                     //Constructor de la clase Item
+    Item(String n, String t, double[] s, double c){ //Constructor de la clase Item
         
         name = n;
         type = t;
@@ -43,24 +43,31 @@ public abstract class Item implements Taxable, Comparable{                      
     public String getName(){ //getters y setters de la clase Item
         return name;
     }
+    
     public String getType(){ 
         return type;
     }
+    
     public double[] getSize(){ 
         return size;
     }
+    
     public double getCost(){ 
         return cost;        
     }
+    
     public Package getPackage(){ 
         return pack;
     }
+    
     public void setName(String n){
         name = n;
     }
+    
     public void setType(String t){ 
         type = t;
     }
+    
     public void setSize(double[] s){ 
         for(int i = 0; i<=2; i++){
             size[i] = s[i];
@@ -69,6 +76,7 @@ public abstract class Item implements Taxable, Comparable{                      
     public void setCost(double c){ 
         cost = c;
     }
+    
     public void assignBestPackage(LinkedList<Package> Lp){ //Método que comprueba asigna el mejor empaquetado para un item determinado
         
         double depth = size[2];
@@ -134,7 +142,7 @@ public abstract class Item implements Taxable, Comparable{                      
     }
      
     @Override
-    public abstract double getPrice();
+    public abstract double getPrice(); //Declaración de los métodos de la interfaz Taxable para poderlos redefinir en las subclases de Item
     
     
     @Override
@@ -150,9 +158,9 @@ public abstract class Item implements Taxable, Comparable{                      
    
     
     @Override
-    public int compareTo(Object o){
+    public int compareTo(Object o){ //Redefinición del método comapareTo de la interfaz Comparable, este método comprobará que tipo de Item tenemos que comparar y lo comparará por su precio
         
-        if(o instanceof UnitItem){
+        if(o instanceof UnitItem){ //Si el resultado de compareTo es -1 el item con el que comparamos tiene un precio mayor, si es 1 el precio es menor y si es 0 el precio es igual.
             
             UnitItem i = (UnitItem)o;
             
