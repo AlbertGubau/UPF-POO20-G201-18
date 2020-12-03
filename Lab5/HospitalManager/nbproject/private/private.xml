@@ -3,8 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/HospitalManager/src/hospitalmanager/Hospital.java</file>
-            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/HospitalManager/src/hospitalmanager/HospitalManager.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Resident.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Hospital.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Patient.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Room.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Doctor.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/HospitalManager.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Administrative.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Person.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Visit.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Bed.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/UPF-POO20-G201-18/Lab5/HospitalManager/src/hospitalmanager/Visitor.java</file>
         </group>
     </open-files>
 </project-private>

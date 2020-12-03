@@ -3,13 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package hospitalmanager;
 
-/**
- * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
-public class Resident extends Patient {
+public class Resident extends Patient{
+	
+        private Room room;
+	private Bed bed;
 
+	public Resident ( int id, String name, int age ){
+            
+            super(id, name, age);
+            
+	}
+	
+	public void assignRoom( Room r ){
+            room = r;
+	}
+	
+	public void assignBed( Bed b ){
+            bed = b;
+	}
+	
+	public Doctor getDoctor(){
+            return null; 
+	}
+	
+	public String toString(){
+            return ("Hola");
+	}
 }

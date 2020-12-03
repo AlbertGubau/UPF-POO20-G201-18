@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package hospitalmanager;
 
-/**
- * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
-public class Visitor extends Patient {
-
+public class Visitor extends Patient{
+	
+        public Visitor( int id, String name, int age ){
+            super(id, name, age);
+	}
+	
+	public String toString(){ 
+            return ("Hola");
+	}
 }
