@@ -24,12 +24,15 @@ public class Visit{
     public Date getDate(){
         return date;	
     }
+    
     public String getSummary(){ 
         return summary;
     }
+    
     public Doctor getDoctor(){ 
         return doctor;
     }
+    
     public Patient getPatient(){ 
         return patient;	
     }

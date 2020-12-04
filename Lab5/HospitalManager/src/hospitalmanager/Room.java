@@ -14,10 +14,12 @@ public class Room{
 
     public Room( int room ){
         roomID = room;
+        beds = new LinkedList< Bed >();
     }
 
     public void addBed( int bedID ){
-        //beds.add(bed);
+        
+        beds.add(new Bed(bedID, this));
     }
 
     public Bed getBed( int idx ){
@@ -27,8 +29,9 @@ public class Room{
     public Bed getAvailableBed(){
         
         for(Bed b : beds){
+            
             if(b.isAvailable()){
-              return b;   
+                return b;   
             }           
         }
         return null;
@@ -44,13 +47,12 @@ public class Room{
         return false;
     }
 
-    public String listBeds(){
+    public void listBeds(){ //Pase de String a void
         
-        /*for(int i: beds){
-            
-            System.out.println("Bet :"+getBed(i));
-        }*/
-        return "Beeeed";
+        System.out.println("Room with ID: " + roomID + " has the following beds: "); //FALTA ACABAR
+        for(Bed b: beds){
+            System.out.println(b);
+        }
     }
 
     public String toString(){ 

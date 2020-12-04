@@ -18,7 +18,7 @@ public class Bed{ //COMPROVAR
     }
 
     public void assignRoom( Room r ){
-         room = r;
+        room = r;
     }
 
     public void assignResident( Resident r ){
@@ -29,7 +29,6 @@ public class Bed{ //COMPROVAR
         bedID = 0;
         room = null;
         resident = null;
-
     }
 
     public int getBedID(){

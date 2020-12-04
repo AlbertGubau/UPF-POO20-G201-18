@@ -28,14 +28,18 @@ public class Doctor extends Person{
     }
 
     public void listSpecialities(){
-        System.out.println("Doctor "+ name + "(ID " + id + ") has specialities"); //FALTA ACABAR
+        
+        System.out.println("Doctor "+ name + "(ID " + id + ") has specialities:\n"); //FALTA ACABAR
+        
         for(String s: specialities){
             System.out.println(s);
         }
     }
 
     public void listVisits(){
-        System.out.println("Doctor "+ name + "(ID " + id + ") has the following visits: "); //FALTA ACABAR
+        
+        System.out.println("Doctor "+ name + "(ID " + id + ") has the following visits:\n"); //FALTA ACABAR
+        
         for(Visit v: visits){
             System.out.println(v);
         }
