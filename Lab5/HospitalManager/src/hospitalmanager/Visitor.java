@@ -12,6 +12,6 @@ public class Visitor extends Patient{
     }
 
     public String toString(){ 
-        return ("Hola");
+        return ("Visitor "+ name + "(ID "+ id +", age "+ age + ")");
     }
 }

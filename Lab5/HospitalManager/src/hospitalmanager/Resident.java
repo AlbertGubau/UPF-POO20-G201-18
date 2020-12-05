@@ -11,8 +11,9 @@ public class Resident extends Patient{
     private Bed bed;
 
     public Resident ( int id, String name, int age ){
-
         super(id, name, age);
+        room = null;
+        bed = null;
     }
 
     public void assignRoom( Room r ){
@@ -24,10 +25,21 @@ public class Resident extends Patient{
     }
 
     public Doctor getDoctor(){
-        return null; 
+        return visits.get(0).getDoctor(); //Serà el primer doctor que lo visitó
     }
 
     public String toString(){
-        return ("Hola");
+        
+        
+        if((visits.size() == 0)){
+            
+            if(room == null){
+                
+                return ("Resident "+ name + "(ID "+ id +", age "+ age + ") and has no\nroom neither bed and has no doctor.");
+            }
+            return ("Resident "+ name + "(ID "+ id +", age "+ age + ") who is assigned to\n" + bed.toString() + " " + room.toString() + " and has no doctor.");
+        }
+        
+        return ("Resident "+ name + "(ID "+ id +", age "+ age + ") who is assigned to\n" + bed.toString() +" "+room.toString() + " and " + getDoctor().toString());
     }
 }

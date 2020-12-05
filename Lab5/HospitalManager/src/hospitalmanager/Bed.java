@@ -15,6 +15,7 @@ public class Bed{ //COMPROVAR
     public Bed( int id, Room r ){
         bedID = id;
         room = r;
+        resident = null;
     }
 
     public void assignRoom( Room r ){
@@ -26,8 +27,6 @@ public class Bed{ //COMPROVAR
     }
 
     public void release(){
-        bedID = 0;
-        room = null;
         resident = null;
     }
 
@@ -36,10 +35,10 @@ public class Bed{ //COMPROVAR
     }
 
     public boolean isAvailable(){
-        return (room == null && resident == null);
+        return resident == null;
     }	
 
     public String toString(){
-        return ("Bed: ");
+        return ("Bed " + bedID);
     }
 }

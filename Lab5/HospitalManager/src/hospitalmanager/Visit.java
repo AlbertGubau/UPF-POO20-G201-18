@@ -38,6 +38,6 @@ public class Visit{
     }
 
     public String toString(){ 
-        return("Hey I am a visit");	
+        return("Visit with doc: " + doctor.toString());	
     }
 }

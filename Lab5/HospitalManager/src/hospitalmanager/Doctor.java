@@ -46,6 +46,6 @@ public class Doctor extends Person{
     }
 
     public String toString(){ 
-        return ("Doctor "+ name + "(ID " + id + ").");
+        return ("Doctor "+ name + "(ID " + id + ")");
     }
 }

@@ -45,7 +45,7 @@ public class Hospital{
     }
 
     public void addRoom(int id){
-            rooms.add(new Room(id));
+        rooms.add(new Room(id));
     }
 
     public Room getRoom( int idx ){
@@ -57,7 +57,7 @@ public class Hospital{
     }
 
     public void addResident(  int id, String name, int age ){
-        patients.add(new Resident(id, name, age));
+        patients.add(new Resident(id, name, age)); 
     }
 
     public void addVisitor( int id, String name, int age ){
@@ -81,14 +81,44 @@ public class Hospital{
     }
 
     public void assignBeds( int adminIdx ){
-            // Add code here
+        
+        for(Patient p: patients){
+            
+            if(p instanceof Resident){
+                
+                Resident r = (Resident)p;
+                Administrative a = getAdmin(adminIdx);
+                a.assignBed(r);
+            } 
+        }
     }
 
     public void sortPatients(){
-            // Add code here
+        
     }
 
     public String toString(){
-        return ("Hola");
+        
+        String admins2 = "";
+        String doctors2 = "";
+        String patients2 = "";
+        String rooms2 = "";
+        
+        for(Administrative a: admins){
+            admins2 = (admins2+a+"\n");
+        }
+        for(Doctor d: doctors){
+            doctors2 = (doctors2+d+"\n");
+        }
+        for(Patient p: patients){
+            patients2 = (patients2+p+"\n");
+        }
+        for(Room r: rooms){
+            rooms2 = (rooms2+r+"\n");
+            rooms2 = (rooms2+r.listBeds()+"\n");
+        }
+        
+        return (name +"\n"+"Administratives: \n"+admins2+"\nDoctors:\n"+doctors2+"\nPatients:\n"+patients2+"\nRooms:\n"+rooms2);
     }
 }
+

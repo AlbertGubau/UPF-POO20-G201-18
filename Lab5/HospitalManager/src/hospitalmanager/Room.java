@@ -18,7 +18,6 @@ public class Room{
     }
 
     public void addBed( int bedID ){
-        
         beds.add(new Bed(bedID, this));
     }
 
@@ -38,24 +37,18 @@ public class Room{
     }
 
     public boolean isAvailable(){
-        
-        for(Bed b : beds){
-            if(b.isAvailable()){
-                return true;
-            }
-        }
-        return false;
+        return getAvailableBed()!=null;
     }
 
-    public void listBeds(){ //Pase de String a void
-        
-        System.out.println("Room with ID: " + roomID + " has the following beds: "); //FALTA ACABAR
+    public String listBeds(){ //Pase de String a void
+        String beds2 = "";
         for(Bed b: beds){
-            System.out.println(b);
+            beds2 = (beds2+b+"\n");
         }
+        return beds2;
     }
 
     public String toString(){ 
-        return ("More beeeeds");
+        return ("Room "+ roomID);
     }
 }

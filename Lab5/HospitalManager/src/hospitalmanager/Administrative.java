@@ -19,31 +19,42 @@ public class Administrative extends Person{
     }
 
     public void addVisit( Date d, String s, Doctor doc, Patient p ){
-        
+       hospital.addVisit(new Visit(d, s, doc, p));
+       p.addVisit(new Visit(d, s, doc, p));
     }
 
     public boolean assignBed( Resident resident  ){
         
         LinkedList< Room > rooms = hospital.getRooms();
         
+        Boolean solved = false;
+        
         for(Room r: rooms){
             
             if(r.isAvailable()){
                 
-                if(r.getAvailableBed() != null){
+                Bed b = r.getAvailableBed();
                 
                 resident.assignRoom(r);
-                resident.assignBed(r.getAvailableBed());
-                r.getAvailableBed().assignResident(resident);
+                resident.assignBed(b);
                 
-                return true;
-                }
+                b.assignResident(resident);
+                    
+                System.out.println(toString() + " has assigned bed to\n" + resident.toString());
+                
+                solved = true;
+                break;
             }
         }
-        return false;
+        
+        if(!solved){
+            
+            System.out.println(toString() + "has not found bed for\n"+ resident.toString());
+        }
+        return solved;
     }
 
     public String toString(){ 
-        return ("Administrative " + name + "(ID " + id + ").");		
+        return ("Administrative " + name + "(ID " + id + ")");		
     }
 }
