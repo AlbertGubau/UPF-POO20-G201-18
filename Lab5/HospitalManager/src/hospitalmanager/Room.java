@@ -41,6 +41,7 @@ public class Room{
     }
 
     public String listBeds(){ //Pase de String a void
+        
         String beds2 = "";
         for(Bed b: beds){
             beds2 = (beds2+b+"\n");

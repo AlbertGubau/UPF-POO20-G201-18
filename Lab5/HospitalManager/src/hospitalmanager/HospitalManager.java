@@ -5,13 +5,14 @@
  */
 package hospitalmanager;
 import java.util.LinkedList;
-import java.util.Date;
+
 
 public class HospitalManager{
 	
     private LinkedList< Hospital > hospitals;
     private LinkedList< Doctor > doctors;
     private LinkedList< Administrative > administratives;
+    public static Date currentDate;
 
     public HospitalManager(){
         hospitals = new LinkedList< Hospital >();
@@ -37,7 +38,34 @@ public class HospitalManager{
 
     public Administrative getAdmin( int idx ){ return administratives.get( idx ); }
 
+    public static void dayPass(){
+        
+        int currentDay = currentDate.getDay();     //TOMAMOS EL DIA ACTUAL
+        int currentMonth = currentDate.getMonth();
+        int currentYear = currentDate.getYear();
+       
+        currentDay++;         //LO INCREMENTAMOS SEGUN LOS MESES Y LOS AÑOS PARA MANTENER LA LOGICA DE LAS FECHAS
+        
+        if(currentDay==32){
+            
+            currentDay = 1;
+            currentMonth++;
+            
+            if(currentMonth == 13){
+                
+                currentMonth = 1;
+                currentYear++;
+            }
+        }
+        
+        currentDate.setDay(currentDay);    //ACTUALIZAMOS EL DIA EN EL QUE ESTAMOS CON LA NUEVA FECHA
+        currentDate.setMonth(currentMonth);
+        currentDate.setYear(currentYear);
+    }
+    
     public static void main( String args[] ){
+        
+        currentDate = new Date(29,10,2020);
         
         HospitalManager hm = new HospitalManager();
 
@@ -90,9 +118,9 @@ public class HospitalManager{
         hm.getHospital( 1 ).addVisitor( 26268, "Johanna",10 );
         hm.getHospital( 1 ).addVisitor( 99887, "Jan",90 );
 
-        hm.getHospital( 0 ).getAdmin( 0 ).addVisit( new Date(), "Is a cold", hm.getHospital( 0 ).getDoctor( 0 ), hm.getHospital( 0 ).getPatient( 0 ) );
-        hm.getHospital( 0 ).getAdmin( 0 ).addVisit( new Date(), "Undefined, visit with cardiologist", hm.getHospital( 0 ).getDoctor( 1 ), hm.getHospital( 0 ).getPatient( 1 ) );
-        hm.getHospital( 1 ).getAdmin( 0 ).addVisit( new Date(), "Is a cold", hm.getHospital( 0 ).getDoctor( 0 ), hm.getHospital( 0 ).getPatient( 3 ) );
+        hm.getHospital( 0 ).getAdmin( 0 ).addVisit( new Date(1,12,2020), "Is a cold", hm.getHospital( 0 ).getDoctor( 0 ), hm.getHospital( 0 ).getPatient( 0 ) );
+        hm.getHospital( 0 ).getAdmin( 0 ).addVisit( new Date(2,12,2020), "Undefined, visit with cardiologist", hm.getHospital( 0 ).getDoctor( 1 ), hm.getHospital( 0 ).getPatient( 1 ) );
+        hm.getHospital( 1 ).getAdmin( 0 ).addVisit( new Date(3,12, 2020), "Is a cold", hm.getHospital( 0 ).getDoctor( 0 ), hm.getHospital( 0 ).getPatient( 3 ) );
 
         hm.getHospital( 0 ).assignBeds( 0 );
 

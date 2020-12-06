@@ -5,8 +5,6 @@
  */
 package hospitalmanager;
 
-import java.util.Date;
-
 public class Visit{
     
     Date date;

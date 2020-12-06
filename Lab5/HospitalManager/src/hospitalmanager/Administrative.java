@@ -7,12 +7,12 @@
 package hospitalmanager;
 
 import java.util.LinkedList;
-import java.util.Date;
+
 
 public class Administrative extends Person{ 
 
     private Hospital hospital;	
-
+    
     public Administrative( int id, String name, Hospital hospital ){
         super(id, name);
         this.hospital = hospital;
