@@ -94,8 +94,9 @@ public class Hospital{
     }
 
     public void sortPatients(){
-        
+        Collections.sort(patients);
     }
+    
 
     public String toString(){
         
@@ -118,7 +119,7 @@ public class Hospital{
             rooms2 = (rooms2+r.listBeds()+"\n");
         }
         
-        return (name +"\n"+"Administratives: \n"+admins2+"\nDoctors:\n"+doctors2+"\nPatients:\n"+patients2+"\nRooms:\n"+rooms2);
+        return (name +"\n"+"Administratives: \n"+admins2+"\nDoctors:\n"+doctors2+"\nPatients sorted by age:\n"+patients2+"\nRooms:\n"+rooms2);
     }
 }
 

@@ -71,7 +71,7 @@ public class HospitalManager{
 
         hm.addHospital( "Hospital Sant Joan de Deu" );
         hm.addHospital( "Hospital de Barcelona" );
-
+        
         hm.addDoctor( 1, "Joline" );
         hm.addDoctor( 2, "Antoine" );
 
@@ -120,14 +120,16 @@ public class HospitalManager{
 
         hm.getHospital( 0 ).getAdmin( 0 ).addVisit( new Date(1,12,2020), "Is a cold", hm.getHospital( 0 ).getDoctor( 0 ), hm.getHospital( 0 ).getPatient( 0 ) );
         hm.getHospital( 0 ).getAdmin( 0 ).addVisit( new Date(2,12,2020), "Undefined, visit with cardiologist", hm.getHospital( 0 ).getDoctor( 1 ), hm.getHospital( 0 ).getPatient( 1 ) );
-        hm.getHospital( 1 ).getAdmin( 0 ).addVisit( new Date(3,12, 2020), "Is a cold", hm.getHospital( 0 ).getDoctor( 0 ), hm.getHospital( 0 ).getPatient( 3 ) );
+        hm.getHospital( 1 ).getAdmin( 0 ).addVisit( new Date(3,12,2020), "Is a cold", hm.getHospital( 0 ).getDoctor( 0 ), hm.getHospital( 0 ).getPatient( 3 ) );
 
         hm.getHospital( 0 ).assignBeds( 0 );
-
+        hm.getHospital( 0 ).sortPatients();
+        hm.getHospital( 1 ).sortPatients();
+        
         System.out.println();
 
         for( int i = 0; i < 2; i++ ){
             System.out.println( hm.getHospital( i ) );
-        }
+        } 
     }
 }

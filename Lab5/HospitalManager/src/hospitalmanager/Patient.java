@@ -40,10 +40,17 @@ public class Patient extends Person implements Comparable<Patient>{
     }
 
     public int compareTo( Patient p ){
+           
+        if(p.getAge() - getAge() > 0){
+            return -1;
+        }
+        if(p.getAge() - getAge() < 0){
+            return 1;
+        }
         return 0;
     }
 
     public String toString(){
-        return ("Hola");
+        return ("Patient "+ name + "(ID "+ id +", age "+ age + ").");
     }
 }

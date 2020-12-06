@@ -40,7 +40,7 @@ public class Room{
         return getAvailableBed()!=null;
     }
 
-    public String listBeds(){ //Pase de String a void
+    public String listBeds(){ 
         
         String beds2 = "";
         for(Bed b: beds){
