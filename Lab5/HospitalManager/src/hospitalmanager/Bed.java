@@ -6,7 +6,7 @@
 
 package hospitalmanager;
 
-public class Bed{ //COMPROVAR
+public class Bed{                           
 
     private int bedID;
     private Room room;
@@ -18,27 +18,15 @@ public class Bed{ //COMPROVAR
         resident = null;
     }
 
-    public void assignRoom( Room r ){
-        room = r;
-    }
+    public void assignRoom( Room r ){ room = r;}
 
-    public void assignResident( Resident r ){
-        resident = r;
-    }
+    public void assignResident( Resident r ){ resident = r;}
 
-    public void release(){
-        resident = null;
-    }
+    public void release(){ resident = null;}
 
-    public int getBedID(){
-        return bedID;
-    }
+    public int getBedID(){ return bedID;}
 
-    public boolean isAvailable(){
-        return resident == null;
-    }	
+    public boolean isAvailable(){ return resident == null;}	
 
-    public String toString(){
-        return ("Bed " + bedID);
-    }
+    public String toString(){ return ("Bed " + bedID);}
 }

@@ -17,18 +17,13 @@ public class Room{
         beds = new LinkedList< Bed >();
     }
 
-    public void addBed( int bedID ){
-        beds.add(new Bed(bedID, this));
-    }
+    public void addBed( int bedID ){ beds.add(new Bed(bedID, this));}
 
-    public Bed getBed( int idx ){
-        return beds.get(idx);
-    }
+    public Bed getBed( int idx ){ return beds.get(idx);}
 
     public Bed getAvailableBed(){
         
         for(Bed b : beds){
-            
             if(b.isAvailable()){
                 return b;   
             }           
@@ -36,9 +31,7 @@ public class Room{
         return null;
     }
 
-    public boolean isAvailable(){
-        return getAvailableBed()!=null;
-    }
+    public boolean isAvailable(){ return getAvailableBed()!=null;}
 
     public String listBeds(){ 
         

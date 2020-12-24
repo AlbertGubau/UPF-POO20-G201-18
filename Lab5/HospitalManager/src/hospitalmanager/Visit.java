@@ -19,23 +19,14 @@ public class Visit{
         patient = p;
     }
 
-    public Date getDate(){
-        return date;	
-    }
+    public Date getDate(){ return date;}
     
-    public String getSummary(){ 
-        return summary;
-    }
+    public String getSummary(){ return summary;}
     
-    public Doctor getDoctor(){ 
-        return doctor;
-    }
+    public Doctor getDoctor(){ return doctor;}
     
-    public Patient getPatient(){ 
-        return patient;	
-    }
+    public Patient getPatient(){ return patient;	}
 
-    public String toString(){ 
-        return("Visit with doc: " + doctor.toString());	
-    }
+    public String toString(){ return("Visit with doc: " + doctor.toString());}
 }
+    
