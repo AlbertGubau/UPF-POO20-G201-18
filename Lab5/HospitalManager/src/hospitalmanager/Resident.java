@@ -37,9 +37,9 @@ public class Resident extends Patient{
                 
                 return ("Resident "+ name + "(ID "+ id +", age "+ age + ") and has no\nroom neither bed and has no doctor.");
             }
-            return ("Resident "+ name + "(ID "+ id +", age "+ age + ") who is assigned to\n" + bed.toString() + " " + room.toString() + " and has no doctor.");
+            return ("Resident "+ name + "(ID "+ id +", age "+ age + ") who is assigned to\n" + room.toString() + " " + bed.toString() + " and has no doctor.");
         }
         
-        return ("Resident "+ name + "(ID "+ id +", age "+ age + ") who is assigned to\n" + bed.toString() +" "+room.toString() + " and " + getDoctor().toString());
+        return ("Resident "+ name + "(ID "+ id +", age "+ age + ") who is assigned to\n" + room.toString() +" "+ bed.toString() + " and " + getDoctor().toString());
     }
 }

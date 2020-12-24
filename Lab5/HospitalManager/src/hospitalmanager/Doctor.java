@@ -26,10 +26,18 @@ public class Doctor extends Person{
     public void addVisit( Visit v ){
         visits.add(v);
     }
+    
+    public void removeVisit( Visit v ){
+        visits.remove(v);
+    }
 
+    public LinkedList<Visit> getVisits(){
+        return visits;
+    }
+    
     public void listSpecialities(){
         
-        System.out.println("Doctor "+ name + "(ID " + id + ") has specialities:\n"); //FALTA ACABAR
+        System.out.println("Doctor "+ name + "(ID " + id + ") has specialities:");
         
         for(String s: specialities){
             System.out.println(s);
@@ -38,7 +46,7 @@ public class Doctor extends Person{
 
     public void listVisits(){
         
-        System.out.println("Doctor "+ name + "(ID " + id + ") has the following visits:\n"); //FALTA ACABAR
+        System.out.println("Doctor "+ name + "(ID " + id + ") has the following visits:\n");
         
         for(Visit v: visits){
             System.out.println(v);

@@ -9,9 +9,9 @@ import java.util.LinkedList;
 
 public class HospitalManager{
 	
-    private LinkedList< Hospital > hospitals;
-    private LinkedList< Doctor > doctors;
-    private LinkedList< Administrative > administratives;
+    private static LinkedList< Hospital > hospitals;
+    private static LinkedList< Doctor > doctors;
+    private static LinkedList< Administrative > administratives;
     public static Date currentDate;
 
     public HospitalManager(){
@@ -58,14 +58,29 @@ public class HospitalManager{
             }
         }
         
+        for(Doctor d: doctors){
+            
+            for(Visit v: d.getVisits()){
+                
+                if(currentDate.equals(v.date)){
+                    
+                    Patient patient = v.patient;
+                    patient.addVisit(v);
+                    d.removeVisit(v);
+                }
+            }
+        }
+        
         currentDate.setDay(currentDay);    //ACTUALIZAMOS EL DIA EN EL QUE ESTAMOS CON LA NUEVA FECHA
         currentDate.setMonth(currentMonth);
         currentDate.setYear(currentYear);
     }
     
     public static void main( String args[] ){
-        
+   
         currentDate = new Date(29,10,2020);
+        
+        System.out.println("The current date is " + currentDate.getDay()+"/"+currentDate.getMonth() + "/" + currentDate.getYear()+".\n");
         
         HospitalManager hm = new HospitalManager();
 
@@ -77,7 +92,9 @@ public class HospitalManager{
 
         hm.addAdministrative( 3, "Clarise", hm.getHospital( 0 ) );
         hm.addAdministrative( 4, "Pere", hm.getHospital( 1 ) );
-
+        
+        dayPass();
+        
         for( int id = 0; id < 2; id++ ){
             for( int h = 0; h < 2; h++ ){
                 hm.getHospital( h ).addRoom( id );
@@ -97,6 +114,8 @@ public class HospitalManager{
         hm.getHospital( 0 ).getDoctor( 1 ).addSpeciality( "Cardiologist" );
         hm.getHospital( 1 ).addDoctor( hm.getDoctor( 0 ) );
 
+        dayPass();
+        
         for( int i = 0; i < 2; i++ ){
             Doctor d = hm.getDoctor( i );
             d.listSpecialities();
@@ -105,6 +124,8 @@ public class HospitalManager{
         }
         System.out.println();
 
+        dayPass();
+        
         hm.getHospital( 0 ).addResident( 87634, "Jaume", 19 );
         hm.getHospital( 0 ).addResident( 34532, "Monica", 25);
         hm.getHospital( 0 ).addResident( 62452, "German", 50);
@@ -126,10 +147,14 @@ public class HospitalManager{
         hm.getHospital( 0 ).sortPatients();
         hm.getHospital( 1 ).sortPatients();
         
+        dayPass();
+        
         System.out.println();
-
+        
         for( int i = 0; i < 2; i++ ){
             System.out.println( hm.getHospital( i ) );
-        } 
+        }
+        
+        System.out.println("The current date is " + currentDate.getDay()+"/"+currentDate.getMonth() + "/" + currentDate.getYear()+".\n");
     }
 }
