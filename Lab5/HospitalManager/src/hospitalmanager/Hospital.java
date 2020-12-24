@@ -28,54 +28,35 @@ public class Hospital{
         visits = new LinkedList< Visit >();
     }
 
-    public void addAdmin( Administrative a ){	
-        admins.add(a);
-    }
+    public void addAdmin( Administrative a ){ admins.add(a);}
 
-    public Administrative getAdmin( int idx ){
-        return admins.get(idx);
-    }
+    public Administrative getAdmin( int idx ){ return admins.get(idx);}
 
-    public void addDoctor( Doctor d ){
-        doctors.add(d);
-    }
+    public void addDoctor( Doctor d ){ doctors.add(d);}
 
-    public Doctor getDoctor( int idx ){
-       return doctors.get(idx);
-    }
+    public Doctor getDoctor( int idx ){ return doctors.get(idx);}
 
-    public void addRoom(int id){
-        rooms.add(new Room(id));
-    }
+    public void addRoom(int id){ rooms.add(new Room(id));}
 
-    public Room getRoom( int idx ){
-        return rooms.get(idx);
-    }	
+    public Room getRoom( int idx ){ return rooms.get(idx);}	
 
-    public LinkedList< Room > getRooms(){
-        return rooms;
-    }
+    public LinkedList< Room > getRooms(){ return rooms;}
 
     public void addResident(  int id, String name, int age ){
         patients.add(new Resident(id, name, age)); 
     }
-
     public void addVisitor( int id, String name, int age ){
         patients.add(new Visitor(id, name, age));
     }
-
     public void addVisit( Visit v ){
         visits.add(v);
     }
-
     public Visit getVisit( int idx ){
         return visits.get(idx);
     }
-
     public Patient getPatient( int idx ){
         return patients.get(idx);
     }
-
     public void deletePatient( int idx ){
         patients.remove(idx);
     }
@@ -97,7 +78,6 @@ public class Hospital{
         Collections.sort(patients);
     }
     
-
     public String toString(){
         
         String admins2 = "";

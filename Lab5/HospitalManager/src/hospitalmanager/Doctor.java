@@ -19,21 +19,13 @@ public class Doctor extends Person{
         visits = new LinkedList<Visit>();
     }
 
-    public void addSpeciality( String s ){
-        specialities.add(s);
-    }
+    public void addSpeciality( String s ){ specialities.add(s);}
 
-    public void addVisit( Visit v ){
-        visits.add(v);
-    }
+    public void addVisit( Visit v ){ visits.add(v);}
     
-    public void removeVisit( Visit v ){
-        visits.remove(v);
-    }
+    public void removeVisit( Visit v ){ visits.remove(v);}
 
-    public LinkedList<Visit> getVisits(){
-        return visits;
-    }
+    public LinkedList<Visit> getVisits(){ return visits;}
     
     public void listSpecialities(){
         
@@ -43,7 +35,6 @@ public class Doctor extends Person{
             System.out.println(s);
         }
     }
-
     public void listVisits(){
         
         System.out.println("Doctor "+ name + "(ID " + id + ") has the following visits:\n");
@@ -52,7 +43,6 @@ public class Doctor extends Person{
             System.out.println(v);
         }
     }
-
     public String toString(){ 
         return ("Doctor "+ name + "(ID " + id + ")");
     }
