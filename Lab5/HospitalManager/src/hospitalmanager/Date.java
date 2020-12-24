@@ -10,19 +10,19 @@ package hospitalmanager;
  * 
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class Date{
+public class Date{ 
     
-    private int day;
+    private int day; //Atributos de la clase
     private int month;
     private int year;
     
-    Date(int d, int m, int y){ 
+    Date(int d, int m, int y){ //Método constructor
         day = d;
         month = m;
         year = y;
     }
     
-    public int getDay(){ return day;}
+    public int getDay(){ return day;} //getters y setters de los atributos de la clase
     
     public int getMonth(){ return month;}
     

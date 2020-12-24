@@ -8,25 +8,25 @@ package hospitalmanager;
 
 public class Bed{                           
 
-    private int bedID;
+    private int bedID; //Atributos de la clase
     private Room room;
     private Resident resident;
 
-    public Bed( int id, Room r ){
+    public Bed( int id, Room r ){ //Método constructor
         bedID = id;
         room = r;
         resident = null;
     }
 
-    public void assignRoom( Room r ){ room = r;}
+    public void assignRoom( Room r ){ room = r;} //Método setter del atributo habitación
 
-    public void assignResident( Resident r ){ resident = r;}
+    public void assignResident( Resident r ){ resident = r;} //Método setter del atributo residente
 
-    public void release(){ resident = null;}
+    public void release(){ resident = null;} //Método para liberar una cama
 
-    public int getBedID(){ return bedID;}
+    public int getBedID(){ return bedID;} //Método para tomar el identificador de la cama
 
-    public boolean isAvailable(){ return resident == null;}	
+    public boolean isAvailable(){ return resident == null;} //Método para saber si una cama está disponible
 
-    public String toString(){ return ("Bed " + bedID);}
+    public String toString(){ return ("Bed " + bedID);} //Método que nos permite imprimir por pantalla el identificador de la cama.
 }

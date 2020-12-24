@@ -8,15 +8,15 @@ package hospitalmanager;
 
 public class Person{
 
-    public int id;
+    public int id; //Atributos de la clase
     public String name;
 
-    public Person( int id, String name ){
+    public Person( int id, String name ){ //Método constructor
         this.id = id;
         this.name = name;
     }
 
-    public int getID(){
+    public int getID(){ //getters y setters de los atributos
         return id;
     }
     
@@ -32,7 +32,7 @@ public class Person{
         this.name = name;
     }
     
-    public String toString(){
+    public String toString(){ //Método que nos permite imprimir por pantalla la información de la persona.
         return ("Person "+ name);
     }
 }

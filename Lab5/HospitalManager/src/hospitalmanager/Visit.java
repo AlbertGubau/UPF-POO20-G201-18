@@ -7,19 +7,19 @@ package hospitalmanager;
 
 public class Visit{
     
-    Date date;
+    Date date; //Atributos de la clase
     String summary;
     Doctor doctor;
     Patient patient;
 
-    public Visit( Date d, String s, Doctor doc, Patient p ){
+    public Visit( Date d, String s, Doctor doc, Patient p ){ //Método constructor de la clase
         date = d;
         summary = s;
         doctor = doc;
         patient = p;
     }
 
-    public Date getDate(){ return date;}
+    public Date getDate(){ return date;} //getters y setters de los atributos
     
     public String getSummary(){ return summary;}
     
@@ -27,6 +27,6 @@ public class Visit{
     
     public Patient getPatient(){ return patient;	}
 
-    public String toString(){ return("Visit with doc: " + doctor.toString());}
+    public String toString(){ return("Visit with doc: " + doctor.toString());} //Método toString para poder imprimir por pantalla
 }
     
