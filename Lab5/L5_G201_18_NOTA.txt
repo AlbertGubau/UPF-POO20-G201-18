@@ -1,0 +1,13 @@
+Clases				20 %	
+Atributos			20 %
+constructor y parámetros	10 %
+Métodos y parámetros		30 %
+Scope (private o públic)	10 %
+Report				10 %
+Nota final
+
+10	10	10	10	10	10	10
+
+El informe es correcto.
+El código se encuentra documentado.
+El programa se ejecuta correctamente
